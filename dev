@@ -1,0 +1,149 @@
+#!/bin/bash
+
+# Based on https://github.com/bookwyrm-social/bookwyrm/blob/main/bw-dev
+# 
+# ANTI-CAPITALIST SOFTWARE LICENSE (v 1.4)
+# Copyright © 2020 Mouse Reeve
+# 
+# This is anti-capitalist software, released for free use by individuals and
+# organizations that do not operate by capitalist principles.
+# 
+# Permission is hereby granted, free of charge, to any person or organization
+# (the "User") obtaining a copy of this software and associated documentation
+# files (the "Software"), to use, copy, modify, merge, distribute, and/or sell
+# copies of the Software, subject to the following conditions:
+# 
+# 1. The above copyright notice and this permission notice shall be included in
+#    all copies or modified versions of the Software.
+# 
+# 2. The User is one of the following:
+# 
+#     1. An individual person, laboring for themselves
+#     2. A non-profit organization
+#     3. An educational institution
+#     4. An organization that seeks shared profit for all of its members, and
+#        allows non-members to set the cost of their labor
+# 
+# 3. If the User is an organization with owners, then all owners are workers
+#    and all workers are owners with equal equity and/or equal vote.
+# 
+# 4. If the User is an organization, then the User is not law enforcement or
+#    military, or working for or under either.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT EXPRESS OR IMPLIED WARRANTY OF ANY
+# KIND, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+# BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+# exit on errors
+set -e
+
+# import our ENV variables
+# catch exits and give a friendly error message
+function showerr {
+    echo "Failed to load configuration! You may need to update your .env and quote values with special characters in them."
+}
+trap showerr EXIT
+source .env
+trap - EXIT
+
+function clean {
+    docker-compose stop
+    docker-compose rm -f
+}
+
+function runweb {
+    docker-compose run --rm web "$@"
+}
+
+function rundb {
+    docker-compose run --rm db $@
+}
+
+function initdb {
+    runweb flask db init "$@"
+}
+
+function migrate {
+    runweb flask db upgrade "$@"
+}
+
+
+CMD=$1
+if [ -n "$CMD" ]; then
+    shift
+fi
+
+# show commands as they're executed
+set -x
+
+case "$CMD" in
+    up)
+        docker-compose up "$@"
+        ;;
+    initdb)
+        initdb "$@"
+        ;;
+    resetdb)
+        clean
+        # Start just the DB so no one else is using it
+        docker-compose up --build -d db
+        rundb dropdb -U ${POSTGRES_USER} ${POSTGRES_DB}
+        rundb createdb -U ${POSTGRES_USER} ${POSTGRES_DB}
+        # Now start up web so we can run the migrations
+        docker-compose up --build -d web
+        migrate
+        initdb
+        clean
+        ;;
+    makemigrations)
+        runweb flask db migrate "$@"
+        ;;
+    migrate)
+        migrate "$@"
+        ;;
+    bash)
+        runweb bash
+        ;;
+    dbshell)
+        rundb psql -U ${POSTGRES_USER} ${POSTGRES_DB}
+        ;;
+    restart_celery)
+        docker-compose restart worker
+        ;;
+    pytest)
+        runweb pytest --no-cov-on-fail "$@"
+        ;;
+    build)
+        docker-compose build
+        ;;
+    clean)
+        clean
+        ;;
+    setup)
+        migrate
+        initdb
+        ;;
+    runweb)
+        runweb "$@"
+        ;;
+    *)
+        set +x # No need to echo echo
+        echo "Unrecognised command. Try:"
+        echo "    up [container]"
+        echo "    initdb"
+        echo "    resetdb"
+        echo "    makemigrations [migration]"
+        echo "    migrate [migration]"
+        echo "    bash"
+        echo "    dbshell"
+        echo "    restart_celery"
+        echo "    pytest"
+        echo "    build"
+        echo "    clean"
+        echo "    setup"
+        echo "    runweb"
+        ;;
+esac

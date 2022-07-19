@@ -1,0 +1,108 @@
+version: "3.9"
+
+services:
+
+  redis:
+    image: "redis:alpine"
+    networks:
+      - brokernet
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    networks:
+      - backnet
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: 
+      context: .
+      dockerfile: docker/common/Dockerfile
+    restart: always
+    ports:
+      - "5000:5000"
+    expose:
+      - 5000
+    networks:
+      - backnet
+      - frontnet
+      - brokernet
+    command: gunicorn -w 1 --bind 0.0.0.0:5000 app.wsgi:app --reload
+    volumes:
+      - ./:/usr/paperglobe_web/
+      # - static:/usr/paperglobe_web/app/static
+      - export:/usr/paperglobe_web/app/export
+      - tmp:/tmp
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  worker:
+    build: 
+      context: .
+      dockerfile: docker/common/Dockerfile
+    restart: always
+    networks:
+      - backnet
+      - frontnet
+      - brokernet
+    command: celery -A app.tasks:celery_app --broker=redis://redis:6379 worker --loglevel=info --concurrency=1
+    volumes:
+      # - static:/usr/paperglobe_web/app/static
+      - export:/usr/paperglobe_web/app/export
+      - tmp:/tmp
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  flower:
+    build: 
+      context: .
+      dockerfile: docker/common/Dockerfile
+    restart: always
+    ports:
+      - "5555:5555"
+    expose:
+      - 5555
+    networks:
+      - backnet
+      - frontnet
+      - brokernet
+    command: celery -A app.tasks:celery_app --broker=redis://redis:6379 flower --port=5555
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
+  proxy:
+    image: nginx:latest
+    restart: unless-stopped
+    ports:
+      - 8123:80
+    depends_on: 
+      - web
+    networks:
+      - frontnet
+    volumes:
+      - ./docker/proxy:/etc/nginx/conf.d
+      # - static:/usr/paperglobe_web/static
+      - export:/usr/paperglobe_web/export
+
+networks:
+  backnet:
+  frontnet:
+  brokernet:
+
+volumes:
+  static:
+  export:
+  pgdata:
+  tmp:

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="row is-center">
+        <div class="col-8">
+            {% include "partials/nav.html" %}
+            <p>{{ error }}</p>
+            <p>
+                There was an error… <a href="/">Go back home!</a>
+            </p>
+        </div>
+    </div>
+{% endblock content %}

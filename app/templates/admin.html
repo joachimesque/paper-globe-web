@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% include "partials/nav.html" %}
+    <h2>Admin</h2>
+    <turbo-frame id="table">
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>status</th>
+                <th>start_date</th>
+                <th>end_date</th>
+                <th>export_url</th>
+                <th>delete?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+                <tr>
+                    <td>
+                        <small>{{ job.id }}</small>
+                    </td>
+                    <td>
+                        <strong class="tag is-small text-{{ job.status }}">{{ job.status }}</strong>
+                    </td>
+                    <td>
+                        {{ job.start_date|datetimeformat("%y-%m-%d") }}
+                        <br />
+                        {{ job.start_date|datetimeformat("%H:%M:%S") }}
+                    </td>
+                    <td>
+                        {{ job.end_date|datetimeformat("%y-%m-%d") }}
+                        <br />
+                        {{ job.end_date|datetimeformat("%H:%M:%S") }}
+                    </td>
+                    <td>
+                        <small>
+                            {% if job.export_url %}<a href="/export/{{ job.export_url }}" download>{{ job.export_url }}</a>{% endif %}
+                        </small>
+                    </td>
+                    <td>
+                        <form action="delete" method="post">
+                            <input type="hidden" value="{{ csrf_token() }}" name="csrf_token" />
+                            <input type="hidden" value="{{ job.id }}" name="job_id" />
+                            <button>delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </turbo-frame>
+{% endblock content %}

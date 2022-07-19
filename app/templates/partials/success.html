@@ -1,0 +1,13 @@
+<h2>Your Paper Globe template</h2>
+<p>
+    <strong class="tag is-small">{{ job.status }}</strong>
+    <br />
+    {{ job.message|safe }}
+</p>
+<p>
+    <a href="/export/{{ job.export_url }}" download class="button primary">Download your template</a>
+    then <a href="{{ url_for('instructions') }}">check out the instructions</a>
+</p>
+<p>
+    Or, create <a href="{{ url_for('new') }}">a new template from another image</a>
+</p>

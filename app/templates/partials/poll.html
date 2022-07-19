@@ -1,0 +1,63 @@
+<div aria-live="polite">
+    {% if job.status == "success" or job.export_url != None %}
+        {% include "partials/success.html" %}
+    {% elif job.status == "error" %}
+        {% include "partials/error.html" %}
+    {% else %}
+        <div>
+            <div data-controller="poll"
+                 data-poll-url-value="/poll/{{ job.id }}"
+                 data-poll-refresh-interval-value="5000"></div>
+        </div>
+        <script type="module">
+        import { Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+        
+        window.Stimulus.register("poll", class extends Controller {
+          static values = { url: String, refreshInterval: Number }
+
+          connect() {
+            this.load()
+            let timer
+
+            if (this.hasRefreshIntervalValue) {
+              this.startRefreshing()
+            }
+          }
+
+          disconnect() {
+            this.stopRefreshing()
+          }
+
+          load() {
+            const init = {
+              headers: new Headers({
+                "X-CSRFToken": "{{ csrf_token() }}",
+              }),
+            }
+
+            fetch(this.urlValue, init)
+              .then(response => {
+                if (response.headers.get("X-Custom-Status") === "Success") {
+                  this.stopRefreshing()
+                }
+                return response.text()
+              })
+              .then(html => this.element.innerHTML = html)
+          }
+
+          startRefreshing() {
+            this.refreshTimer = setInterval(() => {
+              this.load()
+            }, this.refreshIntervalValue)
+          }
+
+          stopRefreshing() {
+            if (this.refreshTimer) {
+              clearInterval(this.refreshTimer)
+            }
+          }
+
+        })
+        </script>
+    {% endif %}
+</div>
