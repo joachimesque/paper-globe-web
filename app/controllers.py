@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 import requests
 from werkzeug.utils import secure_filename
 
-from .database import db, ConversionJob
+from app.database import db, ConversionJob
 
 
 def upload_controller(file_url=None, file_object=None):
@@ -37,7 +37,7 @@ def upload_controller(file_url=None, file_object=None):
     """
     temp_dir = mkdtemp()
 
-    file_id = uuid.uuid4()
+    file_id = str(uuid.uuid4())
 
     if file_object is not None:
         file_name = secure_filename(file_object.filename)

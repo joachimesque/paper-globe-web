@@ -5,7 +5,6 @@ import uuid
 
 from sqlalchemy import Column, String, DateTime, Text, Boolean, event
 from sqlalchemy.sql import func
-from sqlalchemy.dialects.postgresql import UUID
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -14,8 +13,8 @@ db = SQLAlchemy()
 class ConversionJob(db.Model):
     """Main object type"""
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    job_id = Column(UUID(as_uuid=True))
+    id = Column(String(), primary_key=True, default=uuid.uuid4, unique=True, index=True)
+    job_id = Column(String())
     start_date = Column(DateTime(), default=func.now())
     end_date = Column(DateTime(), onupdate=func.now())
     origin_file_path = Column(String(128))
@@ -30,7 +29,7 @@ class ConversionJob(db.Model):
         return {c.name: str(getattr(self, c.name)) for c in self.__table__.columns}
 
     def __repr__(self):
-        return f"<ConversionJob {self.id} {self.status} {self.message}>"
+        return f"<ConversionJob '{self.id}' '{self.status}' '{self.message}'>"
 
 
 # pylint: disable=unused-argument

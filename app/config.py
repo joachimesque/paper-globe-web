@@ -32,38 +32,11 @@ class ProductionConfig(Config):
 
     DEBUG = False
 
-    SQLALCHEMY_DATABASE_URI = (
-        "postgresql+psycopg2:"
-        + f"//{os.environ.get('POSTGRES_USER')}:"
-        + f"{os.environ.get('POSTGRES_PASSWORD')}"
-        + f"@{os.environ.get('POSTGRES_HOST')}:{os.environ.get('PGPORT')}"
-        f"/{os.environ.get('POSTGRES_DB')}"
-    )
-    SQLALCHEMY_POOL_SIZE = 1
+    SQLALCHEMY_DATABASE_URI = "sqlite:////usr/paperglobe_web/db/sqlite.db"
 
     CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
     CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
     REDIS_BROKER_URL = os.environ.get("REDIS_BROKER_URL")
-
-
-class StagingConfig(Config):
-    """Config class for a staging environment"""
-
-    DEVELOPMENT = True
-    DEBUG = True
-
-    SQLALCHEMY_DATABASE_URI = (
-        "postgresql+psycopg2:"
-        + f"//{os.environ.get('POSTGRES_USER')}:"
-        + f"{os.environ.get('POSTGRES_PASSWORD')}"
-        + f"@{os.environ.get('POSTGRES_HOST')}:{os.environ.get('PGPORT')}"
-        f"/{os.environ.get('POSTGRES_DB')}"
-    )
-    SQLALCHEMY_POOL_SIZE = 1
-
-    CELERY_BROKER_URL = "redis://localhost:6379"
-    CELERY_RESULT_BACKEND = "redis://localhost:6379"
-    REDIS_BROKER_URL = "redis://localhost:6379"
 
 
 class DevelopmentConfig(Config):
@@ -72,14 +45,7 @@ class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
 
-    SQLALCHEMY_DATABASE_URI = (
-        "postgresql+psycopg2:"
-        + f"//{os.environ.get('POSTGRES_USER')}:"
-        + f"{os.environ.get('POSTGRES_PASSWORD')}"
-        + f"@{os.environ.get('POSTGRES_HOST')}:{os.environ.get('PGPORT')}"
-        f"/{os.environ.get('POSTGRES_DB')}"
-    )
-    SQLALCHEMY_POOL_SIZE = 1
+    SQLALCHEMY_DATABASE_URI = "sqlite:////usr/paperglobe_web/db/sqlite.db"
 
     CELERY_BROKER_URL = "redis://localhost:6379"
     CELERY_RESULT_BACKEND = "redis://localhost:6379"

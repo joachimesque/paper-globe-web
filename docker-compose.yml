@@ -7,17 +7,6 @@ services:
     networks:
       - brokernet
 
-  db:
-    image: postgres
-    ports:
-      - "5432:5432"
-    env_file:
-      - .env
-    networks:
-      - backnet
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
   web:
     build: 
       context: .
@@ -34,12 +23,12 @@ services:
     command: gunicorn -w 1 --bind 0.0.0.0:5000 app.wsgi:app --reload
     volumes:
       - ./:/usr/paperglobe_web/
+      - db:/usr/paperglobe_web/db
       - export:/usr/paperglobe_web/app/export
       - tmp:/tmp
     env_file:
       - .env
     depends_on:
-      - db
       - redis
 
   worker:
@@ -54,11 +43,11 @@ services:
     command: celery -A app.tasks:celery_app --broker=redis://redis:6379 worker --loglevel=info --concurrency=1
     volumes:
       - export:/usr/paperglobe_web/app/export
+      - db:/usr/paperglobe_web/db
       - tmp:/tmp
     env_file:
       - .env
     depends_on:
-      - db
       - redis
 
   flower:
@@ -100,5 +89,5 @@ networks:
 
 volumes:
   export:
-  pgdata:
   tmp:
+  db:
