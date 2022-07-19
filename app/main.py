@@ -56,7 +56,7 @@ csrf = CSRFProtect(app)
 @app.template_filter("datetimeformat")
 def datetime_format(value, date_format="%y-%m-%d %H:%M"):
     """Date transformation template filter"""
-    return value.strftime(date_format)
+    return value.strftime(date_format) if value else value
 
 
 @app.before_first_request
