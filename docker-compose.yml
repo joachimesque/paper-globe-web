@@ -34,7 +34,6 @@ services:
     command: gunicorn -w 1 --bind 0.0.0.0:5000 app.wsgi:app --reload
     volumes:
       - ./:/usr/paperglobe_web/
-      # - static:/usr/paperglobe_web/app/static
       - export:/usr/paperglobe_web/app/export
       - tmp:/tmp
     env_file:
@@ -54,7 +53,6 @@ services:
       - brokernet
     command: celery -A app.tasks:celery_app --broker=redis://redis:6379 worker --loglevel=info --concurrency=1
     volumes:
-      # - static:/usr/paperglobe_web/app/static
       - export:/usr/paperglobe_web/app/export
       - tmp:/tmp
     env_file:
@@ -93,7 +91,6 @@ services:
       - frontnet
     volumes:
       - ./docker/proxy:/etc/nginx/conf.d
-      # - static:/usr/paperglobe_web/static
       - export:/usr/paperglobe_web/export
 
 networks:
@@ -102,7 +99,6 @@ networks:
   brokernet:
 
 volumes:
-  static:
   export:
   pgdata:
   tmp:
