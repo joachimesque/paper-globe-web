@@ -9,6 +9,7 @@ from celery.schedules import crontab
 
 from app.factories import create_app, init_celery
 from app.database import ConversionJob, db
+from app.utils import generate_export_dir_name
 
 
 app = create_app()
@@ -53,7 +54,7 @@ def convert_to_template(self, file_path, file_id, image_format, image_projection
 
     export_dir = os.environ.get("EXPORT_DIR", mkdtemp())
 
-    dir_name = "".join(file_id.split("-")[0:1])
+    dir_name = generate_export_dir_name(file_id)
     export_path = os.path.join(export_dir, dir_name, "")
     os.mkdir(export_path)
 
@@ -71,7 +72,10 @@ def convert_to_template(self, file_path, file_id, image_format, image_projection
 
     paper_globe = PaperGlobe(on_update=echo_status, bold=bold)
     out_path = paper_globe.generate_paperglobe(
-        file_path, image_projection, image_format, export_path
+        file_path,
+        image_projection,
+        image_format,
+        export_path
     )
 
     if os.path.exists(out_path[0]) is True:

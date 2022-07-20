@@ -20,9 +20,9 @@ from flask_wtf.csrf import CSRFProtect
 from sqlalchemy import desc
 
 from app.database import db, ConversionJob
+from app.controllers import upload_controller, admin_delete_controller, admin_revert_controller
 from app.factories import create_app
 from app.tasks import convert_to_template
-from app.controllers import upload_controller
 from app.utils import is_uuid_valid
 from app.forms import UploadForm
 
@@ -128,7 +128,11 @@ def admin(admin_key):
         desc(ConversionJob.start_date)
     )
 
-    return render_template("admin.html", jobs=jobs)
+    deleted_jobs = ConversionJob.query.filter(ConversionJob.deleted.is_(True)).order_by(
+        desc(ConversionJob.start_date)
+    )
+
+    return render_template("admin.html", jobs=jobs, deleted_jobs=deleted_jobs)
 
 
 @app.route("/<admin_key>/delete", methods=["POST"])
@@ -142,12 +146,23 @@ def admin_delete(admin_key):
 
     job_id = request.form.get("job_id")
 
-    job = ConversionJob.query.get_or_404(job_id)
-    if job.deleted:
-        abort(404)
-    job.deleted = True
+    admin_delete_controller(job_id)
 
-    db.session.commit()
+    return redirect(f"/{admin_key}/admin")
+
+
+@app.route("/<admin_key>/revert", methods=["POST"])
+def admin_revert(admin_key):
+    """Reverts a deleted job/image object from post data
+
+    The URL is protected by a key defined in the env var `ADMIN_KEY`
+    """
+    if admin_key != app.config["ADMIN_KEY"]:
+        abort(404)
+
+    job_id = request.form.get("job_id")
+
+    admin_revert_controller(job_id)
 
     return redirect(f"/{admin_key}/admin")
 

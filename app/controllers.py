@@ -5,10 +5,84 @@ import uuid
 from tempfile import mkdtemp
 from urllib.parse import urlparse
 
+from flask import abort
 import requests
 from werkzeug.utils import secure_filename
 
 from app.database import db, ConversionJob
+from app.utils import generate_export_dir_name
+
+
+def admin_delete_controller(job_id):
+    """Controller for the admin delete route
+
+    This will
+        - add a deleted tag to the object
+        - move the export file to a new path
+
+    Arguments
+    ---------
+
+    job_id : string
+        The id of a job (UUID4 as string)
+    """
+
+    job = ConversionJob.query.get_or_404(job_id)
+    if job.deleted:
+        abort(404)
+    job.deleted = True
+
+    if job.export_file_path and os.path.exists(job.export_file_path):
+        export_dir = os.environ.get("EXPORT_DIR", mkdtemp())
+        dir_name = generate_export_dir_name(job.id)
+        new_file_dir = os.path.join(export_dir, "deleted", dir_name)
+        new_file_path = os.path.join(export_dir, "deleted", job.export_url)
+
+        if not os.path.exists(new_file_dir):
+            os.mkdir(new_file_dir)
+
+        print(job.export_file_path, new_file_path)
+        os.rename(job.export_file_path, new_file_path)
+
+        job.export_file_path = new_file_path
+
+    db.session.commit()
+
+
+def admin_revert_controller(job_id):
+    """Controller for the admin revert route
+
+    This will
+        - remove the object's deleted tag
+        - move the export file to its right path
+
+    Arguments
+    ---------
+
+    job_id : string
+        The id of a job (UUID4 as string)
+    """
+
+    job = ConversionJob.query.get_or_404(job_id)
+    if job.deleted is False:
+        abort(404)
+    job.deleted = False
+
+
+    if job.export_file_path and os.path.exists(job.export_file_path):
+        export_dir = os.environ.get("EXPORT_DIR", mkdtemp())
+        dir_name = generate_export_dir_name(job.id)
+        new_file_dir = os.path.join(export_dir, dir_name)
+        new_file_path = os.path.join(export_dir, job.export_url)
+
+        if not os.path.exists(new_file_dir):
+            os.mkdir(new_file_dir)
+
+        os.rename(job.export_file_path, new_file_path)
+
+        job.export_file_path = new_file_path
+
+    db.session.commit()
 
 
 def upload_controller(file_url=None, file_object=None):
