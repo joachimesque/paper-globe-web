@@ -2,7 +2,7 @@
     {% if job.status == "success" or job.export_url != None %}
         {% include "partials/success.html" %}
     {% elif job.status == "error" %}
-        {% include "partials/error.html" %}
+        {% include "partials/failure.html" %}
     {% else %}
         <div>
             <div data-controller="poll"
@@ -10,7 +10,9 @@
                  data-poll-refresh-interval-value="5000"></div>
         </div>
         <script type="module">
-        import { Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+        {% assets 'stimulus' %}
+        import { Controller } from "{{ ASSET_URL }}"
+        {% endassets %}
         
         window.Stimulus.register("poll", class extends Controller {
           static values = { url: String, refreshInterval: Number }
@@ -37,7 +39,7 @@
 
             fetch(this.urlValue, init)
               .then(response => {
-                if (response.headers.get("X-Custom-Status") === "Success") {
+                if (response.headers.get("X-Custom-Status") !== "Wait") {
                   this.stopRefreshing()
                 }
                 return response.text()

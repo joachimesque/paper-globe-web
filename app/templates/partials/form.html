@@ -1,47 +1,48 @@
 <div>
-  <h2>Generate your Paper Globe template</h2>
-  <form action="/upload"
-        method="post"
-        enctype="multipart/form-data"
-        class="flex-wrapper">
-      {{ form.csrf_token }}
-      <fieldset>
-          <legend>
-              Image link/upload
-          </legend>
-          {% for subfield in form.image_type %}
-              {{ subfield }}
-              {{ subfield.label }}
-          {% endfor %}
-          <div id="control-url" class="control">
-              {{ form.image_url.label }}
-              {{ form.image_url()}}
-          </div>
-          <div id="control-upload" class="control">
-              {{ form.image_file.label }}
-              {{ form.image_file()}}
-          </div>
-      </fieldset>
-      <div class="row">
-          <fieldset class="col-6">
-              <legend>
-                  Print format
-              </legend>
-              <div>
-                  {% for subfield in form.print_format %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
-              </div>
-          </fieldset>
-          <fieldset class="col-6">
-              <legend>
-                  Projection
-              </legend>
-              <div>
-                  {% for subfield in form.projection %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
-              </div>
-          </fieldset>
-      </div>
-      <div>
-          <button type="submit">Load</button>
-      </div>
-  </form>
+    <h2>Generate your Paper Globe template</h2>
+    <form action="/upload"
+          method="post"
+          enctype="multipart/form-data"
+          class="flex-wrapper">
+        {{ form.csrf_token }}
+        <fieldset>
+            <legend>
+                Image link/upload
+            </legend>
+            {% for subfield in form.image_type %}
+                {{ subfield }}
+                {{ subfield.label }}
+            {% endfor %}
+            <div id="control-url" class="control">
+                {{ form.image_url.label }}
+                {{ form.image_url()}}
+            </div>
+            <div id="control-upload" class="control">
+                {{ form.image_file.label }}
+                {{ form.image_file()}}
+            </div>
+        </fieldset>
+        <div class="row">
+            <fieldset class="col-6">
+                <legend>
+                    Print format
+                </legend>
+                <div>
+                    {% for subfield in form.print_format %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
+                </div>
+            </fieldset>
+            <fieldset class="col-6">
+                <legend>
+                    Projection
+                </legend>
+                <div>
+                    {% for subfield in form.projection %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
+                </div>
+            </fieldset>
+        </div>
+        <div>
+            <button type="submit">Load</button>
+            or discover our presets below <span aria-label="arrow pointing downwards" role="img">⤵︎</span>
+        </div>
+    </form>
 </div>

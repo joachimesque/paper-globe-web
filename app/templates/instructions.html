@@ -4,96 +4,125 @@
         <div class="col-8">
             {% include "partials/nav.html" %}
             <h2>Instructions</h2>
-
             <div class="flex-wrapper-large">
-              <div class="card row" id="step-1">
-                <div class="col-6">
-                  <h3 class="title">Step 1</h3>
-                  <p>You will need <strong>one to two hours</strong> to build your globe. You’ll also need:</p>
-                  <ul>
-                    <li>scissors or an X-ACTO knife &amp; cutting board,</li>
-                    <li>a ruler,</li>
-                    <li>an old ballpoint pen</li>
-                    <li>and coffee.</li>
-                  </ul>
-                  <p>First, print the 14 pages on heavy weight paper (50lb to80 lb or 200 to 300g/m<sup>2</sup>). This step can be done with a laser or an inkjet printer.</p>
-                  <p>If you’re in North America you can generate a globe template for the US Letter format.</p>
+                <div class="card row" id="step-1">
+                    <div class="col-6">
+                        <h3 class="title">Step 1</h3>
+                        <p>
+                            You will need <strong>one to two hours</strong> to build your globe. You’ll also need:
+                        </p>
+                        <ul>
+                            <li>scissors or an X-ACTO knife &amp; cutting board,</li>
+                            <li>a ruler,</li>
+                            <li>an old ballpoint pen</li>
+                            <li>and coffee.</li>
+                        </ul>
+                        <p>
+                            First, print the 14 pages on heavy weight paper (50lb to80 lb or 200 to 300g/m<sup>2</sup>). This step can be done with a laser or an inkjet printer.
+                        </p>
+                        <p>If you’re in North America you can generate a globe template for the US Letter format.</p>
+                    </div>
+                    <div class="col-6 etape-image">
+                        <img src="{{ url_for('static', filename='images/paper-globe-step-1.jpg') }}"
+                             alt="Step 1"/>
+                    </div>
                 </div>
-                <div class="col-6 etape-image">
-                  <img src="{{ url_for('static', filename='images/paper-globe-step-1.jpg') }}" alt="Step 1" />
+                <div class="card row" id="step-2">
+                    <div class="col-6">
+                        <h3 class="title">Step 2</h3>
+                        <p>Brew a cup of coffee, but put it aside because it’s too hot right now.</p>
+                        <p>Cut the shapes along the black edges. This step is the longest.</p>
+                    </div>
+                    <div class="col-6 etape-image">
+                        <img src="{{ url_for('static', filename='images/paper-globe-step-2.jpg') }}"
+                             alt="Step 2"/>
+                    </div>
                 </div>
-              </div>
-              <div class="card row" id="step-2">
-                <div class="col-6">
-                  <h3 class="title">Step 2</h3>
-                  <p>Brew a cup of coffee, but put it aside because it’s too hot right now.</p>
-                  <p>Cut the shapes along the black edges. This step is the longest.</p>
+                <div class="card row" id="step-3">
+                    <div class="col-6">
+                        <h3 class="title">Step 3</h3>
+                        <p>
+                            <em>pages 1 to 4</em>
+                        </p>
+                        <p>
+                            The best way to make clean folds is to mark the folding line with your ballpoint pen on the back of the paper, so that the fold will follow it cleanly.
+                        </p>
+                        <p>Fold the side wings, then mark the folds on the equator and the 45th parallels.</p>
+                    </div>
+                    <div class="col-6 etape-image">
+                        <img src="{{ url_for('static', filename='images/paper-globe-step-3.jpg') }}"
+                             alt="Step 3"/>
+                    </div>
                 </div>
-                <div class="col-6 etape-image">
-                  <img src="{{ url_for('static', filename='images/paper-globe-step-2.jpg') }}" alt="Step 2" />
+                <div class="card row" id="step-4">
+                    <div class="col-6">
+                        <h3 class="title">Step 4</h3>
+                        <p>
+                            <em>pages 7 to 14</em>
+                        </p>
+                        <p>
+                            Fold the octogons along the dashed line (use the technique from the last step), then cut out the three inside pieces.
+                        </p>
+                    </div>
+                    <div class="col-6 etape-image">
+                        <img src="{{ url_for('static', filename='images/paper-globe-step-4.jpg') }}"
+                             alt="Step 4"/>
+                    </div>
                 </div>
-              </div>
-              <div class="card row" id="step-3">
-                <div class="col-6">
-                  <h3 class="title">Step 3</h3>
-                  <p><em>pages 1 to 4</em></p>
-                  <p>The best way to make clean folds is to mark the folding line with your ballpoint pen on the back of the paper, so that the fold will follow it cleanly.</p>
-                  <p>Fold the side wings, then mark the folds on the equator and the 45th parallels.</p>
+                <div class="card row" id="step-5">
+                    <div class="col-6">
+                        <h3 class="title">Step 5</h3>
+                        <p>
+                            <em>pages 5 to 14</em>
+                        </p>
+                        <p>Assemble the insides of the globe by fitting the folded octogons (pieces 7 to 14) in the pieces 5, 6a &amp; 6b.</p>
+                        <p>The coffee should now be too cold to drink. Micro-wave the cup.</p>
+                    </div>
+                    <div class="col-6 etape-image">
+                        <img src="{{ url_for('static', filename='images/paper-globe-step-5.jpg') }}"
+                             alt="Step 5"/>
+                    </div>
                 </div>
-                <div class="col-6 etape-image">
-                  <img src="{{ url_for('static', filename='images/paper-globe-step-3.jpg') }}" alt="Step 3" />
+                <div class="card row" id="step-6">
+                    <div class="col-6">
+                        <h3 class="title">Step 6</h3>
+                        <p>Fit the side wings of the exterior pieces (pieces 1 to 4) inside the slits created by the folded octogons.</p>
+                    </div>
+                    <div class="col-6 etape-image">
+                        <img src="{{ url_for('static', filename='images/paper-globe-step-6.jpg') }}"
+                             alt="Step 6"/>
+                    </div>
                 </div>
-              </div>
-              <div class="card row" id="step-4">
-                <div class="col-6">
-                  <h3 class="title">Step 4</h3>
-                  <p><em>pages 7 to 14</em></p>
-                  <p>Fold the octogons along the dashed line (use the technique from the last step), then cut out the three inside pieces.</p>
+                <div class="card row" id="step-7">
+                    <div class="col-6">
+                        <h3 class="title">Step 7</h3>
+                        <p>Repeat 7 times, be careful not to put the USA in the middle of Russia. World Wars have been declared for less.</p>
+                    </div>
+                    <div class="col-6 etape-image">
+                        <img src="{{ url_for('static', filename='images/paper-globe-step-7.jpg') }}"
+                             alt="Step 7"/>
+                    </div>
                 </div>
-                <div class="col-6 etape-image">
-                  <img src="{{ url_for('static', filename='images/paper-globe-step-4.jpg') }}" alt="Step 4" />
+                <div class="card row" id="step-8">
+                    <div class="col-6">
+                        <h3 class="title">
+                            Step 8
+                        </h3>
+                        <p>
+                            Voilà!
+                        </p>
+                        <p>
+                            Don’t hesitate to post your pictures <a href="https://twitter.com/search/%23paperGlobe">on Twitter: #paperGlobe</a> or <a href="https://mastodon.social/tags/paperGlobe">on the Fediverse: #paperGlobe</a>!
+                        </p>
+                        <p>
+                            The coffee has been waiting too long in the microwave, it’s turned bad. Brew another cup and drink it while admiring your paper globe, you earned that!
+                        </p>
+                    </div>
+                    <div class="col-6 etape-image">
+                        <img src="{{ url_for('static', filename='images/paper-globe-step-8.jpg') }}"
+                             alt="Step 8"/>
+                    </div>
                 </div>
-              </div>
-              <div class="card row" id="step-5">
-                <div class="col-6">
-                  <h3 class="title">Step 5</h3>
-                  <p><em>pages 5 to 14</em></p>
-                  <p>Assemble the insides of the globe by fitting the folded octogons (pieces 7 to 14) in the pieces 5, 6a &amp; 6b.</p>
-                  <p>The coffee should now be too cold to drink. Micro-wave the cup.
-                </p></div>
-                <div class="col-6 etape-image">
-                  <img src="{{ url_for('static', filename='images/paper-globe-step-5.jpg') }}" alt="Step 5" />
-                </div>
-              </div>
-              <div class="card row" id="step-6">
-                <div class="col-6">
-                  <h3 class="title">Step 6</h3>
-                  <p>Fit the side wings of the exterior pieces (pieces 1 to 4) inside the slits created by the folded octogons.</p>
-                </div>
-                <div class="col-6 etape-image">
-                  <img src="{{ url_for('static', filename='images/paper-globe-step-6.jpg') }}" alt="Step 6" />
-                </div>
-              </div>
-              <div class="card row" id="step-7">
-                <div class="col-6">
-                  <h3 class="title">Step 7</h3>
-                  <p>Repeat 7 times, be careful not to put the USA in the middle of Russia. World Wars have been declared for less.</p>
-                </div>
-                <div class="col-6 etape-image">
-                  <img src="{{ url_for('static', filename='images/paper-globe-step-7.jpg') }}" alt="Step 7" />
-                </div>
-              </div>
-              <div class="card row" id="step-8">
-                <div class="col-6">
-                  <h3 class="title">Step 8</h3>
-                  <p>Voilà!</p>
-                  <p>Don’t hesitate to post your pictures <a href="https://twitter.com/search/%23paperGlobe">on Twitter: #paperGlobe</a> or <a href="https://mastodon.social/tags/paperGlobe">on the Fediverse: #paperGlobe</a>!</p>
-                  <p>The coffee has been waiting too long in the microwave, it’s turned bad. Brew another cup and drink it while admiring your paper globe, you earned that!</p>
-                </div>
-                <div class="col-6 etape-image">
-                  <img src="{{ url_for('static', filename='images/paper-globe-step-8.jpg') }}" alt="Step 8" />
-                </div>
-              </div>
             </div>
         </div>
     </div>
