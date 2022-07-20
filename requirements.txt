@@ -7,7 +7,6 @@ Flask-Limiter
 Flask-Migrate
 Flask-SQLAlchemy
 Flask-WTF
-flower
 future
 gunicorn
 importlib_resources

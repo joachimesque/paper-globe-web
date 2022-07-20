@@ -50,25 +50,6 @@ services:
     depends_on:
       - redis
 
-  flower:
-    build: 
-      context: .
-      dockerfile: docker/common/Dockerfile
-    restart: always
-    ports:
-      - "5555:5555"
-    expose:
-      - 5555
-    networks:
-      - backnet
-      - frontnet
-      - brokernet
-    command: celery -A app.tasks:celery_app --broker=redis://redis:6379 flower --port=5555
-    env_file:
-      - .env
-    depends_on:
-      - redis
-
   proxy:
     image: nginx:latest
     restart: unless-stopped
