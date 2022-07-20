@@ -34,14 +34,11 @@ class ConversionJob(db.Model):
 
 # pylint: disable=unused-argument
 @event.listens_for(db.session, "persistent_to_deleted")
-def object_is_pending(session, obj):
+def delete_linked_files(session, obj):
     """Listener for ConversionJob object delete event
 
-    This action will remove files linked to the model
+    This action will permanently delete files linked to the model
     """
-
-    if obj.origin_file_path and os.path.exists(obj.origin_file_path):
-        os.remove(obj.origin_file_path)
-
-    if obj.export_file_path and os.path.exists(obj.export_file_path):
-        os.remove(obj.export_file_path)
+    for file_path in (obj.origin_file_path, obj.export_file_path):
+        if file_path and os.path.exists(file_path):
+            os.remove(file_path)
