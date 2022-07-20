@@ -14,14 +14,6 @@
                 {{ subfield }}
                 {{ subfield.label }}
             {% endfor %}
-            <div id="control-url" class="control">
-                {{ form.image_url.label }}
-                {{ form.image_url() }}
-            </div>
-            <div id="control-upload" class="control">
-                {{ form.image_file.label }}
-                {{ form.image_file() }}
-            </div>
             <div id="control-preset" class="control">
                 {{ form.image_preset.label }}
                 <div class="row preset-list">
@@ -36,6 +28,14 @@
                     {% endfor %}
                     <p class="is-marginless">All presets have an equirectangular projection.</p>
                 </div>
+            </div>
+            <div id="control-upload" class="control">
+                {{ form.image_file.label }}
+                {{ form.image_file() }}
+            </div>
+            <div id="control-url" class="control">
+                {{ form.image_url.label }}
+                {{ form.image_url() }}
             </div>
         </fieldset>
         <div class="row">

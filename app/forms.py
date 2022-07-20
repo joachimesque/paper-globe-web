@@ -7,9 +7,9 @@ from wtforms import URLField, RadioField
 from paperglobe import PROJECTIONS, PRINT_SIZES
 
 image_type_choices = [
-    ("url", "paste url"),
-    ("upload", "upload image"),
     ("preset", "select preset"),
+    ("upload", "upload image"),
+    ("url", "paste url"),
 ]
 image_preset_choices = [
     ("earth.jpg", "Earth"),
