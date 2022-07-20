@@ -17,6 +17,8 @@ celery_app = init_celery(app)
 
 
 class TaskFailure(Exception):
+    """Basic task failure exception, to be raised whenever."""
+
     pass
 
 

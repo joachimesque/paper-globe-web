@@ -137,7 +137,7 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
 
         try:
             shutil.copy(preset_path, file_path)
-        except:
+        except Exception:
             pass
 
     assert os.path.exists(file_path)
