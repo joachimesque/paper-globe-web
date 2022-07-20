@@ -41,7 +41,6 @@ def admin_delete_controller(job_id):
         if not os.path.exists(new_file_dir):
             os.mkdir(new_file_dir)
 
-        print(job.export_file_path, new_file_path)
         os.rename(job.export_file_path, new_file_path)
 
         job.export_file_path = new_file_path
