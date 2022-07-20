@@ -23,11 +23,11 @@
             </div>
             <div id="control-preset" class="control">
                 {{ form.image_preset.label }}
-                <div class="row presetList">
+                <div class="row preset-list">
                   {% for subfield in form.image_preset %}
                     <div class="col-3">
-                      <label class="image-radio">
-                          {{ subfield }}
+                      {{ subfield }}
+                      <label class="image-radio" for="{{ subfield.id }}">
                           <img src="{{ url_for('static', filename='presets/') }}{{ subfield._value() }}" alt="{{ subfield.label.text }}" />
                       </label>
                     </div>

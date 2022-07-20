@@ -97,6 +97,31 @@ summary {
   margin-block: 1rem;
 }
 
+.preset-list {
+  position: relative;
+}
+.preset-list input[type="radio"] {
+  appearance: none;
+  position: absolute;
+  opacity: 0;
+}
+
+.preset-list input[type="radio"] + label {
+  cursor: pointer;
+  transition: outline-offset ease 0.15s;
+}
+.preset-list input[type="radio"] + label img {
+  display: block;
+}
+.preset-list input[type="radio"]:checked + label {
+  outline: auto;
+  outline-offset: 0;
+}
+.preset-list input[type="radio"]:focus + label {
+  outline: auto;
+  outline-offset: 2px;
+}
+
 .loader {
   display: inline-block;
   position: relative;
