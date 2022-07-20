@@ -31,9 +31,11 @@ app = create_app()
 # Assets config
 assets = Environment(app)
 assets.debug = app.debug
-css = Bundle("src/chota.css", "src/main.css", output="dist/styles.css")
-assets.register("css", css)
-css.build()
+bundles = {
+    "css": Bundle("src/chota.css", "src/inter.css", "src/main.css", output="dist/styles.css", filters='cssmin'),
+    "stimulus": Bundle("src/stimulus.js", output="dist/stimulus.js", filters='jsmin'),
+}
+assets.register(bundles)
 
 # Rate limiter config
 limiter = Limiter(

@@ -5,7 +5,7 @@ body {
   --color-darkGrey: hsl(250, 3.8%, 25.7%);
   --color-error: #ac2236;
   --color-success: #029f47;
-  --font-family-sans: 'Inter', sans-serif;
+  --font-family-sans: Inter, sans-serif;
   --font-family-mono: monaco, "Consolas", "Lucida Console", monospace;
 }
 

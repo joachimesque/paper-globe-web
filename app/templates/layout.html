@@ -4,15 +4,16 @@
         <title>Generate your Paper Globe</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css" />
+
         {% assets 'css' %}
             <link rel="stylesheet" href="{{ ASSET_URL }}" />
         {% endassets %}
-        <script type="module">
-      import { Application } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
-      window.Stimulus = Application.start()
-        </script>
+        {% assets 'stimulus' %}
+            <script type="module">
+              import { Application } from "{{ ASSET_URL }}"
+              window.Stimulus = Application.start()
+            </script>
+          {% endassets %}
     </head>
     <body>
         <main class="container">
