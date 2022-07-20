@@ -3,7 +3,8 @@
     <form action="/upload"
           method="post"
           enctype="multipart/form-data"
-          class="flex-wrapper">
+          class="flex-wrapper"
+          name="upload">
         {{ form.csrf_token }}
         <fieldset>
             <legend>
@@ -32,7 +33,9 @@
                       </label>
                     </div>
                   {% endfor %}
-
+                  <p class="is-marginless">
+                    All presets have an equirectangular projection.
+                  </p>
                 </div>
 
             </div>
@@ -61,3 +64,28 @@
     </form>
 </div>
 
+<script type="module">
+    const uploadForm = document.forms.upload;
+
+    const presetRadio = document.querySelector('input[type="radio"][value="preset"]');
+    const typeRadios = uploadForm.elements['image_type'];
+    const projectionRadios = uploadForm.elements['projection'];
+
+    const handlePresetChange = (event) => {
+      projectionRadios.forEach((projectionInput) => {
+        projectionInput.disabled = event.target.value === 'preset';
+      });
+      projectionRadios.value = event.target.value === 'preset' ? 'equirectangular' : projectionRadios.value;
+    }
+
+    typeRadios.forEach((item) => {
+      item.addEventListener('change', handlePresetChange);
+    });
+
+    projectionRadios.forEach((projectionInput) => {
+      projectionInput.disabled = presetRadio.value === 'preset';
+    });
+    if (presetRadio.value === 'preset') {
+      projectionRadios.value = 'equirectangular';
+    }
+</script>
