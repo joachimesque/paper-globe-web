@@ -9,7 +9,6 @@ from flask import (
     render_template,
     request,
     session,
-    url_for,
 )
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -84,7 +83,7 @@ def page_not_found(error):
 
 
 @app.errorhandler(500)
-def page_not_found(error):
+def page_error(error):
     """Handles 500 errors"""
     return render_template("error.html", error=error), 500
 
