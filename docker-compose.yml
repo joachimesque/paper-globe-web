@@ -50,6 +50,25 @@ services:
     depends_on:
       - redis
 
+  beat:
+    build: 
+      context: .
+      dockerfile: docker/common/Dockerfile
+    restart: always
+    networks:
+      - backnet
+      - frontnet
+      - brokernet
+    command: celery -A app.tasks:celery_app --broker=redis://redis:6379 beat --loglevel=info
+    volumes:
+      - export:/usr/paperglobe_web/app/export
+      - db:/usr/paperglobe_web/db
+      - tmp:/tmp
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
   proxy:
     image: nginx:latest
     restart: unless-stopped
