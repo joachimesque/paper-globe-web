@@ -2,6 +2,7 @@
 
 import logging.config
 
+from celery.result import AsyncResult
 from flask import (
     abort,
     make_response,
@@ -206,12 +207,21 @@ def poll(file_id):
 
     job = ConversionJob.query.filter_by(id=file_id).first_or_404()
 
-    if job.status == "success" or job.export_url is not None:
+    task_status = "PENDING"
+    if job.job_id:
+        task = AsyncResult(job.job_id)
+        task_status = task.status
+
+    if (
+        job.status == "success"
+        or job.export_url is not None
+        or task_status == "SUCCESS"
+    ):
         resp = make_response(render_template("partials/success.html", job=job))
         resp.headers["X-Custom-Status"] = "Success"
         return resp
 
-    if job.status == "error":
+    if job.status == "error" or task_status == "FAILURE":
         session["file_id"] = None
 
         resp = make_response(render_template("partials/failure.html", job=job))

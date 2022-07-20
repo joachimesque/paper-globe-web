@@ -15,6 +15,11 @@ from app.utils import generate_export_dir_name
 app = create_app()
 celery_app = init_celery(app)
 
+
+class TaskFailure(Exception):
+    pass
+
+
 # pylint: disable=unused-argument
 @celery_app.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
@@ -67,6 +72,9 @@ def convert_to_template(self, file_path, file_id, image_format, image_projection
         conversion_job.status = status_type
         db.session.commit()
 
+        if status_type == "error":
+            raise TaskFailure
+
     def bold(text):
         return f"<strong>{text}</strong>"
 
@@ -81,6 +89,8 @@ def convert_to_template(self, file_path, file_id, image_format, image_projection
         conversion_job.export_file_path = out_path[0]
         conversion_job.export_url = export_url
         db.session.commit()
+    else:
+        raise TaskFailure
 
 
 @celery_app.task
