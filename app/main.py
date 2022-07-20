@@ -112,12 +112,14 @@ def new():
 
 
 @app.route("/instructions")
+@limiter.exempt
 def instructions():
     """Displays the instructions page"""
     return render_template("instructions.html")
 
 
 @app.route("/<admin_key>/admin")
+@limiter.exempt
 def admin(admin_key):
     """Displays the admin view
 
@@ -138,6 +140,7 @@ def admin(admin_key):
 
 
 @app.route("/<admin_key>/delete", methods=["POST"])
+@limiter.exempt
 def admin_delete(admin_key):
     """Deletes a job/image object from post data
 
@@ -154,6 +157,7 @@ def admin_delete(admin_key):
 
 
 @app.route("/<admin_key>/revert", methods=["POST"])
+@limiter.exempt
 def admin_revert(admin_key):
     """Reverts a deleted job/image object from post data
 
@@ -170,6 +174,7 @@ def admin_revert(admin_key):
 
 
 @app.route("/result/<file_id>")
+@limiter.exempt
 def result(file_id):
     """Displays the result for the job specified by the URL"""
     if not is_uuid_valid(file_id):
@@ -181,6 +186,7 @@ def result(file_id):
 
 
 @app.route("/poll/<file_id>")
+@limiter.exempt
 def poll(file_id):
     """Results polling utility
 
