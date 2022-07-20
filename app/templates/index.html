@@ -3,7 +3,10 @@
     <div class="row is-center">
         <div class="col-8">
             {% include "partials/nav.html" %}
-            {% include 'partials/form.html' %}
+            <div class="flex-wrapper-large">
+              {% include "partials/intro.html" %}
+              {% include 'partials/form.html' %}
+            </div>
         </div>
     </div>
 {% endblock content %}

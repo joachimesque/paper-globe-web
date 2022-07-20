@@ -48,6 +48,12 @@ fieldset {
   gap: 2rem;
 }
 
+.flex-wrapper-large {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
 a:not(.button):not(.no-underline) {
   text-decoration: underline;
   text-underline-offset: from-font;
@@ -64,6 +70,11 @@ th {
 
 td {
   vertical-align: middle;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
 }
 
 #control-url,

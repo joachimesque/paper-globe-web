@@ -1,0 +1,44 @@
+<details open class="card" id="about">
+  <summary>What is the Paper Globe?</summary>
+  <h2>print it, cut it, fold it…</h2>
+  <div class="row">
+    <div class="col-6">
+
+      <p>Paper Globe is a tool that will generate the template of a do-it-yourself globe that you can print, cut and fold. Not only will it look neat in your living room, it is also a very good learning tool for geography, geometry, space…</p>
+      <p>This project has been directly inspired by the <em>Sectional Globe — earth’s axis, 23.4 degrees</em>, created by <a href="http://www.geo-grafia.jp/product/index_e.html">geografia</a>, a Japan-based design studio.</p>
+      <p>The tool is free to use, and the templates that are generated cannot be used for proffit.</p>
+    </div>
+    <div class="col-6">
+          <img src="{{ url_for('static', filename='images/paper-globe.jpg') }}" alt="Photo of the Paper Globe" />
+      
+    </div>
+  </div>
+</details>
+
+<script type="text/javascript">
+  (() => {
+    const itemName = (name) => (`is_${name}_open`);
+
+    const handleWelcomeDetail = (e) => {
+      const isOpen = e.target.hasAttribute('open');
+      localStorage.setItem(itemName(e.target.id), isOpen);
+    }
+
+    export const detailsData = (detailsElementId) => {
+      const detailsEl = document.getElementById(detailsElementId);
+
+      detailsEl.addEventListener('toggle', handleWelcomeDetail);
+
+      const itemValue = localStorage.getItem(itemName(detailsElementId));
+
+      if(itemValue === 'false') {
+        detailsEl.removeAttribute('open');
+      }
+      if(itemValue === 'true') {
+        detailsEl.setAttribute('open', true);
+      }
+    }
+
+    detailsData("about");
+  })()
+</script>
