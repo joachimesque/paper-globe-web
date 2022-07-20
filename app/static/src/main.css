@@ -78,7 +78,8 @@ summary {
 }
 
 #control-url,
-#control-upload {
+#control-upload,
+#control-preset {
   display: none;
 }
 
@@ -86,6 +87,9 @@ summary {
   display: block;
 }
 #image_type-1:checked ~ #control-upload {
+  display: block;
+}
+#image_type-2:checked ~ #control-preset {
   display: block;
 }
 

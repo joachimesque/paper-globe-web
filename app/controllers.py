@@ -2,6 +2,7 @@
 
 import os
 import uuid
+import shutil
 from tempfile import mkdtemp
 from urllib.parse import urlparse
 
@@ -83,12 +84,13 @@ def admin_revert_controller(job_id):
     db.session.commit()
 
 
-def upload_controller(file_url=None, file_object=None):
+def upload_controller(file_url=None, file_object=None, file_preset=None):
     """Controller for the upload route
 
     Depending on the argument received, this will
         - save the file object payload as an image file
         - download and save the image file from the URL
+        - copy the preset to a temp file
     Then it will initialize the object in the DB and return info for the task
 
     Arguments
@@ -99,6 +101,9 @@ def upload_controller(file_url=None, file_object=None):
 
     file_object : object
         File object of an uploaded file
+
+    file_preset : string
+        Filename of a preset file
 
     Returns
     -------
@@ -123,6 +128,17 @@ def upload_controller(file_url=None, file_object=None):
         response = requests.get(file_url)
         with open(file_path, "wb") as file:
             file.write(response.content)
+
+    if file_preset is not None:
+        static_dir = os.environ.get("STATIC_DIR")
+        preset_path = os.path.join(static_dir, "presets", file_preset)
+        file_name = file_preset
+        file_path = os.path.join(temp_dir, file_preset)
+
+        try:
+            shutil.copy(preset_path, file_path)
+        except:
+            pass
 
     assert os.path.exists(file_path)
 

@@ -254,6 +254,7 @@ def upload_image():
 
     image_url = form.image_url.data
     image_file = form.image_file.data
+    image_preset = form.image_preset.data
     image_type = form.image_type.data
 
     print_format = form.print_format.data
@@ -264,6 +265,12 @@ def upload_image():
             return redirect(request.url)
 
         file_path, file_id = upload_controller(file_object=image_file)
+
+    if image_type == "preset":
+        if not image_preset:
+            return redirect(request.url)
+        print("main", image_preset)
+        file_path, file_id = upload_controller(file_preset=image_preset)
 
     elif image_url != "":
         file_path, file_id = upload_controller(file_url=image_url)
