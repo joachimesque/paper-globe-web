@@ -59,4 +59,4 @@ coverage.xml
 docs/_build/
 
 .DS_Store
-.env
+.webassets-cache
