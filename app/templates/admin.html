@@ -18,7 +18,12 @@
             {% for job in jobs %}
                 <tr>
                     <td>
-                        <small>{{ job.id }}</small>
+                        <details>
+                            <summary>
+                                <small>{{ job.id }}</small>
+                            </summary>
+                            {{ job|as_dict }}
+                        </details>
                     </td>
                     <td>
                         <strong class="tag is-small text-{{ job.status }}">{{ job.status }}</strong>
@@ -49,58 +54,60 @@
             {% endfor %}
         </tbody>
     </table>
-
     {% if deleted_jobs[0] %}
-    <hr />
-
-    <h3 class="text-grey">Deleted</h3>
-
-    <table class="text-grey">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>status</th>
-                <th>start_date</th>
-                <th>end_date</th>
-                <th>export_url</th>
-                <th>revert?</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for job in deleted_jobs %}
+        <hr />
+        <h3 class="text-grey">Deleted</h3>
+        <table class="text-grey">
+            <thead>
                 <tr>
-                    <td>
-                        <small>{{ job.id }}</small>
-                    </td>
-                    <td>
-                        <strong class="tag is-small text-{{ job.status }}">{{ job.status }}</strong>
-                    </td>
-                    <td>
-                        {{ job.start_date|datetimeformat("%y-%m-%d") }}
-                        <br />
-                        {{ job.start_date|datetimeformat("%H:%M:%S") }}
-                    </td>
-                    <td>
-                        {{ job.end_date|datetimeformat("%y-%m-%d") }}
-                        <br />
-                        {{ job.end_date|datetimeformat("%H:%M:%S") }}
-                    </td>
-                    <td>
-                        <small>
-                            {% if job.export_url %}<a href="/export/deleted/{{ job.export_url }}" download>{{ job.export_url }}</a>{% endif %}
-                        </small>
-                    </td>
-                    <td>
-                        <form action="revert" method="post">
-                            <input type="hidden" value="{{ csrf_token() }}" name="csrf_token" />
-                            <input type="hidden" value="{{ job.id }}" name="job_id" />
-                            <button>revert</button>
-                        </form>
-                    </td>
+                    <th>id</th>
+                    <th>status</th>
+                    <th>start_date</th>
+                    <th>end_date</th>
+                    <th>export_url</th>
+                    <th>revert?</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for job in deleted_jobs %}
+                    <tr>
+                        <td>
+                            <details>
+                                <summary>
+                                    <small>{{ job.id }}</small>
+                                </summary>
+                                {{ job|as_dict }}
+                            </details>
+                        </td>
+                        <td>
+                            <strong class="tag is-small text-{{ job.status }}">{{ job.status }}</strong>
+                        </td>
+                        <td>
+                            {{ job.start_date|datetimeformat("%y-%m-%d") }}
+                            <br />
+                            {{ job.start_date|datetimeformat("%H:%M:%S") }}
+                        </td>
+                        <td>
+                            {{ job.end_date|datetimeformat("%y-%m-%d") }}
+                            <br />
+                            {{ job.end_date|datetimeformat("%H:%M:%S") }}
+                        </td>
+                        <td>
+                            <small>
+                                {% if job.export_url %}<a href="/export/deleted/{{ job.export_url }}" download>{{ job.export_url }}</a>{% endif %}
+                            </small>
+                        </td>
+                        <td>
+                            <form action="revert" method="post">
+                                <input type="hidden" value="{{ csrf_token() }}" name="csrf_token" />
+                                <input type="hidden" value="{{ job.id }}" name="job_id" />
+                                <button>revert</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
     </turbo-frame>
 {% endblock content %}

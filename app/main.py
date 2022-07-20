@@ -71,6 +71,12 @@ def datetime_format(value, date_format="%y-%m-%d %H:%M"):
     return value.strftime(date_format) if value else value
 
 
+@app.template_filter("as_dict")
+def as_dict(obj):
+    """Date transformation template filter"""
+    return obj.as_dict() if hasattr(obj, "as_dict") else obj
+
+
 @app.before_first_request
 def make_session_permanent():
     """Sets the session as permanent (30 days)"""
