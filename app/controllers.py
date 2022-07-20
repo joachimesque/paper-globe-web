@@ -67,7 +67,6 @@ def admin_revert_controller(job_id):
         abort(404)
     job.deleted = False
 
-
     if job.export_file_path and os.path.exists(job.export_file_path):
         export_dir = os.environ.get("EXPORT_DIR", mkdtemp())
         dir_name = generate_export_dir_name(job.id)

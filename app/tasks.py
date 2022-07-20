@@ -72,10 +72,7 @@ def convert_to_template(self, file_path, file_id, image_format, image_projection
 
     paper_globe = PaperGlobe(on_update=echo_status, bold=bold)
     out_path = paper_globe.generate_paperglobe(
-        file_path,
-        image_projection,
-        image_format,
-        export_path
+        file_path, image_projection, image_format, export_path
     )
 
     if os.path.exists(out_path[0]) is True:

@@ -20,7 +20,11 @@ from flask_wtf.csrf import CSRFProtect
 from sqlalchemy import desc
 
 from app.database import db, ConversionJob
-from app.controllers import upload_controller, admin_delete_controller, admin_revert_controller
+from app.controllers import (
+    upload_controller,
+    admin_delete_controller,
+    admin_revert_controller,
+)
 from app.factories import create_app
 from app.tasks import convert_to_template
 from app.utils import is_uuid_valid
@@ -32,8 +36,14 @@ app = create_app()
 assets = Environment(app)
 assets.debug = app.debug
 bundles = {
-    "css": Bundle("src/chota.css", "src/inter.css", "src/main.css", output="dist/styles.css", filters='cssmin'),
-    "stimulus": Bundle("src/stimulus.js", output="dist/stimulus.js", filters='jsmin'),
+    "css": Bundle(
+        "src/chota.css",
+        "src/inter.css",
+        "src/main.css",
+        output="dist/styles.css",
+        filters="cssmin",
+    ),
+    "stimulus": Bundle("src/stimulus.js", output="dist/stimulus.js", filters="jsmin"),
 }
 assets.register(bundles)
 
