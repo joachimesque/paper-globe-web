@@ -1,5 +1,6 @@
 """App initialization and routes"""
 
+import datetime
 import logging.config
 
 from celery.result import AsyncResult
@@ -79,8 +80,9 @@ def as_dict(obj):
 
 @app.before_first_request
 def make_session_permanent():
-    """Sets the session as permanent (30 days)"""
+    """Sets the session as permanent (1 week)"""
     session.permanent = True
+    app.permanent_session_lifetime = datetime.timedelta(weeks=1)
 
 
 @app.errorhandler(404)
