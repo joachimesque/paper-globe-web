@@ -54,6 +54,10 @@ fieldset {
   gap: 4rem;
 }
 
+a, button, label {
+  font-weight: 500;
+}
+
 a:not(.button):not(.no-underline) {
   text-decoration: underline;
   text-underline-offset: from-font;
@@ -109,9 +113,20 @@ input[type="radio"][name="image_type"][value="preset"]:checked ~ #control-preset
 .preset-list input[type="radio"] + label {
   cursor: pointer;
   transition: outline-offset ease 0.15s;
+  position: relative;
+  display: block;
 }
 .preset-list input[type="radio"] + label img {
   display: block;
+}
+.preset-list input[type="radio"] + label span {
+  position: absolute;
+  padding: 0.2em 0.6em;
+  border-radius: 2px;
+  bottom: 0.3em;
+  left: 0.3em;
+  font-weight: bold;
+  background-color: white;
 }
 .preset-list input[type="radio"]:checked + label {
   outline: auto;

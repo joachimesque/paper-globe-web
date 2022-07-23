@@ -21,13 +21,16 @@
                         <div class="col-3">
                             {{ subfield }}
                             <label class="image-radio" for="{{ subfield.id }}">
-                                <img src="{{ url_for('static', filename='presets/') }}{{ subfield._value() }}"
+                                <img src="{{ url_for('static', filename='presets/thumb_') }}{{ subfield._value() }}.jpg"
                                      alt="{{ subfield.label.text }}"/>
+                                <span>{{ subfield.label.text }}</span>
                             </label>
                         </div>
                     {% endfor %}
-                    <p class="is-marginless">All presets have an equirectangular projection.</p>
                 </div>
+                <p class="is-marginless text-grey">
+                    All these presets have an equirectangular projection.
+                </p>
             </div>
             <div id="control-upload" class="control">
                 {{ form.image_file.label }}
