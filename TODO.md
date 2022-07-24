@@ -18,3 +18,4 @@
 ## Content
 
 - [x] Add photos of the completed Paper Globe
+- [x] Add OpenGraph properties
