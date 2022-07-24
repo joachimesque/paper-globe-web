@@ -102,6 +102,6 @@ def remove_old_jobs():
     current_time = datetime.datetime.utcnow()
     one_week_ago = current_time - datetime.timedelta(weeks=1)
 
-    ConversionJob.query.filter(ConversionJob.start_date > one_week_ago).delete()
+    ConversionJob.query.filter(ConversionJob.start_date < one_week_ago).delete()
     ConversionJob.query.filter(ConversionJob.deleted.is_(True)).delete()
     db.session.commit()
