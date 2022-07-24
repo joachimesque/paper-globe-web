@@ -4,14 +4,13 @@ import os
 import uuid
 import shutil
 from tempfile import mkdtemp
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote_plus
 
 from flask import abort
 import requests
-from werkzeug.utils import secure_filename
 
 from app.database import db, ConversionJob
-from app.utils import generate_export_dir_name
+from app.utils import generate_export_dir_name, generate_secure_filename
 
 
 def admin_delete_controller(job_id):
@@ -117,12 +116,13 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
     file_id = str(uuid.uuid4())
 
     if file_object is not None:
-        file_name = secure_filename(file_object.filename)
+        file_name = generate_secure_filename(file_object.filename)
         file_path = os.path.join(temp_dir, file_name)
         file_object.save(file_path)
 
     if file_url is not None:
-        file_name = os.path.basename(urlparse(file_url).path)
+        parsed_path = urlparse(unquote_plus(file_url)).path
+        file_name = generate_secure_filename(os.path.basename(parsed_path))
         file_path = os.path.join(temp_dir, file_name)
 
         response = requests.get(file_url)
@@ -132,7 +132,7 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
     if file_preset is not None:
         static_dir = os.environ.get("STATIC_DIR")
         preset_path = os.path.join(static_dir, "presets", file_preset)
-        file_name = file_preset
+        file_name = generate_secure_filename(file_preset)
         file_path = os.path.join(temp_dir, file_preset)
 
         try:
