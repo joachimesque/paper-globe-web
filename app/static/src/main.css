@@ -115,9 +115,19 @@ input[type="radio"][name="image_type"][value="preset"]:checked ~ #control-preset
   transition: outline-offset ease 0.15s;
   position: relative;
   display: block;
+  overflow: hidden;
+  border-radius: 4px;
 }
 .preset-list input[type="radio"] + label img {
   display: block;
+  width: 100%;
+}
+@media screen and (max-width: 599px) {
+  .preset-list input[type="radio"] + label img {
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 .preset-list input[type="radio"] + label span {
   position: absolute;
@@ -127,6 +137,7 @@ input[type="radio"][name="image_type"][value="preset"]:checked ~ #control-preset
   left: 0.3em;
   font-weight: bold;
   background-color: white;
+  font-size: 0.7em;
 }
 .preset-list input[type="radio"]:checked + label {
   outline: auto;
@@ -135,6 +146,20 @@ input[type="radio"][name="image_type"][value="preset"]:checked ~ #control-preset
 .preset-list input[type="radio"]:focus + label {
   outline: auto;
   outline-offset: 2px;
+}
+
+img.is-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (max-width: 599px) {
+  img.is-full {
+    height: unset;
+    aspect-ratio: 3 / 2;
+  }
 }
 
 .loader {

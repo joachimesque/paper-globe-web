@@ -12,8 +12,8 @@ image_type_choices = [
     ("url", "paste url"),
 ]
 image_preset_choices = [
-    ("earth.jpg", "Earth"),
-    ("earth-countries.svg", "Earth Countries"),
+    ("earth.jpg", "Earth, physical"),
+    ("earth-countries.svg", "Earth, political"),
     ("mars.jpg", "Mars"),
     ("moon.jpg", "Moon"),
 ]
