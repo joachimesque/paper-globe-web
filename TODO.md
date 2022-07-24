@@ -17,4 +17,4 @@
 
 ## Content
 
-- [ ] Add photos of the completed Paper Globe
+- [x] Add photos of the completed Paper Globe
