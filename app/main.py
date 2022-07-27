@@ -6,6 +6,7 @@ import logging.config
 from celery.result import AsyncResult
 from flask import (
     abort,
+    flash,
     make_response,
     redirect,
     render_template,
@@ -251,40 +252,32 @@ def upload_image():
     """
     form = UploadForm()
 
-    if not form.validate_on_submit():
-        return redirect(request.url)
+    if form.validate_on_submit():
 
-    image_url = form.image_url.data
-    image_file = form.image_file.data
-    image_preset = form.image_preset.data
-    image_type = form.image_type.data
+        image_url = form.image_url.data
+        image_file = form.image_file.data
+        image_preset = form.image_preset.data
+        image_type = form.image_type.data
 
-    print_format = form.print_format.data
-    projection = form.projection.data
+        print_format = form.print_format.data
+        projection = form.projection.data
 
-    if image_type == "upload":
-        if not image_file:
-            return redirect(request.url)
+        if image_type == "upload":
+            file_path, file_id = upload_controller(file_object=image_file)
 
-        file_path, file_id = upload_controller(file_object=image_file)
+        elif image_type == "preset":
+            file_path, file_id = upload_controller(file_preset=image_preset)
 
-    if image_type == "preset":
-        if not image_preset:
-            return redirect(request.url)
-        print("main", image_preset)
-        file_path, file_id = upload_controller(file_preset=image_preset)
+        elif image_url != "":
+            file_path, file_id = upload_controller(file_url=image_url)
 
-    elif image_url != "":
-        file_path, file_id = upload_controller(file_url=image_url)
+        convert_to_template.delay(file_path, file_id, print_format, projection)
 
-    else:
-        return redirect(request.url)
+        session["file_id"] = file_id
 
-    convert_to_template.delay(file_path, file_id, print_format, projection)
+        return redirect(f"/result/{file_id}")
 
-    session["file_id"] = file_id
-
-    return redirect(f"/result/{file_id}")
+    return render("index.html", form=form)
 
 
 if __name__ == "__main__":
