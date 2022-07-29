@@ -11,7 +11,7 @@
   },
   "turbo": {
     "url": "https://unpkg.com/@hotwired/turbo@7.1.0/dist/turbo.es2017-esm.js",
-    "filename": "turbo-7.1.0.js",
+    "filename": "global_turbo-7.1.0.js",
     "hash": "sha384-IC4O+RUHyaU/tFZasGspkBx4Wy/yQ8LsnSeplkkGO21WQqyuZdGNViPnpzFTzdzb"
  }
 }

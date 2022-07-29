@@ -7,14 +7,17 @@
         <div>
             <div data-controller="poll"
                  data-poll-url-value="/poll/{{ job.id }}"
-                 data-poll-refresh-interval-value="5000"></div>
+                 data-poll-refresh-interval-value="5000">
+                    {% include "partials/loading.html" %}
+            </div>
         </div>
         <script type="module">
         {% assets 'stimulus' %}
-        import { Controller } from "{{ ASSET_URL }}"
+        import { Application, Controller } from "{{ ASSET_URL }}"
         {% endassets %}
         
-        window.Stimulus.register("poll", class extends Controller {
+        const Stimulus = Application.start()
+        Stimulus.register("poll", class extends Controller {
           static values = { url: String, refreshInterval: Number }
 
           connect() {

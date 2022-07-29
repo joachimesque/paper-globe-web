@@ -45,13 +45,18 @@ bundles = {
         filters="cssmin",
     ),
     "js": Bundle(
-        "vendor/*.js",
+        "vendor/global_*.js",
         output="dist/scripts.js",
+        filters="jsmin",
+    ),
+    "stimulus": Bundle(
+        "vendor/stimulus*.js",
+        output="dist/stimulus.js",
         filters="jsmin",
     ),
 }
 assets.register(bundles)
-assets.load_path = "./"
+assets.load_path = "."
 
 # Rate limiter config
 limiter = Limiter(
