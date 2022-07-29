@@ -22,12 +22,11 @@
         {% assets 'css' %}
             <link rel="stylesheet" href="{{ ASSET_URL }}" />
         {% endassets %}
-        {% assets 'stimulus' %}
-            <script type="module">
-              import { Application } from "{{ ASSET_URL }}"
-              window.Stimulus = Application.start()
-            </script>
+
+        {% assets 'js' %}
+            <script type="text/javascript" src="{{ ASSET_URL }}"></script>
         {% endassets %}
+        
         {% block scripts %}
         {% endblock scripts %}
     </head>
@@ -56,6 +55,5 @@
                 </div>
             </div>
         </footer>
-        {{ turbo() }}
     </body>
 </html>

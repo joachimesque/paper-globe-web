@@ -11,6 +11,7 @@ services:
     build: 
       context: .
       dockerfile: docker/common/Dockerfile
+      target: web
     restart: always
     ports:
       - "5000:5000"
@@ -22,7 +23,7 @@ services:
       - brokernet
     command: gunicorn -w 1 --bind 0.0.0.0:5000 app.wsgi:app --reload
     volumes:
-      - ./:/usr/paperglobe_web/
+      - ./app:/usr/paperglobe_web/app
       - db:/usr/paperglobe_web/db
       - export:/usr/paperglobe_web/app/export
       - tmp:/tmp
@@ -35,6 +36,7 @@ services:
     build: 
       context: .
       dockerfile: docker/common/Dockerfile
+      target: worker
     restart: always
     networks:
       - backnet
@@ -54,6 +56,7 @@ services:
     build: 
       context: .
       dockerfile: docker/common/Dockerfile
+      target: worker
     restart: always
     networks:
       - backnet

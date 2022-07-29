@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.10-slim
+FROM python:3.10-slim as base
 
 # set work directory
 WORKDIR /usr/paperglobe_web
@@ -16,3 +16,10 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY ./ /usr/paperglobe_web/
+
+FROM base as web
+
+RUN ./scripts/download_libs.py
+
+FROM base as worker
+

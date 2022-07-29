@@ -60,3 +60,6 @@ docs/_build/
 
 .DS_Store
 .webassets-cache
+webassets-external
+vendor/*
+!vendor/.gitkeep

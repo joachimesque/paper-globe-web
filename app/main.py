@@ -39,15 +39,20 @@ assets = Environment(app)
 assets.debug = app.debug
 bundles = {
     "css": Bundle(
-        "src/chota.css",
-        "src/inter.css",
-        "src/main.css",
+        "vendor/*.css",
+        "app/static/src/inter.css",
+        "app/static/src/main.css",
         output="dist/styles.css",
         filters="cssmin",
     ),
-    "stimulus": Bundle("src/stimulus.js", output="dist/stimulus.js", filters="jsmin"),
+    "js": Bundle(
+        "vendor/*.js",
+        output="dist/scripts.js",
+        filters="jsmin",
+    ),
 }
 assets.register(bundles)
+assets.load_path = "./"
 
 # Rate limiter config
 limiter = Limiter(
