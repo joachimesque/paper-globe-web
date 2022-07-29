@@ -6,7 +6,6 @@ import logging.config
 from celery.result import AsyncResult
 from flask import (
     abort,
-    flash,
     make_response,
     redirect,
     render_template,
@@ -127,10 +126,48 @@ def index():
     return render_template("index.html", form=form)
 
 
-@app.route("/new")
+@app.route("/new", methods=["GET", "POST"])
 def new():
-    """Displays the main form"""
+    """Upload form route
+
+    GET
+        Displays the main form
+
+    POST
+        If the form is valid:
+            - Will call the image treatment task if the form is valid
+            - Will set a session var with the job ID
+    """
     form = UploadForm()
+
+    if request.method == "GET":
+        return render_template("index.html", form=form)
+
+    if request.method == "POST":
+        if form.validate_on_submit():
+
+            image_url = form.image_url.data
+            image_file = form.image_file.data
+            image_preset = form.image_preset.data
+            image_type = form.image_type.data
+
+            print_format = form.print_format.data
+            projection = form.projection.data
+
+            if image_type == "upload":
+                file_path, file_id = upload_controller(file_object=image_file)
+
+            elif image_type == "preset":
+                file_path, file_id = upload_controller(file_preset=image_preset)
+
+            elif image_url != "":
+                file_path, file_id = upload_controller(file_url=image_url)
+
+            convert_to_template.delay(file_path, file_id, print_format, projection)
+
+            session["file_id"] = file_id
+
+            return redirect(f"/result/{file_id}")
 
     return render_template("index.html", form=form)
 
@@ -245,44 +282,6 @@ def poll(file_id):
     resp = make_response(render_template("partials/loading.html", job=job))
     resp.headers["X-Custom-Status"] = "Wait"
     return resp
-
-
-@app.route("/upload", methods=["POST"])
-def upload_image():
-    """Upload form endpoint
-
-    If the form is valid:
-        - Will call the image treatment task if the form is valid
-        - Will set a session var with the job ID
-    """
-    form = UploadForm()
-
-    if form.validate_on_submit():
-
-        image_url = form.image_url.data
-        image_file = form.image_file.data
-        image_preset = form.image_preset.data
-        image_type = form.image_type.data
-
-        print_format = form.print_format.data
-        projection = form.projection.data
-
-        if image_type == "upload":
-            file_path, file_id = upload_controller(file_object=image_file)
-
-        elif image_type == "preset":
-            file_path, file_id = upload_controller(file_preset=image_preset)
-
-        elif image_url != "":
-            file_path, file_id = upload_controller(file_url=image_url)
-
-        convert_to_template.delay(file_path, file_id, print_format, projection)
-
-        session["file_id"] = file_id
-
-        return redirect(f"/result/{file_id}")
-
-    return render("index.html", form=form)
 
 
 if __name__ == "__main__":

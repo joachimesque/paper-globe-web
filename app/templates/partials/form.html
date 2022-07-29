@@ -1,10 +1,14 @@
 <div>
     <h2>Generate your Paper Globe template</h2>
-    <form action="/upload"
+    <form action="{{ url_for('new') }}"
           method="post"
           enctype="multipart/form-data"
           class="flex-wrapper"
-          name="upload">
+          name="upload"
+          hx-target="body"
+          hx-swap="outerHTML"
+          hx-push-url="true"
+          >
         {{ form.csrf_token }}
         <fieldset>
             <legend>
@@ -33,10 +37,16 @@
             <div id="control-upload" class="control">
                 {{ form.image_file.label }}
                 {{ form.image_file() }}
+                {% for error in form.image_file.errors %}
+                    <p class="text-error">{{ error }}</p>
+                {% endfor %}
             </div>
             <div id="control-url" class="control">
                 {{ form.image_url.label }}
                 {{ form.image_url() }}
+                {% for error in form.image_url.errors %}
+                    <p class="text-error">{{ error }}</p>
+                {% endfor %}
             </div>
         </fieldset>
         <div class="row">

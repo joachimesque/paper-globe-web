@@ -22,6 +22,7 @@ print_format_choices = [(name, name) for item, name in PRINT_SIZES.items()]
 projection_choices = [(name, name) for item, name in PROJECTIONS.items()]
 
 
+# pylint: disable:too-few-public-methods
 class RequiredIf(DataRequired):
     """Validator which makes a field required if another field is set and has a truthy value.
     https://gist.github.com/devxoul/7638142?permalink_comment_id=2601001#gistcomment-2601001
@@ -31,9 +32,10 @@ class RequiredIf(DataRequired):
         - http://stackoverflow.com/questions/8463209/how-to-make-a-field-conditionally-optional-in-wtforms
         - https://gist.github.com/devxoul/7638142#file-wtf_required_if-py
     """
-    field_flags = ('requiredif',)
 
-    def __init__(self, message=None, *args, **kwargs):
+    field_flags = ("requiredif",)
+
+    def __init__(self, *args, message=None, **kwargs):
         super(RequiredIf).__init__()
         self.message = message
         self.conditions = kwargs
@@ -52,28 +54,34 @@ class RequiredIf(DataRequired):
 class UploadForm(FlaskForm):
     """Image upload/link form"""
 
-    image_url = URLField("Paste your image URL", validators=[RequiredIf(image_type="url")])
+    image_url = URLField(
+        "Paste your image URL", validators=[RequiredIf(image_type="url")]
+    )
     image_file = FileField(
         "Upload your image file",
         validators=[
             FileAllowed(["jpg", "png", "svg"], "Images only!"),
-            RequiredIf(image_type="upload")
+            RequiredIf(image_type="upload"),
         ],
     )
     image_preset = RadioField(
         "Select a preset",
         choices=image_preset_choices,
         default=image_preset_choices[0][0],
-        validators=[
-            RequiredIf(image_type="preset")
-        ]
+        validators=[RequiredIf(image_type="preset")],
     )
     image_type = RadioField(
-        "Image type", choices=image_type_choices, default=image_type_choices[0][0]
+        "Image type",
+        choices=image_type_choices,
+        default=image_type_choices[0][0],
     )
     print_format = RadioField(
-        "Print format", choices=print_format_choices, default=print_format_choices[0][0]
+        "Print format",
+        choices=print_format_choices,
+        default=print_format_choices[0][0],
     )
     projection = RadioField(
-        "Projection", choices=projection_choices, default=projection_choices[0][0]
+        "Projection",
+        choices=projection_choices,
+        default=projection_choices[0][0],
     )

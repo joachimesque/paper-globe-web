@@ -19,8 +19,6 @@ celery_app = init_celery(app)
 class TaskFailure(Exception):
     """Basic task failure exception, to be raised whenever."""
 
-    pass
-
 
 # pylint: disable=unused-argument
 @celery_app.on_after_configure.connect
