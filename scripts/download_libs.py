@@ -4,51 +4,64 @@
 
 Avoid CDNs for front-end libraries:
 https://blog.wesleyac.com/posts/why-not-javascript-cdn
+
+Generate SRI hashes for files:
+https://www.srihash.org/
 """
 
-import os
 import base64
 import hashlib
+import json
+import os
 
 import requests
+import click
 
-# https://www.srihash.org/
-libs = [
-    (
-        "https://unpkg.com/chota@0.8.0/dist/chota.css",
-        "chota-0.8.0.css",
-        "sha384-rn488xVSy52er61VbV56rSIPTxXtCTcectcsH/0VOC9RwoajWF3O4ukT8bmZVCNy",
-    ),
-    (
-        "https://unpkg.com/@hotwired/stimulus@3.1.0/dist/stimulus.js",
-        "stimulus-3.1.0.js",
-        "sha384-en9nbjs1h76Rr2aNc1Dbh2PNnRMRalb6SW3XpU3orOcd//1VhS0JI9FsThhPUp45",
-    ),
-    (
-        "https://unpkg.com/@hotwired/turbo@7.1.0/dist/turbo.es2017-esm.js",
-        "turbo-7.1.0.js",
-        "sha384-IC4O+RUHyaU/tFZasGspkBx4Wy/yQ8LsnSeplkkGO21WQqyuZdGNViPnpzFTzdzb",
-    ),
-]
 
-EXPORT_DIR = "../vendor/"
+@click.command()
+@click.argument(
+    "input_file",
+    type=click.Path(exists=True, file_okay=True),
+    metavar="<input_file>",
+    default="frontend-deps.json",
+)
+@click.argument(
+    "output_dir",
+    type=click.Path(exists=True, dir_okay=True, writable=True),
+    metavar="<dir>",
+    default="vendor/",
+)
+def cli(input_file, output_dir):
+    """Downloads (and checks) external front-end libs from <input_file> to <output_dir>"""
 
-for lib in libs:
-    destination = os.path.join(
-        os.path.dirname(os.path.realpath(__file__)), EXPORT_DIR, lib[1]
-    )
-    resource_data = requests.get(lib[0]).content
+    try:
+        libs = json.load(open(input_file))
+    except Exception as exc:
+        click.echo(f"Error: {exc}")
 
-    if len(lib) > 2 and lib[2] != "":
-        integrity_checksum = base64.b64encode(
-            hashlib.sha384(resource_data).digest()
-        ).decode("utf-8")
-        if integrity_checksum == lib[2].rsplit("-", maxsplit=1)[-1]:
-            print(f"{lib[1]} SRI check OK")
+    for lib in libs.values():
+        url = lib["url"]
+        filename = lib["filename"]
+
+        destination = os.path.join(output_dir, filename)
+        resource_data = requests.get(url).content
+
+        if len(lib) > 2 and lib["hash"] != "":
+            (ache_name, ache_result) = lib["hash"].split("-", maxsplit=1)
+            ache = hashlib.new(ache_name)
+            ache.update(resource_data)
+
+            integrity_checksum = base64.b64encode(ache.digest()).decode("utf-8")
+            if integrity_checksum == ache_result:
+                click.echo(f"{filename} SRI check OK")
+            else:
+                raise Exception(f"SRI check failed for {filename}")
         else:
-            raise Exception(f"SRI check failed for {lib[1]}")
-    else:
-        print(f"Warning: Could not check SRI for {lib[1]}")
+            click.echo(f"Warning: Could not check SRI for {filename}")
 
-    with open(destination, "wb") as file:
-        file.write(resource_data)
+        with open(destination, "wb") as file:
+            file.write(resource_data)
+
+
+if __name__ == "__main__":
+    cli()

@@ -1,4 +1,5 @@
 celery
+Click
 cssmin
 depinfo
 Flask
