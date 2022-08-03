@@ -34,34 +34,30 @@ import click
 def cli(input_file, output_dir):
     """Downloads (and checks) external front-end libs from <input_file> to <output_dir>"""
 
-    try:
-        libs = json.load(open(input_file))
-    except Exception as exc:
-        click.echo(f"Error: {exc}")
+    with json.load(open(input_file, encoding="utf-8")) as libs:
+        for lib in libs.values():
+            url = lib["url"]
+            filename = lib["filename"]
 
-    for lib in libs.values():
-        url = lib["url"]
-        filename = lib["filename"]
+            destination = os.path.join(output_dir, filename)
+            resource_data = requests.get(url).content
 
-        destination = os.path.join(output_dir, filename)
-        resource_data = requests.get(url).content
+            if len(lib) > 2 and lib["hash"] != "":
+                (ache_name, ache_result) = lib["hash"].split("-", maxsplit=1)
+                ache = hashlib.new(ache_name)
+                ache.update(resource_data)
 
-        if len(lib) > 2 and lib["hash"] != "":
-            (ache_name, ache_result) = lib["hash"].split("-", maxsplit=1)
-            ache = hashlib.new(ache_name)
-            ache.update(resource_data)
-
-            integrity_checksum = base64.b64encode(ache.digest()).decode("utf-8")
-            if integrity_checksum == ache_result:
-                click.echo(f"{filename} SRI check OK")
+                integrity_checksum = base64.b64encode(ache.digest()).decode("utf-8")
+                if integrity_checksum == ache_result:
+                    click.echo(f"{filename} SRI check OK")
+                else:
+                    raise Exception(f"SRI check failed for {filename}")
             else:
-                raise Exception(f"SRI check failed for {filename}")
-        else:
-            click.echo(f"Warning: Could not check SRI for {filename}")
+                click.echo(f"Warning: Could not check SRI for {filename}")
 
-        with open(destination, "wb") as file:
-            file.write(resource_data)
+            with open(destination, "wb") as file:
+                file.write(resource_data)
 
 
 if __name__ == "__main__":
-    cli()
+    cli() # pylint: disable=no-value-for-parameter
