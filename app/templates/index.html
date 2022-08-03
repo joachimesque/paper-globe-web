@@ -1,42 +1,12 @@
 {% extends "layout.html" %}
-
-{% block title %}Paper Globe assembly insctructions{% endblock title %}
-
+{% block title %}
+    Paper Globe assembly insctructions
+{% endblock title %}
 {% block content %}
     <div class="row is-center">
         <div class="col-8">
             {% include "partials/nav.html" %}
-            <div class="flex-wrapper-large">
-                {% include "partials/intro.html" %}
-                {% include 'partials/form.html' %}
-                {% include "partials/about.html" %}
-                {% include "partials/help.html" %}
-            </div>
+            {% include 'partials/form.html' %}
         </div>
     </div>
 {% endblock content %}
-{% block scripts %}
-    <script type="module">
-  const itemName = (name) => (`is_${name}_open`);
-
-  const handleWelcomeDetail = (e) => {
-    const isOpen = e.target.hasAttribute('open');
-    localStorage.setItem(itemName(e.target.id), isOpen);
-  }
-
-  window.detailsData = (detailsElementId) => {
-    const detailsEl = document.getElementById(detailsElementId);
-
-    detailsEl.addEventListener('toggle', handleWelcomeDetail);
-
-    const itemValue = localStorage.getItem(itemName(detailsElementId));
-
-    if(itemValue === 'false') {
-      detailsEl.removeAttribute('open');
-    }
-    if(itemValue === 'true') {
-      detailsEl.setAttribute('open', true);
-    }
-  }
-    </script>
-{% endblock scripts %}

@@ -1,99 +1,109 @@
-<div>
-    <h2>Generate your Paper Globe template</h2>
-    <form action="{{ url_for('new') }}"
-          method="post"
-          enctype="multipart/form-data"
-          class="flex-wrapper"
-          name="upload"
-          hx-target="body"
-          hx-swap="outerHTML"
-          hx-push-url="true"
-          >
-        {{ form.csrf_token }}
-        <fieldset>
-            <legend>
-                Image link/upload
-            </legend>
-            {% for subfield in form.image_type %}
-                {{ subfield }}
-                {{ subfield.label }}
-            {% endfor %}
-            <div id="control-preset" class="control">
-                {{ form.image_preset.label }}
-                <div class="row preset-list">
-                    {% for subfield in form.image_preset %}
-                        <div class="col-3">
-                            {{ subfield }}
-                            <label class="image-radio" for="{{ subfield.id }}">
-                                <img src="{{ url_for('static', filename='presets/thumb_') }}{{ subfield._value() }}.jpg"
-                                     alt="{{ subfield.label.text }}"/>
-                                <span>{{ subfield.label.text }}</span>
-                            </label>
-                        </div>
-                    {% endfor %}
-                </div>
-                <p class="is-marginless text-grey">All these presets have an equirectangular projection.</p>
-            </div>
-            <div id="control-upload" class="control">
-                {{ form.image_file.label }}
-                {{ form.image_file() }}
-                {% for error in form.image_file.errors %}
-                    <p class="text-error">{{ error }}</p>
-                {% endfor %}
-            </div>
-            <div id="control-url" class="control">
-                {{ form.image_url.label }}
-                {{ form.image_url() }}
-                {% for error in form.image_url.errors %}
-                    <p class="text-error">{{ error }}</p>
-                {% endfor %}
-            </div>
-        </fieldset>
-        <div class="row">
-            <fieldset class="col-6">
+<div class="flex-wrapper-large" id="payload">
+    {% include "partials/intro.html" %}
+    <div id="form">
+        <h2>Generate your Paper Globe template</h2>
+        <form action="{{ url_for('new') }}"
+              method="post"
+              enctype="multipart/form-data"
+              class="flex-wrapper"
+              name="upload"
+              hx-target="#payload"
+              hx-swap="outerHTML show:#form:top">
+            {{ form.csrf_token }}
+            <fieldset>
                 <legend>
-                    Print format
+                    Image link/upload
                 </legend>
-                <div>
-                    {% for subfield in form.print_format %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
+                {% for subfield in form.image_type %}
+                    {{ subfield }}
+                    {{ subfield.label }}
+                {% endfor %}
+                <div id="control-preset" class="control">
+                    {{ form.image_preset.label }}
+                    <div class="row preset-list">
+                        {% for subfield in form.image_preset %}
+                            <div class="col-3">
+                                {{ subfield }}
+                                <label class="image-radio" for="{{ subfield.id }}">
+                                    <img src="{{ url_for('static', filename='presets/thumb_') }}{{ subfield._value() }}.jpg"
+                                         alt="{{ subfield.label.text }}"/>
+                                    <span>{{ subfield.label.text }}</span>
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <p class="is-marginless text-grey">All these presets have an equirectangular projection.</p>
+                </div>
+                <div id="control-upload" class="control">
+                    {{ form.image_file.label }}
+                    {{ form.image_file() }}
+                    {% for error in form.image_file.errors %}<p class="text-error">{{ error }}</p>{% endfor %}
+                </div>
+                <div id="control-url" class="control">
+                    {{ form.image_url.label }}
+                    {{ form.image_url() }}
+                    {% for error in form.image_url.errors %}<p class="text-error">{{ error }}</p>{% endfor %}
                 </div>
             </fieldset>
-            <fieldset class="col-6">
-                <legend>
-                    Projection
-                </legend>
-                <div>
-                    {% for subfield in form.projection %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
-                </div>
-            </fieldset>
-        </div>
-        <div>
-            <button type="submit">Generate!</button>
-        </div>
-    </form>
+            <div class="row">
+                <fieldset class="col-6">
+                    <legend>
+                        Print format
+                    </legend>
+                    <div>
+                        {% for subfield in form.print_format %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
+                    </div>
+                </fieldset>
+                <fieldset class="col-6">
+                    <legend>
+                        Projection
+                    </legend>
+                    <div>
+                        {% for subfield in form.projection %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
+                    </div>
+                </fieldset>
+            </div>
+            <div>
+                <button type="submit">Generate!</button>
+            </div>
+        </form>
+    </div>
+    {% include "partials/about.html" %}
+    {% include "partials/help.html" %}
 </div>
-<script type="module">
-    const uploadForm = document.forms.upload;
+<script>
+    (() => {
+        const uploadForm = document.forms.upload;
 
-    const presetRadio = document.querySelector('input[type="radio"][value="preset"]');
-    const typeRadios = uploadForm.elements['image_type'];
-    const projectionRadios = uploadForm.elements['projection'];
+        if (typeof(uploadForm) === 'undefined') return;
 
-    const handlePresetChange = (event) => {
-      projectionRadios.forEach((projectionInput) => {
-        projectionInput.disabled = event.target.value === 'preset';
-      });
-      projectionRadios.value = event.target.value === 'preset' ? 'equirectangular' : projectionRadios.value;
-    }
+        const presetRadio = document.querySelector('input[type="radio"][value="preset"]');
+        const typeRadios = uploadForm.elements['image_type'];
+        const projectionRadios = uploadForm.elements['projection'];
 
-    typeRadios.forEach((item) => {
-      item.addEventListener('change', handlePresetChange);
-    });
+        const handlePresetChange = (event) => {
+          projectionRadios.forEach((projectionInput) => {
+            projectionInput.disabled = event.target.value === 'preset';
+          });
+          projectionRadios.value = event.target.value === 'preset' ? 'equirectangular' : projectionRadios.value;
+        }
 
-    projectionRadios.forEach((projectionInput) => {
-      projectionInput.disabled = presetRadio.value === 'preset';
-    });
-    if (presetRadio.value === 'preset') {
-      projectionRadios.value = 'equirectangular';
-    }
+        typeRadios.forEach((item) => {
+          item.addEventListener('change', handlePresetChange);
+        });
+
+        projectionRadios.forEach((projectionInput) => {
+          projectionInput.disabled = typeRadios.value === 'preset';
+        });
+        if (typeRadios.value === 'preset') {
+          projectionRadios.value = 'equirectangular';
+        }
+    })()
+
+    window.document.addEventListener("submit", (event) => {
+        event.target.querySelectorAll("button").forEach(node => { node.disabled = true })
+    })
+    window.document.addEventListener("htmx:afterOnLoad", (event) => {
+        event.target.querySelectorAll("button").forEach(node => { node.disabled = false })
+    })
 </script>

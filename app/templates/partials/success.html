@@ -5,7 +5,10 @@
     {{ job.message|safe }}
 </p>
 <p>
-    <a href="/export/{{ job.export_url }}" download class="button primary">Download your template</a>
+    <a href="/export/{{ job.export_url }}"
+       download
+       class="button primary"
+       hx-boost="false">Download your template</a>
     then <a href="{{ url_for('instructions') }}">check out the instructions</a>
 </p>
 <p>

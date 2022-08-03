@@ -16,7 +16,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_assets import Environment, Bundle
 from flask_migrate import Migrate
-from turbo_flask import Turbo
+from flask_htmx import HTMX
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy import desc
 
@@ -45,13 +45,8 @@ bundles = {
         filters="cssmin",
     ),
     "js": Bundle(
-        "vendor/global_*.js",
+        "vendor/*.js",
         output="dist/scripts.js",
-        filters="jsmin",
-    ),
-    "stimulus": Bundle(
-        "vendor/stimulus*.js",
-        output="dist/stimulus.js",
         filters="jsmin",
     ),
 }
@@ -69,8 +64,8 @@ logging.config.dictConfig(app.config["DICT_LOGGER"])
 # Database config
 migrate = Migrate(app, db)
 
-# Turbo config
-turbo = Turbo(app)
+# HTMX config
+htmx = HTMX(app)
 
 # CRSF config
 csrf = CSRFProtect(app)
@@ -172,7 +167,16 @@ def new():
 
             session["file_id"] = file_id
 
+            if htmx:
+                job = ConversionJob.query.filter_by(id=file_id).first_or_404()
+                resp = make_response(render_template("partials/poll.html", job=job))
+                resp.headers["HX-Push-Url"] = f"/result/{file_id}"
+                return resp
+
             return redirect(f"/result/{file_id}")
+
+    if htmx:
+        return render_template("partials/form.html", form=form)
 
     return render_template("index.html", form=form)
 
@@ -273,20 +277,14 @@ def poll(file_id):
         or job.export_url is not None
         or task_status == "SUCCESS"
     ):
-        resp = make_response(render_template("partials/success.html", job=job))
-        resp.headers["X-Custom-Status"] = "Success"
-        return resp
+        return render_template("partials/success.html", job=job)
 
     if job.status == "error" or task_status == "FAILURE":
         session["file_id"] = None
 
-        resp = make_response(render_template("partials/failure.html", job=job))
-        resp.headers["X-Custom-Status"] = "Error"
-        return resp
+        return render_template("partials/failure.html", job=job)
 
-    resp = make_response(render_template("partials/loading.html", job=job))
-    resp.headers["X-Custom-Status"] = "Wait"
-    return resp
+    return render_template("partials/loading.html", job=job)
 
 
 if __name__ == "__main__":
