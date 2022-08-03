@@ -4,14 +4,9 @@
     "filename": "chota-0.8.0.css",
     "hash": "sha384-rn488xVSy52er61VbV56rSIPTxXtCTcectcsH/0VOC9RwoajWF3O4ukT8bmZVCNy"
   },
-  "stimulus": {
-    "url": "https://unpkg.com/@hotwired/stimulus@3.1.0/dist/stimulus.js",
-    "filename": "stimulus-3.1.0.js",
-    "hash": "sha384-en9nbjs1h76Rr2aNc1Dbh2PNnRMRalb6SW3XpU3orOcd//1VhS0JI9FsThhPUp45"
-  },
-  "turbo": {
-    "url": "https://unpkg.com/@hotwired/turbo@7.1.0/dist/turbo.es2017-esm.js",
-    "filename": "global_turbo-7.1.0.js",
-    "hash": "sha384-IC4O+RUHyaU/tFZasGspkBx4Wy/yQ8LsnSeplkkGO21WQqyuZdGNViPnpzFTzdzb"
+  "htmx": {
+    "url": "https://unpkg.com/htmx.org@1.8.0/dist/htmx.js",
+    "filename": "htmx-1.8.0.js",
+    "hash": "sha384-mrsv860ohrJ5KkqRxwXXj6OIT6sONUxOd+1kvbqW351hQd7JlfFnM0tLetA76GU0"
  }
 }

@@ -4,68 +4,14 @@
     {% elif job.status == "error" %}
         {% include "partials/failure.html" %}
     {% else %}
-        <div>
-            <div data-controller="poll"
-                 data-poll-url-value="/poll/{{ job.id }}"
-                 data-poll-refresh-interval-value="5000">
-                    {% include "partials/loading.html" %}
-            </div>
+        <div id="poll"
+             data-hx-get="/poll/{{ job.id }}"
+             data-hx-trigger="load delay:3s"
+             data-hx-swap="outerHTML">
+            {% include "partials/loading.html" %}
         </div>
-        <script type="module">
-        {% assets 'stimulus' %}
-        import { Application, Controller } from "{{ ASSET_URL }}"
-        {% endassets %}
-        
-        const Stimulus = Application.start()
-        Stimulus.register("poll", class extends Controller {
-          static values = { url: String, refreshInterval: Number }
-
-          connect() {
-            this.load()
-            let timer
-
-            if (this.hasRefreshIntervalValue) {
-              this.startRefreshing()
-            }
-          }
-
-          disconnect() {
-            this.stopRefreshing()
-          }
-
-          load() {
-            const init = {
-              headers: new Headers({
-                "X-CSRFToken": "{{ csrf_token() }}",
-              }),
-            }
-
-            fetch(this.urlValue, init)
-              .then(response => {
-                if (response.headers.get("X-Custom-Status") !== "Wait") {
-                  this.stopRefreshing()
-                }
-                return response.text()
-              })
-              .then(html => this.element.innerHTML = html)
-          }
-
-          startRefreshing() {
-            this.refreshTimer = setInterval(() => {
-              this.load()
-            }, this.refreshIntervalValue)
-          }
-
-          stopRefreshing() {
-            if (this.refreshTimer) {
-              clearInterval(this.refreshTimer)
-            }
-          }
-
-        })
-        </script>
         <noscript>
-            <p>Please refresh this page from time to time.</p>
+            <p>Please refresh this page until the result is displayed.</p>
         </noscript>
     {% endif %}
 </div>

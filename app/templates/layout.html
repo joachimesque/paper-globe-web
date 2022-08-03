@@ -1,36 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block title %}Generate your Paper Globe{% endblock title %}</title>
+        <title>
+            {% block title %}
+                Generate your Paper Globe
+            {% endblock title %}
+        </title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺</text></svg>">
-
         <meta property="og:title" content="Paper Globe 🗺✨🌐" />
-        <meta property="og:description" content="Generate a template for a DIY paper globe that you can cut, fold, assemble…" />
-        <meta property="og:image" content="https://paperglo.be{{ url_for('static', filename='images/paper-globe-opengraph.jpg') }}" />
+        <meta property="og:description"
+              content="Generate a template for a DIY paper globe that you can cut, fold, assemble…"/>
+        <meta property="og:image"
+              content="https://paperglo.be{{ url_for('static', filename='images/paper-globe-opengraph.jpg') }}"/>
         <meta property="og:image:width" content="1280" />
         <meta property="og:image:height" content="640" />
-
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:image" content="https://paperglo.be{{ url_for('static', filename='images/paper-globe-opengraph.jpg') }}" />
+        <meta property="twitter:image"
+              content="https://paperglo.be{{ url_for('static', filename='images/paper-globe-opengraph.jpg') }}"/>
         <meta property="twitter:title" content="Paper Globe 🗺✨🌐" />
-        <meta property="twitter:description" content="Generate a template for a DIY paper globe that you can cut, fold, assemble…" />
+        <meta property="twitter:description"
+              content="Generate a template for a DIY paper globe that you can cut, fold, assemble…"/>
         <meta property="twitter:site" content="@joachimesque" />
-
         {% assets 'css' %}
             <link rel="stylesheet" href="{{ ASSET_URL }}" />
         {% endassets %}
-
         {% assets 'js' %}
             <script type="module" src="{{ ASSET_URL }}"></script>
         {% endassets %}
-        
-        {% block scripts %}
-        {% endblock scripts %}
+        <script>
+      window.detailsData = (detailsElementId) => {
+        const itemName = (name) => (`is_${name}_open`);
+        const detailsEl = document.getElementById(detailsElementId);
+
+        detailsEl.addEventListener('toggle', (e) => {
+          const isOpen = e.target.hasAttribute('open');
+          localStorage.setItem(itemName(e.target.id), isOpen);
+        });
+
+        const itemValue = localStorage.getItem(itemName(detailsElementId));
+
+        if(itemValue === 'false') {
+          detailsEl.removeAttribute('open');
+        }
+        if(itemValue === 'true') {
+          detailsEl.setAttribute('open', true);
+        }
+      }
+        </script>
     </head>
-    <body>
+    <body hx-boost="true">
         <main class="container">
             {% block content %}
             {% endblock content %}

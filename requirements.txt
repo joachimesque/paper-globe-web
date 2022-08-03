@@ -5,6 +5,7 @@ depinfo
 Flask
 Flask-Assets
 flask-cors
+flask-htmx
 Flask-Limiter
 Flask-Migrate
 Flask-SQLAlchemy
@@ -19,5 +20,4 @@ pipdeptree
 python-dotenv
 redis
 requests
-turbo_flask
 Werkzeug
