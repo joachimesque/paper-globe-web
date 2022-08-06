@@ -34,7 +34,8 @@ import click
 def cli(input_file, output_dir):
     """Downloads (and checks) external front-end libs from <input_file> to <output_dir>"""
 
-    with json.load(open(input_file, encoding="utf-8")) as libs:
+    with open(input_file, encoding="utf-8") as file:
+        libs = json.load(file)
         for lib in libs.values():
             url = lib["url"]
             filename = lib["filename"]
