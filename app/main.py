@@ -2,7 +2,9 @@
 
 import datetime
 import logging.config
+import os
 
+import click
 from celery.result import AsyncResult
 from flask import (
     abort,
@@ -12,11 +14,12 @@ from flask import (
     request,
     session,
 )
+from flask_assets import Environment, Bundle
+from flask_babel import Babel
+from flask_htmx import HTMX
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from flask_assets import Environment, Bundle
 from flask_migrate import Migrate
-from flask_htmx import HTMX
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy import desc
 
@@ -69,6 +72,37 @@ htmx = HTMX(app)
 
 # CRSF config
 csrf = CSRFProtect(app)
+
+# i18n config
+babel = Babel(app)
+
+
+@babel.localeselector
+def get_locale():
+    """Get language pref from session, or from best match"""
+    language = session.get("language", None)
+    if language is not None:
+        return language
+    return request.accept_languages.best_match(app.config["LANGUAGES"].keys())
+
+
+@app.context_processor
+def inject_conf_var():
+    """Injects languages in the context"""
+    return dict(
+        AVAILABLE_LANGUAGES=app.config["LANGUAGES"],
+        CURRENT_LANGUAGE=session.get(
+            "language",
+            request.accept_languages.best_match(app.config["LANGUAGES"].keys()),
+        ),
+    )
+
+
+@app.before_request
+def set_language():
+    """Sets language if request contains 'lang' POST argument"""
+    if request.args.get("lang", None) in app.config["LANGUAGES"].keys():
+        session["language"] = request.args["lang"]
 
 
 @app.template_filter("datetimeformat")
@@ -285,6 +319,40 @@ def poll(file_id):
         return render_template("partials/failure.html", job=job)
 
     return render_template("partials/loading.html", job=job)
+
+
+@app.cli.group()
+def translate():
+    """Translation and localization commands."""
+    pass
+
+
+@translate.command()
+def update():
+    """Update all languages."""
+    if os.system("pybabel extract -F babel.cfg -k _l -o messages.pot ."):
+        raise RuntimeError("extract command failed")
+    if os.system("pybabel update -i messages.pot -d app/translations"):
+        raise RuntimeError("update command failed")
+    os.remove("messages.pot")
+
+
+@translate.command()
+def compile():
+    """Compile all languages."""
+    if os.system("pybabel compile -d app/translations"):
+        raise RuntimeError("compile command failed")
+
+
+@translate.command()
+@click.argument("lang")
+def init(lang):
+    """Initialize a new language."""
+    if os.system("pybabel extract -F babel.cfg -k _l -o messages.pot ."):
+        raise RuntimeError("extract command failed")
+    if os.system("pybabel init -i messages.pot -d app/translations -l " + lang):
+        raise RuntimeError("init command failed")
+    os.remove("messages.pot")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,227 @@
+# French translations for PaperGlobe Web.
+# Copyright (C) 2022 Joachim Robert
+# This file is distributed under the same license as the PaperGlobe Web
+# project.
+# Joachim Robert <joachim@paperglo.be>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PaperGlobe Web VERSION\n"
+"Report-Msgid-Bugs-To: joachim@paperglo.be\n"
+"POT-Creation-Date: 2022-08-06 16:27+0000\n"
+"PO-Revision-Date: 2022-08-06 10:31+0000\n"
+"Last-Translator: Joachim Robert <joachim@paperglo.be>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: app/templates/admin.html:4
+msgid "Admin"
+msgstr "Administration"
+
+#: app/templates/error.html:3
+msgid "An error happened"
+msgstr "Il y a eu une erreur"
+
+#: app/templates/error.html:11
+msgid "There was an error… <a href=\"/\">Go back home!</a>"
+msgstr "Il y a eu une erreur… <a href=\"/\">Retour à l’accueil&nbsp;!</a>"
+
+#: app/templates/index.html:3
+msgid "Generate your Paper Globe!"
+msgstr "Générez votre Paper Globe&nbsp;!"
+
+#: app/templates/instructions.html:3
+msgid "Paper Globe assembly instructions"
+msgstr "Instructions d’assemblage du Paper Globe"
+
+#: app/templates/instructions.html:13 app/templates/instructions.html:30
+msgid "Step 1"
+msgstr "Étape 1"
+
+#: app/templates/instructions.html:15
+msgid ""
+"You will need <strong>one to two hours</strong> to build your globe. "
+"You’ll also need:"
+msgstr ""
+"Vous aurez besoin d’<strong>une à deux heures</strong> pour construire un"
+" globe. Vous aurez aussi besoin&nbsp;:"
+
+#: app/templates/instructions.html:18
+msgid "scissors or an X-ACTO knife &amp; cutting board,"
+msgstr "d’une paire de ciseaux ou d’un cutter et sa surface de coupe&nbsp;;"
+
+#: app/templates/instructions.html:19
+msgid "a ruler,"
+msgstr "d’une rêgle&nbsp;;"
+
+#: app/templates/instructions.html:20
+msgid "an old ballpoint pen"
+msgstr "d’un vieux stylo à bille&nbsp;;"
+
+#: app/templates/instructions.html:21
+msgid "and coffee."
+msgstr "et de café ou de thé."
+
+#: app/templates/instructions.html:24
+msgid ""
+"First, print the 14 pages on heavy weight paper (50lb to80 lb or 200 to "
+"300g/m<sup>2</sup>). This step can be done with a laser or an inkjet "
+"printer."
+msgstr ""
+"Commencez par imprimer les 14 pages sur du papier fort (200 à "
+"300g/m<sup>2</sup>). Cette étape peut se faire sur une imprimante laser "
+"ou à jet d’encre, à condition qu’il y ait du toner/de l’encre noire."
+
+#: app/templates/instructions.html:26
+msgid ""
+"If you’re in North America you can generate a globe template for the US "
+"Letter format."
+msgstr ""
+"Si vous vivez en Amérique du Nord, vous pouvez générer un gabarit de "
+"globe auformat Lettre (8½ par 11)."
+
+#: app/templates/instructions.html:35 app/templates/instructions.html:41
+msgid "Step 2"
+msgstr "Étape 2"
+
+#: app/templates/instructions.html:36
+msgid "Brew a cup of coffee, but put it aside because it’s too hot right now."
+msgstr "Préparez votre tasse de thé ou café, attendez qu’elle refroidisse un peu."
+
+#: app/templates/instructions.html:37
+msgid "Cut the shapes along the black edges. This step is the longest."
+msgstr ""
+"Découpez les formes selon les traits noirs larges. C’est la plus longue "
+"étape."
+
+#: app/templates/instructions.html:46 app/templates/instructions.html:57
+msgid "Step 3"
+msgstr "Étape 3"
+
+#: app/templates/instructions.html:48
+msgid "pages 1 to 4"
+msgstr "Pages 1 à 4"
+
+#: app/templates/instructions.html:51
+msgid ""
+"The best way to make clean folds is to mark the folding line with your "
+"ballpoint pen on the back of the paper, so that the fold will follow it "
+"cleanly."
+msgstr ""
+"Pour faire des plis propres et droits, je conseille de tracer la ligne de"
+" pli au verso de la feuille, à l’aide du stylo et de la règle, ça "
+"facilite ensuite lors du pliage&nbsp;: vous pouvez plier proprement ou "
+"juste appliquer légèrement les plis."
+
+#: app/templates/instructions.html:53
+msgid ""
+"Fold the side wings, then mark the folds on the equator and the 45th "
+"parallels."
+msgstr ""
+"Pliez franchement les languettes de montages, marquez légèrement les plis"
+" au niveau de l’équateur et des 45è parallèles."
+
+#: app/templates/instructions.html:62 app/templates/instructions.html:72
+msgid "Step 4"
+msgstr "Étape 4"
+
+#: app/templates/instructions.html:64
+msgid "pages 7 to 14"
+msgstr "Pages 7 à 14"
+
+#: app/templates/instructions.html:67
+msgid ""
+"Fold the octogons along the dashed line (use the technique from the last "
+"step), then cut out the three inside pieces."
+msgstr ""
+"Pliez les octogones selon les pointillés (utiliser la technique de "
+"l’étape précédente), puis évidez les trois languettes intérieures."
+
+#: app/templates/instructions.html:77 app/templates/instructions.html:88
+msgid "Step 5"
+msgstr "Étape 5"
+
+#: app/templates/instructions.html:79
+msgid "pages 5 to 14"
+msgstr "Pages 5 à 14"
+
+#: app/templates/instructions.html:82
+msgid ""
+"Assemble the insides of the globe by fitting the folded octogons (pieces "
+"7 to 14) in the pieces 5, 6a &amp; 6b."
+msgstr ""
+"Assemblez l’intérieur du globe en emboîtant les pièces pliées (pièces 7 à"
+" 14) dans les pièces 5, 6a et 6b."
+
+#: app/templates/instructions.html:84
+msgid "The coffee should now be too cold to drink. Micro-wave the cup."
+msgstr ""
+"Votre tasse est maintenant trop froide pour être bue. Passez-la au micro-"
+"ondes. "
+
+#: app/templates/instructions.html:93 app/templates/instructions.html:100
+msgid "Step 6"
+msgstr "Étape 6"
+
+#: app/templates/instructions.html:95
+msgid ""
+"Fit the side wings of the exterior pieces (pieces 1 to 4) inside the "
+"slits created by the folded octogons."
+msgstr ""
+"Glissez les languettes des pièces extérieures (pièces 1a à 4) dans les "
+"fentes créées par les plis des pièces pliées (pièces 7 à 14)."
+
+#: app/templates/instructions.html:105 app/templates/instructions.html:112
+msgid "Step 7"
+msgstr "Étape 7"
+
+#: app/templates/instructions.html:107
+msgid ""
+"Repeat 7 times, be careful not to put the USA in the middle of Russia. "
+"World Wars have been declared for less."
+msgstr ""
+"Répétez pour les 7 autres faces, en faisant attention de ne pas insérer "
+"le centre de la Russie au milieu du Canada… Des guerres ont été déclarées"
+" pour moins que ça."
+
+#: app/templates/instructions.html:118 app/templates/instructions.html:132
+msgid "Step 8"
+msgstr "Étape 8"
+
+#: app/templates/instructions.html:121
+msgid "Voilà!"
+msgstr "Voilà&nbsp;!"
+
+#: app/templates/instructions.html:124
+#, python-format
+msgid ""
+"Don’t hesitate to post your pictures <a "
+"href=\"https://twitter.com/search/%%23paperGlobe\">on Twitter: "
+"#paperGlobe</a> or <a href=\"https://mastodon.social/tags/paperGlobe\">on"
+" the Fediverse: #paperGlobe</a>!"
+msgstr ""
+"N’hésitez pas à publier vos photos sur <a "
+"href=\"https://twitter.com/search/%%23paperGlobe\">Twitter&nbsp;: "
+"#paperGlobe</a> ou sur le <a "
+"href=\"https://mastodon.social/tags/paperGlobe\"> Fédiverse&nbsp;: "
+"#paperGlobe</a>!"
+
+#: app/templates/instructions.html:127
+msgid ""
+"The coffee has been waiting too long in the microwave, it’s turned bad. "
+"Brew another cup and drink it while admiring your paper globe, you earned"
+" that!"
+msgstr ""
+"Le café a trop attendu dans le micro-ondes, il est imbuvable. Préparez-en"
+" à nouveau et savourez-le en admirant votre globe, vous l’avez bien "
+"mérité&nbsp;!"
+
+#: app/templates/partials/about.html:3
+msgid "More info"
+msgstr "Plus d’infos"
+

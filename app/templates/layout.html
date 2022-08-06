@@ -1,79 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ CURRENT_LANGUAGE }}">
     <head>
         <title>
             {% block title %}
-                Generate your Paper Globe
+                {{ _('Generate your Paper Globe') }}
             {% endblock title %}
         </title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺</text></svg>">
-        <meta property="og:title" content="Paper Globe 🗺✨🌐" />
-        <meta property="og:description"
-              content="Generate a template for a DIY paper globe that you can cut, fold, assemble…"/>
-        <meta property="og:image"
-              content="https://paperglo.be{{ url_for('static', filename='images/paper-globe-opengraph.jpg') }}"/>
-        <meta property="og:image:width" content="1280" />
-        <meta property="og:image:height" content="640" />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:image"
-              content="https://paperglo.be{{ url_for('static', filename='images/paper-globe-opengraph.jpg') }}"/>
-        <meta property="twitter:title" content="Paper Globe 🗺✨🌐" />
-        <meta property="twitter:description"
-              content="Generate a template for a DIY paper globe that you can cut, fold, assemble…"/>
-        <meta property="twitter:site" content="@joachimesque" />
-        {% assets 'css' %}
-            <link rel="stylesheet" href="{{ ASSET_URL }}" />
-        {% endassets %}
-        {% assets 'js' %}
-            <script type="module" src="{{ ASSET_URL }}"></script>
-        {% endassets %}
-        <script>
-      window.detailsData = (detailsElementId) => {
-        const itemName = (name) => (`is_${name}_open`);
-        const detailsEl = document.getElementById(detailsElementId);
-
-        detailsEl.addEventListener('toggle', (e) => {
-          const isOpen = e.target.hasAttribute('open');
-          localStorage.setItem(itemName(e.target.id), isOpen);
-        });
-
-        const itemValue = localStorage.getItem(itemName(detailsElementId));
-
-        if(itemValue === 'false') {
-          detailsEl.removeAttribute('open');
-        }
-        if(itemValue === 'true') {
-          detailsEl.setAttribute('open', true);
-        }
-      }
-        </script>
-    </head>
-    <body hx-boost="true">
-        <main class="container">
-            {% block content %}
-            {% endblock content %}
-        </main>
-        <footer>
-            <div class="container">
-                <div class="row is-center">
-                    <p class="col-8  text-center">
-                        <small>
-                            The website uses one cookie <span aria-hidden="true">🍪</span> to keep a memory of your last template for a week and no more. It also uses a couple of <code>localStorage</code> keys to remember if you opened/close details cards. No data about visitors is transferred, stored, sold, exchanged, manipulated, acquired, stolen, bamboozled, auctioned, nudge-nudge-wink-wink-legally-shown-to-third-parties, or anything of the sort. Traffic analytics are for insecure chumps.
-                        </small>
-                    </p>
-                    <p class="col-8  text-center">
-                        a
-                        <a href="https://joachimesque.com">Joachimesque</a> production
-                        <a rel="me" href="https://boitam.eu/@joachim" title="Fediverse">🐘</a>
-                        <a rel="me" href="https://twitter.com/joachimesque" title="Twitter">🐦</a>
-                        <br />
-                        made with
-                        <span role="img" aria-label="peach emoji symbolizing a heart or a butt">🍑</span> in Montreuil
-                    </p>
+        <link rel="icon" href="data:image/svg+xml,
+            <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+                <text y=%22.9em%22 font-size=%2290%22>🗺</text>
+            </svg>
+            ">
+            <meta property="og:title" content="Paper Globe 🗺✨🌐" />
+            <meta property="og:description"
+                  content="{{ _('Generate a template for a DIY paper globe that you can cut, fold, assemble…')}}"/>
+            <meta property="og:image"
+                  content="https://paperglo.be{{ url_for('static', filename='images/paper-globe-opengraph.jpg') }}"/>
+            <meta property="og:image:width" content="1280" />
+            <meta property="og:image:height" content="640" />
+            <meta property="twitter:card" content="summary_large_image" />
+            <meta property="twitter:image"
+                  content="https://paperglo.be{{ url_for('static', filename='images/paper-globe-opengraph.jpg') }}"/>
+            <meta property="twitter:title" content="Paper Globe 🗺✨🌐" />
+            <meta property="twitter:description"
+                  content="{{ _('Generate a template for a DIY paper globe that you can cut, fold, assemble…')}}"/>
+            <meta property="twitter:site" content="@joachimesque" />
+            {% assets 'css' %}
+                <link rel="stylesheet" href="{{ ASSET_URL }}" />
+            {% endassets %}
+            {% assets 'js' %}
+                <script type="module" src="{{ ASSET_URL }}"></script>
+            {% endassets %}
+            <script>
+                window.detailsData = (detailsElementId) => {
+                    const itemName = (name) => (`is_${name}_open`);
+                    const detailsEl = document.getElementById(detailsElementId);
+                
+                    detailsEl.addEventListener('toggle', (e) => {
+                        const isOpen = e.target.hasAttribute('open');
+                        localStorage.setItem(itemName(e.target.id), isOpen);
+                    });
+                
+                    const itemValue = localStorage.getItem(itemName(detailsElementId));
+                
+                    if (itemValue === 'false') {
+                        detailsEl.removeAttribute('open');
+                    }
+                    if (itemValue === 'true') {
+                        detailsEl.setAttribute('open', true);
+                    }
+                }
+            </script>
+        </head>
+        <body hx-boost="true" id="body">
+            <main class="container">
+                {% block content %}
+                {% endblock content %}
+            </main>
+            <footer>
+                <div class="container">
+                    <div class="row is-center">
+                        <p class="col-8 text-center">
+                            <small>
+                                {{ _('The website uses one cookie <span aria-hidden="true">🍪</span> to keep a memory of your last template for a week and no more. It also uses a couple of <code>localStorage</code> keys to remember if you opened/close details cards. No data about visitors is transferred, stored, sold, exchanged, manipulated, acquired, stolen, bamboozled, auctioned, nudge-nudge-wink-wink-legally-shown-to-third-parties, or anything of the sort. Traffic analytics are for insecure chumps.') }}
+                            </small>
+                        </p>
+                    </div>
+                    <div class="row is-center">
+                        <div class="col-2">
+                            <label for="lang_select">{{ _('Language selection') }}</label>
+                            <select id="lang_select"
+                                    name="lang"
+                                    data-hx-get="{{ url_for(request.endpoint) }}"
+                                    data-hx-swap="outerHTML show:#body:top"
+                                    data-hx-target="#body">
+                                {% for lang in AVAILABLE_LANGUAGES.items() %}
+                                    <option value="{{ lang[0] }}"
+                                            {% if CURRENT_LANGUAGE == lang[0] %}
+                                            selected="true"
+                                            {%  endif %}>
+                                        {{ lang[1] }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row is-center">
+                        <p class="col-8  text-center">
+                            {{ _('a <a href="https://joachimesque.com">Joachimesque</a> production <a rel="me" href="https://boitam.eu/@joachim" title="Fediverse">🐘</a> <a rel="me" href="https://twitter.com/joachimesque" title="Twitter">🐦</a>
+                            <br />
+                            made with <span role="img" aria-label="peach emoji symbolizing a heart or a butt">🍑</span> in Montreuil') }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </footer>
-    </body>
-</html>
+            </footer>
+        </body>
+    </html>

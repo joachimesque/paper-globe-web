@@ -12,6 +12,11 @@ class Config(object):
     SECRET_KEY = os.environ.get("SECRET_KEY")
     ADMIN_KEY = os.environ.get("ADMIN_KEY")
 
+    LANGUAGES = {
+        "en": "English",
+        "fr": "français",
+    }
+
     MAX_CONTENT_LENGTH = 32 * 1024 * 1024
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
