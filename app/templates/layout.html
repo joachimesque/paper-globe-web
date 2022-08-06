@@ -73,7 +73,7 @@
                             <label for="lang_select">{{ _('Language selection') }}</label>
                             <select id="lang_select"
                                     name="lang"
-                                    data-hx-get="{{ url_for(request.endpoint) }}"
+                                    data-hx-get="{{ request.full_path }}"
                                     data-hx-swap="outerHTML show:#body:top"
                                     data-hx-target="#body">
                                 {% for lang in AVAILABLE_LANGUAGES.items() %}
