@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PaperGlobe Web VERSION\n"
 "Report-Msgid-Bugs-To: joachim@paperglo.be\n"
-"POT-Creation-Date: 2022-08-06 16:27+0000\n"
+"POT-Creation-Date: 2022-08-06 17:01+0000\n"
 "PO-Revision-Date: 2022-08-06 10:31+0000\n"
 "Last-Translator: Joachim Robert <joachim@paperglo.be>\n"
 "Language: fr\n"
@@ -220,6 +220,63 @@ msgstr ""
 "Le café a trop attendu dans le micro-ondes, il est imbuvable. Préparez-en"
 " à nouveau et savourez-le en admirant votre globe, vous l’avez bien "
 "mérité&nbsp;!"
+
+#: app/templates/layout.html:6
+#, fuzzy
+msgid "Generate your Paper Globe"
+msgstr "Générez votre Paper Globe&nbsp;!"
+
+#: app/templates/layout.html:18 app/templates/layout.html:28
+msgid ""
+"Generate a template for a DIY paper globe that you can cut, fold, "
+"assemble…"
+msgstr ""
+"Générez le gabarit d’un globe en papier à découper, plier et assembler "
+"par vous-mêmes…"
+
+#: app/templates/layout.html:67
+msgid ""
+"The website uses one cookie <span aria-hidden=\"true\">🍪</span> to keep a"
+" memory of your last template for a week and no more. It also uses a "
+"couple of <code>localStorage</code> keys to remember if you opened/close "
+"details cards. No data about visitors is transferred, stored, sold, "
+"exchanged, manipulated, acquired, stolen, bamboozled, auctioned, nudge-"
+"nudge-wink-wink-legally-shown-to-third-parties, or anything of the sort. "
+"Traffic analytics are for insecure chumps."
+msgstr ""
+"Ce site web utilise un cookie <span aria-hidden=\"true\">🍪</span> pour "
+"garder un souvenir de votre dernier gabarit généré, pour une durée d’une "
+"semaine, pas plus. Il utilise aussi quelques clés "
+"<code>localStorage</code> pour se rappeler de l’état ouvert/fermé des "
+"blocs de détails. Aucune donnée sur les visites n’est transférée, "
+"stockée, vendue, échangée, manipulée, acquise, volée, chapardée, mise aux"
+" enchères, clin-d’œil-clin-d’œil-légalement-montrée-à-des-tierces-"
+"parties-t’as-compris-j’te-cligne, ou rien de la sorte. Les compteurs de "
+"visites c’est pour les nullos."
+
+#: app/templates/layout.html:73
+msgid "Language selection"
+msgstr "Sélection de la langue"
+
+#: app/templates/layout.html:93
+msgid ""
+"a <a href=\"https://joachimesque.com\">Joachimesque</a> production <a "
+"rel=\"me\" href=\"https://boitam.eu/@joachim\" title=\"Fediverse\">🐘</a> "
+"<a rel=\"me\" href=\"https://twitter.com/joachimesque\" "
+"title=\"Twitter\">🐦</a>"
+msgstr ""
+"Une production <a href=\"https://joachimesque.com\">Joachimesque</a> <a "
+"rel=\"me\" href=\"https://boitam.eu/@joachim\" title=\"Fediverse\">🐘</a> "
+"<a rel=\"me\" href=\"https://twitter.com/joachimesque\" "
+"title=\"Twitter\">🐦</a>"
+
+#: app/templates/layout.html:95
+msgid ""
+"made with <span role=\"img\" aria-label=\"peach emoji symbolizing a heart"
+" or a butt\">🍑</span> in Montreuil"
+msgstr ""
+"fait avec <span role=\"img\" aria-label=\"emoji de pêche en forme de cul "
+"qui symbolise l’amour \">🍑</span> à Montreuil"
 
 #: app/templates/partials/about.html:3
 msgid "More info"
