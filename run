@@ -50,12 +50,12 @@ source .env
 trap - EXIT
 
 function clean {
-    docker-compose stop
-    docker-compose rm -f
+    docker compose stop
+    docker compose rm -f
 }
 
 function runweb {
-    docker-compose run --rm web "$@"
+    docker compose run --rm web "$@"
 }
 
 function initdb {
@@ -77,7 +77,7 @@ set -x
 
 case "$CMD" in
     up)
-        docker-compose up "$@"
+        docker compose up "$@"
         ;;
     initdb)
         initdb "$@"
@@ -92,13 +92,13 @@ case "$CMD" in
         runweb bash
         ;;
     restart_celery)
-        docker-compose restart worker
+        docker compose restart worker
         ;;
     pytest)
         runweb pytest --no-cov-on-fail "$@"
         ;;
     build)
-        docker-compose build
+        docker compose build
         ;;
     clean)
         clean
