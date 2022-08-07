@@ -2,7 +2,8 @@
 import os
 
 
-class Config(object):
+# pylint: disable=R0903
+class Config:
     """Base config class"""
 
     DEBUG = True
@@ -11,6 +12,15 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = os.environ.get("SECRET_KEY")
     ADMIN_KEY = os.environ.get("ADMIN_KEY")
+
+    MIMETYPES_ALLOWED = [
+        "image/jpeg",
+        "image/png",
+        "image/svg+xml",
+        "image/webp",
+        "image/bmp",
+        "image/tiff",
+    ]
 
     MAX_CONTENT_LENGTH = 32 * 1024 * 1024
 
@@ -27,6 +37,7 @@ class Config(object):
     }
 
 
+# pylint: disable=R0903
 class ProductionConfig(Config):
     """Config class for a production environment"""
 
@@ -39,6 +50,7 @@ class ProductionConfig(Config):
     REDIS_BROKER_URL = os.environ.get("REDIS_BROKER_URL")
 
 
+# pylint: disable=R0903
 class DevelopmentConfig(Config):
     """Config class for a dev environment"""
 
@@ -52,6 +64,7 @@ class DevelopmentConfig(Config):
     REDIS_BROKER_URL = "redis://localhost:6379"
 
 
+# pylint: disable=R0903
 class TestingConfig(Config):
     """Config class for a testing environment"""
 
