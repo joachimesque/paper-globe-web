@@ -1,6 +1,7 @@
 """Controllers for the app"""
 
 import os
+import imghdr
 import uuid
 import shutil
 from tempfile import mkdtemp
@@ -107,9 +108,10 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
     Returns
     -------
 
-    tuple : (string, string)
+    tuple : (string, string, string)
         - file path
         - ID for the file/job
+        - status
     """
     temp_dir = mkdtemp()
 
@@ -135,17 +137,18 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
         file_name = generate_secure_filename(file_preset)
         file_path = os.path.join(temp_dir, file_preset)
 
-        try:
-            shutil.copy(preset_path, file_path)
-        except Exception:
-            pass
+        shutil.copy(preset_path, file_path)
 
     assert os.path.exists(file_path)
 
-    status = "started"
-    message = (
-        f"We’re transfering <strong>{file_name}</strong> to the transmogrificator 🧑‍🚀"
-    )
+    if not imghdr.what(file_path):
+        status = "error"
+        message = (
+            f"The file <strong>{file_name}</strong> is not an image. Please try again"
+        )
+    else:
+        status = "started"
+        message = f"We’re transfering <strong>{file_name}</strong> to the transmogrificator 🧑‍🚀"
 
     conversion_job = ConversionJob(
         id=file_id,
@@ -156,4 +159,4 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
     db.session.add(conversion_job)
     db.session.commit()
 
-    return (file_path, file_id)
+    return (file_path, file_id, status)
