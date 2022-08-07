@@ -71,9 +71,10 @@ class MimeTypeAllowed:  # pylint: disable=R0903
         self.mimetypes_allowed = args[0]
 
     def __call__(self, form, field):
-        response_head = requests.head(field.data)
-        if response_head.headers["Content-Type"] not in self.mimetypes_allowed:
-            raise ValidationError(self.message)
+        if field.data != "":
+            response_head = requests.head(field.data)
+            if response_head.headers["Content-Type"] not in self.mimetypes_allowed:
+                raise ValidationError(self.message)
 
 
 class UploadForm(FlaskForm):

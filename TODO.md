@@ -6,7 +6,7 @@
 
 ## Stability
 
-- [ ] Add pre-download check for `image_url` images
+- [x] Add pre-download check for `image_url` images
 - [x] Ensure all image names are safe, esp with `image_url`
 
 ## Features
