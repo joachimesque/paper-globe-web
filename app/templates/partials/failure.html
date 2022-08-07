@@ -1,9 +1,9 @@
 <h2>There was an error…</h2>
 <p>
-    <strong class="tag is-small">{{ job.status }}</strong>
+    <strong class="tag is-small">{{ _(job.status) }}</strong>
     <br />
     {{ job.message|safe }}
 </p>
 <p>
-    <a href="{{ url_for('new') }}" class="button">Try again</a>
+    <a href="{{ url_for('new') }}" class="button">{{ _("Try again")}}</a>
 </p>

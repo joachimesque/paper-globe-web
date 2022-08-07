@@ -1,7 +1,7 @@
 <div class="flex-wrapper-large" id="payload">
     {% include "partials/intro.html" %}
     <div id="form">
-        <h2>Generate your Paper Globe template</h2>
+        <h2>{{ _('Generate your Paper Globe template')}}</h2>
         <form action="{{ url_for('new') }}"
               method="post"
               enctype="multipart/form-data"
@@ -12,7 +12,7 @@
             {{ form.csrf_token }}
             <fieldset>
                 <legend>
-                    Image link/upload
+                    {{ _('Image link/upload')}}
                 </legend>
                 {% for subfield in form.image_type %}
                     {{ subfield }}
@@ -32,7 +32,7 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <p class="is-marginless text-grey">All these presets have an equirectangular projection.</p>
+                    <p class="is-marginless text-grey">{{ _('All these presets have an equirectangular projection.')}}</p>
                 </div>
                 <div id="control-upload" class="control">
                     {{ form.image_file.label }}
@@ -48,23 +48,23 @@
             <div class="row">
                 <fieldset class="col-6">
                     <legend>
-                        Print format
+                        {{ _('Print format')}}
                     </legend>
                     <div>
-                        {% for subfield in form.print_format %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
+                        {% for subfield in form.print_format %}<div>{{ subfield }} {{ _(subfield.label) }}</div>{% endfor %}
                     </div>
                 </fieldset>
                 <fieldset class="col-6">
                     <legend>
-                        Projection
+                        {{ _('Projection')}}
                     </legend>
                     <div>
-                        {% for subfield in form.projection %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
+                        {% for subfield in form.projection %}<div>{{ subfield }} {{ _(subfield.label) }}</div>{% endfor %}
                     </div>
                 </fieldset>
             </div>
             <div>
-                <button type="submit">Generate!</button>
+                <button type="submit">{{ _('Generate!')}}</button>
             </div>
         </form>
     </div>

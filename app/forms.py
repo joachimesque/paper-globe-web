@@ -1,5 +1,6 @@
 """Forms"""
 
+from flask_babel import lazy_gettext as _l
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import URLField, RadioField
@@ -8,15 +9,15 @@ from wtforms.validators import DataRequired, Optional
 from paperglobe import PROJECTIONS, PRINT_SIZES
 
 image_type_choices = [
-    ("preset", "select preset"),
-    ("upload", "upload image"),
-    ("url", "paste url"),
+    ("preset", _l("select preset")),
+    ("upload", _l("upload image")),
+    ("url", _l("paste url")),
 ]
 image_preset_choices = [
-    ("earth.jpg", "Earth, physical"),
-    ("earth-countries.svg", "Earth, political"),
-    ("mars.jpg", "Mars"),
-    ("moon.jpg", "Moon"),
+    ("earth.jpg", _l("Earth, physical")),
+    ("earth-countries.svg", _l("Earth, political")),
+    ("mars.jpg", _l("Mars")),
+    ("moon.jpg", _l("Moon")),
 ]
 print_format_choices = [(name, name) for item, name in PRINT_SIZES.items()]
 projection_choices = [(name, name) for item, name in PROJECTIONS.items()]
@@ -55,33 +56,33 @@ class UploadForm(FlaskForm):
     """Image upload/link form"""
 
     image_url = URLField(
-        "Paste your image URL", validators=[RequiredIf(image_type="url")]
+        _l("Paste your image URL"), validators=[RequiredIf(image_type="url")]
     )
     image_file = FileField(
-        "Upload your image file",
+        _l("Upload your image file"),
         validators=[
-            FileAllowed(["jpg", "png", "svg"], "Images only!"),
+            FileAllowed(["jpg", "png", "svg"], _l("Images only!")),
             RequiredIf(image_type="upload"),
         ],
     )
     image_preset = RadioField(
-        "Select a preset",
+        _l("Select a preset"),
         choices=image_preset_choices,
         default=image_preset_choices[0][0],
         validators=[RequiredIf(image_type="preset")],
     )
     image_type = RadioField(
-        "Image type",
+        _l("Image type"),
         choices=image_type_choices,
         default=image_type_choices[0][0],
     )
     print_format = RadioField(
-        "Print format",
+        _l("Print format"),
         choices=print_format_choices,
         default=print_format_choices[0][0],
     )
     projection = RadioField(
-        "Projection",
+        _l("Projection"),
         choices=projection_choices,
         default=projection_choices[0][0],
     )

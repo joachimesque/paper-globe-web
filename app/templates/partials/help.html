@@ -1,52 +1,52 @@
 <details open class="card" id="help">
     <summary>
-        Help!
+        {{ _('Help!')}}
     </summary>
-    <h2>Help</h2>
+    <h2>{{ _('Help')}}</h2>
     <div class="row">
         <div class="col-12">
-            <h3>How do I generate a paper globe template?</h3>
+            <h3>{{ _('How do I generate a paper globe template?')}}</h3>
             <p>
-                It should be straightforward. If not, it’s a failure on my part, and I hope you’ll contact me to tell me where it failed.
+                {{ _('It should be straightforward. If not, it’s a failure on my part, and I hope you’ll contact me to tell me where it failed.')}}
                 <br />
-                The tool needs an image as a source, as well as some information about that image.
+                {{ _('The tool needs an image as a source, as well as some information about that image.')}}
                 <br />
-                You have three different ways of specifying your image. You have to chose one:
+                {{ _('You have three different ways of specifying your image. You have to chose one:')}}
             </p>
             <ul>
                 <li>
-                    From a <strong>preset</strong>. The simplest. Choose the preset you wish to generate, and voilà.
+                    {{ _('From a <strong>preset</strong>. The simplest. Choose the preset you wish to generate, and voilà.')}}
                 </li>
                 <li>
-                    From an <strong>image file upload</strong>, if your image is on your computer. Click the "upload image" option, then click the "Browse…" button to select your image on your computer.
+                    {{ _('From an <strong>image file upload</strong>, if your image is on your computer. Click the “upload image” option, then click the “Browse…” button to select your image on your computer.')}}
                 </li>
                 <li>
-                    From an <strong>image web address (URL)</strong> if your image is on the web. Click the "paste url" option, then fill in the input with the image URL.
+                    {{ _('From an <strong>image web address (URL)</strong> if your image is on the web. Click the “paste url” option, then fill in the input with the image URL.')}}
                 </li>
             </ul>
             <p>
-                Once your image is duly input, you can press the "Generate" button. The generation starts shortly after. After the generation is completed, the status should be "Success", and a download button appears. Once you click it, your template is sent to your computer and you’re asked where to save it.
+                {{ _('Once your image is duly input, you can press the “Generate” button. The generation starts shortly after. After the generation is completed, the status should be “Success”, and a download button appears. Once you click it, your template is sent to your computer and you’re asked where to save it.')}}
             </p>
             <p>
-                Then, check out the <a href="{{ url_for('instructions') }}">instructions</a>
+                {{ _('Then, check out the <a href="%(url)s">instructions</a>', url= url_for('instructions'))}}
             </p>
-            <h3>What’s the deal with the projection types anyway?</h3>
+            <h3>{{ _('What’s the deal with the projection types anyway?')}}</h3>
             <p>
-                One of the spiciest problems in map making is that we live on a globe. How to convert a sphere to a flat image? One of the simple ways to do it is to use a cylinder and to project the map of the sphere onto the shape of the cylinder. The problem is that the poles are not well rendered and some territories are completely misshapen. Over the centuries, various map makers and mathematicians have pored over the problem. Marinus of Tyre (-100), Mercator (1569) or Gall (1855) each proposed ways to use a cylindrical projection with different takes on how to present the poles. The most "logical" is the Equirectangular projection (or <em>projection plate carrée)</em> where latitudes are evenly separated. Mercator extends the extreme latitudes to keep the shapes of the geographical features, but it makes Greenland bigger than Africa (which it definitely isn’t), and the Gall Stereographic projection is a compromise between the two.
-            </p>
-            <p>
-                When you source an image for your Paper Globe, please be careful as to the projection type that’s used. The tool will only work well with these three choices.
+                {{ _('One of the spiciest problems in map making is that we live on a globe. How to convert a sphere to a flat image? One of the simple ways to do it is to use a cylinder and to project the map of the sphere onto the shape of the cylinder. The problem is that the poles are not well rendered and some territories are completely misshapen. Over the centuries, various map makers and mathematicians have pored over the problem. Marinus of Tyre (100 <abbr title="before common era">BCE</abbr>), Mercator (1569) or Gall (1855) each proposed ways to use a cylindrical projection with different takes on how to present the poles. The most “logical” is the Equirectangular projection (or <em>projection plate carrée)</em> where latitudes are evenly separated. Mercator extends the extreme latitudes to keep the shapes of the geographical features, but it makes Greenland bigger than Africa (which it definitely isn’t), and the Gall Stereographic projection is a compromise between the two.')}}
             </p>
             <p>
-                <a href="https://en.wikipedia.org/wiki/Map_projection">More info about map projections on Wikipedia.</a>
+                {{ _('When you source an image for your Paper Globe, please be careful as to the projection type that’s used. The tool will only work well with these three choices.')}}
             </p>
-            <h3>A4 vs. US Letter: what you need to know</h3>
             <p>
-                It’s all about the standards. The A4 standard appeared in Europe and is based on the Metric system, while the US Letter format is based on the Imperial system used by the US. All of North America and some South-American countries use the US Letter format. Normally you know which format is sold in your area, and most printers are compatible with both formats.
+                {{ _('<a href="https://en.wikipedia.org/wiki/Map_projection">More info about map projections on Wikipedia.</a>')}}
             </p>
-            <h3>How long do you keep the generated templates?</h3>
+            <h3>{{ _('A4 vs. US Letter: what you need to know')}}</h3>
             <p>
-                Due to limited hosting space, generated templates will be kept for <strong>one week</strong>. Seven days after you generate a template, all files and data will be deleted from the server. Be sure to download your template during that time!
+                {{ _('It’s all about the standards. The A4 standard appeared in Europe and is based on the Metric system, while the US Letter format is based on the Imperial system used by the US. All of North America and some South-American countries use the US Letter format. Normally you know which format is sold in your area, and most printers are compatible with both formats.')}}
+            </p>
+            <h3>{{ _('How long do you keep the generated templates?')}}</h3>
+            <p>
+                {{ _('Due to limited hosting space, generated templates will be kept for <strong>one week</strong>. Seven days after you generate a template, all files and data will be deleted from the server. Be sure to download your template during that time!')}}
             </p>
         </div>
         <div class="col-4">
@@ -56,29 +56,29 @@
                  alt=""/>
         </div>
         <div class="col-8">
-            <h3>I want to show you my beautiful globe!</h3>
+            <h3>{{ _('I want to show you my beautiful globe!')}}</h3>
             <p>
-                Neat! You can post it on your social network of choice, and use the <code>#paperGlobe</code> hashtag.
+                {{ _('Neat! You can post it on your social network of choice, and use the <code>#paperGlobe</code> hashtag.')}}
             </p>
             <ul>
                 <li>
-                    <a href="https://twitter.com/search/%23paperGlobe">on Twitter: #paperGlobe</a>
+                    <a href="https://twitter.com/search/%23paperGlobe">{{ _('on Twitter: #paperGlobe')}}</a>
                 </li>
                 <li>
-                    <a href="https://mastodon.social/tags/paperGlobe">on the Fediverse: #paperGlobe</a>
+                    <a href="https://mastodon.social/tags/paperGlobe">{{ _('on the Fediverse: #paperGlobe')}}</a>
                 </li>
             </ul>
         </div>
         <div class="col-8">
-            <h3>Is the service free?</h3>
+            <h3>{{ _('Is the service free?')}}</h3>
             <p>
-                Yes! Generating a template with this tool will never cost you money.
+                {{ _('Yes! Generating a template with this tool will never cost you money.')}}
                 <br />
-                The templates that are generated on this website are not to be sold, it would go against the license under which I published them.
+                {{ _('The templates that are generated on this website are not to be sold, it would go against the license under which I published them.')}}
             </p>
-            <h3>Do you sell anything?</h3>
+            <h3>{{ _('Do you sell anything?')}}</h3>
             <p>
-                No! I have nothing to sell, this project is meant to be used by anyone for any reason, except for commercial purposes.
+                {{ _('No! I have nothing to sell, this project is meant to be used by anyone for any reason, except for commercial purposes.')}}
             </p>
         </div>
         <div class="col-4">
@@ -88,20 +88,20 @@
                  alt=""/>
         </div>
         <div class="col-12">
-            <h3>Do you accept donations though?</h3>
+            <h3>{{ _('Do you accept donations though?')}}</h3>
             <p>
-                If this tool has helped you in such a way that you want to donate to support its development and hosting costs, I really appreciate it.
+                {{ _('If this tool has helped you in such a way that you want to donate to support its development and hosting costs, I really appreciate it.')}}
             </p>
             <p>
-                This project doesn’t cost me much (just the domain name and hosting fees), but I believe that paying Open Source & Free Software developers for their work is the cornerstone of <abbr title="Free & Open Source Software">FOSS</abbr>. Paper Globe was built with many tools, like <a href="https://www.python.org/psf/donations/">Python</a> (the main programming language), <a href="https://psfmember.org/civicrm/contribute/transact?reset=1&id=20">Pallets</a> (Flask or Jinja help me make the website) or <a href="https://www.paypal.com/paypalme/jgog/10">Jenil Gogari</a>’s Chota (the basic style for the website). Donating to any of these Open Source projects will help make Paper Globe better.
+                {{ _('This project doesn’t cost me much (just the domain name and hosting fees), but I believe that paying Open Source & Free Software developers for their work is the cornerstone of <abbr title="Free & Open Source Software">FOSS</abbr>. Paper Globe was built with many tools, like <a href="https://www.python.org/psf/donations/">Python</a> (the main programming language), <a href="https://psfmember.org/civicrm/contribute/transact?reset=1&id=20">Pallets</a> (Flask or Jinja help me make the website) or <a href="https://www.paypal.com/paypalme/jgog/10">Jenil Gogari</a>’s Chota (the basic style for the website). Donating to any of these Open Source projects will help make Paper Globe better.')}}
             </p>
             <p>
-                Moreover, as I don’t have many expenses relating to this project, I thought you might consider making a donation to a charity like <a href="https://www.givedirectly.org/">GiveDirectly</a>, which provides direct help to low income households in developing countries by giving them money, or to Evidence Action’s <a href="https://www.evidenceaction.org/dispensersforsafewater/">Dispensers for Safe Waters</a> which provides more than 4 million people with safe drinking water. Both charities are very well rated on <a href="http://givewell.org/">Givewell.org</a>, which rates charities and NGOs for their efficiency.
+                {{ _('Moreover, as I don’t have many expenses relating to this project, I thought you might consider making a donation to a charity like <a href="https://www.givedirectly.org/">GiveDirectly</a>, which provides direct help to low income households in developing countries by giving them money, or to Evidence Action’s <a href="https://www.evidenceaction.org/dispensersforsafewater/">Dispensers for Safe Waters</a> which provides more than 4 million people with safe drinking water. Both charities are very well rated on <a href="http://givewell.org/">Givewell.org</a>, which rates charities and NGOs for their efficiency.')}}
                 <br />
-                I also support <a href="http://water.org/">Water.org</a> and <a href="http://trees.org/">Trees for the Future</a> which are well rated on Charity Navigator.
+                {{ _('I also support <a href="http://water.org/">Water.org</a> and <a href="http://trees.org/">Trees for the Future</a> which are well rated on Charity Navigator.')}}
             </p>
             <p>
-                If you insist and wish to help me with the hosting costs, here’s <a href="https://www.paypal.com/paypalme/joachimrobert/10">my personal PayPal address</a>.
+                {{ _('If you insist and wish to help me with the hosting costs, here’s <a href="https://www.paypal.com/paypalme/joachimrobert/10">my personal PayPal address</a>.')}}
             </p>
         </div>
         <div class="col-4">
@@ -112,10 +112,10 @@
         </div>
         <div class="col-8">
             <h3>
-                How can I contact you?
+                {{ _('How can I contact you?')}}
             </h3>
             <p>
-                At this place around 9 most thursday mornings: <a href="https://www.google.fr/maps/place/48%C2%B051'14.9%22N+2%C2%B021'18.2%22E/">48°51'14.9"N 2°21'18.2"E</a>, or by email: <a href="mailto:joachim.robert@gmail.com?subject=Paper%20Globe">joachim.robert@gmail.com</a>.
+                {{ _('At this place around 9 most thursday mornings:')}} <a href="https://www.google.fr/maps/place/48%C2%B051'14.9%22N+2%C2%B021'18.2%22E/">48°51'14.9"N 2°21'18.2"E</a>, {{ _('or by email:')}} <a href="mailto:joachim.robert@gmail.com?subject=Paper%20Globe">joachim.robert@gmail.com</a>.
             </p>
         </div>
     </div>
