@@ -4,6 +4,7 @@ cssmin
 depinfo
 Flask
 Flask-Assets
+flask-babel
 flask-cors
 flask-htmx
 Flask-Limiter

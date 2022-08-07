@@ -12,8 +12,8 @@
 ## Features
 
 - [x] Display form errors
-- [ ] Handle i18n
-  - [ ] Translate
+- [x] Handle i18n
+  - [x] Translate: FR
 
 ## Content
 

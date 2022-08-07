@@ -1,0 +1,925 @@
+# French translations for PaperGlobe Web.
+# Copyright (C) 2022 Joachim Robert
+# This file is distributed under the same license as the PaperGlobe Web
+# project.
+# Joachim Robert <joachim@paperglo.be>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PaperGlobe Web VERSION\n"
+"Report-Msgid-Bugs-To: joachim@paperglo.be\n"
+"POT-Creation-Date: 2022-08-07 09:30+0000\n"
+"PO-Revision-Date: 2022-08-06 10:31+0000\n"
+"Last-Translator: Joachim Robert <joachim@paperglo.be>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: app/forms.py:22
+msgid "select preset"
+msgstr "sélectionner un preset"
+
+#: app/forms.py:23
+msgid "upload image"
+msgstr "charger une image"
+
+#: app/forms.py:24
+msgid "paste url"
+msgstr "coller une url"
+
+#: app/forms.py:27
+msgid "Earth, physical"
+msgstr "Terre, carte physique"
+
+#: app/forms.py:28
+msgid "Earth, political"
+msgstr "Terre, carte politique"
+
+#: app/forms.py:29
+msgid "Mars"
+msgstr "Mars"
+
+#: app/forms.py:30
+msgid "Moon"
+msgstr "Lune"
+
+#: app/forms.py:85
+msgid "Paste your image URL"
+msgstr "Coller une URL d’image"
+
+#: app/forms.py:88
+msgid "The linked file is not an image"
+msgstr "Le fichier lié n’est pas une image"
+
+#: app/forms.py:94
+msgid "Upload your image file"
+msgstr "Charger un fichier d’image"
+
+#: app/forms.py:96
+msgid "Images only!"
+msgstr "Seules les images sont acceptées&nbsp;!"
+
+#: app/forms.py:101
+msgid "Select a preset"
+msgstr "Choisir un preset"
+
+#: app/forms.py:107
+msgid "Image type"
+msgstr "Type d’image"
+
+#: app/forms.py:112 app/templates/partials/form.html:51
+msgid "Print format"
+msgstr "Format d’impression"
+
+#: app/forms.py:117 app/templates/partials/form.html:59
+msgid "Projection"
+msgstr "Projection"
+
+#: app/templates/admin.html:4
+msgid "Admin"
+msgstr "Administration"
+
+#: app/templates/error.html:3
+msgid "An error happened"
+msgstr "Il y a eu une erreur"
+
+#: app/templates/error.html:11
+msgid "There was an error… <a href=\"/\">Go back home!</a>"
+msgstr "Il y a eu une erreur… <a href=\"/\">Retour à l’accueil&nbsp;!</a>"
+
+#: app/templates/index.html:3
+msgid "Generate your Paper Globe!"
+msgstr "Générez votre Paper Globe&nbsp;!"
+
+#: app/templates/instructions.html:3
+msgid "Paper Globe assembly instructions"
+msgstr "Instructions d’assemblage du Paper Globe"
+
+#: app/templates/instructions.html:13 app/templates/instructions.html:30
+msgid "Step 1"
+msgstr "Étape 1"
+
+#: app/templates/instructions.html:15
+msgid ""
+"You will need <strong>one to two hours</strong> to build your globe. "
+"You’ll also need:"
+msgstr ""
+"Vous aurez besoin d’<strong>une à deux heures</strong> pour construire un"
+" globe. Vous aurez aussi besoin&nbsp;:"
+
+#: app/templates/instructions.html:18
+msgid "scissors or an X-ACTO knife &amp; cutting board,"
+msgstr "d’une paire de ciseaux ou d’un cutter et sa surface de coupe&nbsp;;"
+
+#: app/templates/instructions.html:19
+msgid "a ruler,"
+msgstr "d’une rêgle&nbsp;;"
+
+#: app/templates/instructions.html:20
+msgid "an old ballpoint pen"
+msgstr "d’un vieux stylo à bille&nbsp;;"
+
+#: app/templates/instructions.html:21
+msgid "and coffee."
+msgstr "et d’une tasse de café ou de thé."
+
+#: app/templates/instructions.html:24
+msgid ""
+"First, print the 14 pages on heavy weight paper (50lb to80 lb or 200 to "
+"300g/m<sup>2</sup>). This step can be done with a laser or an inkjet "
+"printer."
+msgstr ""
+"Commencez par imprimer les 14 pages sur du papier fort (200 à "
+"300g/m<sup>2</sup>). Cette étape peut se faire sur une imprimante laser "
+"ou à jet d’encre, à condition qu’il y ait du toner/de l’encre noire."
+
+#: app/templates/instructions.html:26
+msgid ""
+"If you’re in North America you can generate a globe template for the US "
+"Letter format."
+msgstr ""
+"Si vous vivez en Amérique du Nord, vous pouvez générer un gabarit de "
+"globe auformat Lettre (8½ par 11)."
+
+#: app/templates/instructions.html:35 app/templates/instructions.html:41
+msgid "Step 2"
+msgstr "Étape 2"
+
+#: app/templates/instructions.html:36
+msgid "Brew a cup of coffee, but put it aside because it’s too hot right now."
+msgstr "Préparez votre tasse de thé ou café, attendez qu’elle refroidisse un peu."
+
+#: app/templates/instructions.html:37
+msgid "Cut the shapes along the black edges. This step is the longest."
+msgstr ""
+"Découpez les formes selon les traits noirs larges. C’est la plus longue "
+"étape."
+
+#: app/templates/instructions.html:46 app/templates/instructions.html:57
+msgid "Step 3"
+msgstr "Étape 3"
+
+#: app/templates/instructions.html:48
+msgid "pages 1 to 4"
+msgstr "Pages 1 à 4"
+
+#: app/templates/instructions.html:51
+msgid ""
+"The best way to make clean folds is to mark the folding line with your "
+"ballpoint pen on the back of the paper, so that the fold will follow it "
+"cleanly."
+msgstr ""
+"Pour faire des plis propres et droits, je conseille de tracer la ligne de"
+" pli au verso de la feuille, à l’aide du stylo et de la règle, ça "
+"facilite ensuite lors du pliage&nbsp;: vous pouvez plier proprement ou "
+"juste appliquer légèrement les plis."
+
+#: app/templates/instructions.html:53
+msgid ""
+"Fold the side wings, then mark the folds on the equator and the 45th "
+"parallels."
+msgstr ""
+"Pliez franchement les languettes de montages, marquez légèrement les plis"
+" au niveau de l’équateur et des 45è parallèles."
+
+#: app/templates/instructions.html:62 app/templates/instructions.html:72
+msgid "Step 4"
+msgstr "Étape 4"
+
+#: app/templates/instructions.html:64
+msgid "pages 7 to 14"
+msgstr "Pages 7 à 14"
+
+#: app/templates/instructions.html:67
+msgid ""
+"Fold the octogons along the dashed line (use the technique from the last "
+"step), then cut out the three inside pieces."
+msgstr ""
+"Pliez les octogones selon les pointillés (utiliser la technique de "
+"l’étape précédente), puis évidez les trois languettes intérieures."
+
+#: app/templates/instructions.html:77 app/templates/instructions.html:88
+msgid "Step 5"
+msgstr "Étape 5"
+
+#: app/templates/instructions.html:79
+msgid "pages 5 to 14"
+msgstr "Pages 5 à 14"
+
+#: app/templates/instructions.html:82
+msgid ""
+"Assemble the insides of the globe by fitting the folded octogons (pieces "
+"7 to 14) in the pieces 5, 6a &amp; 6b."
+msgstr ""
+"Assemblez l’intérieur du globe en emboîtant les pièces pliées (pièces 7 à"
+" 14) dans les pièces 5, 6a et 6b."
+
+#: app/templates/instructions.html:84
+msgid "The coffee should now be too cold to drink. Micro-wave the cup."
+msgstr ""
+"Votre tasse est maintenant trop froide pour être bue. Passez-la au micro-"
+"ondes. "
+
+#: app/templates/instructions.html:93 app/templates/instructions.html:100
+msgid "Step 6"
+msgstr "Étape 6"
+
+#: app/templates/instructions.html:95
+msgid ""
+"Fit the side wings of the exterior pieces (pieces 1 to 4) inside the "
+"slits created by the folded octogons."
+msgstr ""
+"Glissez les languettes des pièces extérieures (pièces 1a à 4) dans les "
+"fentes créées par les plis des pièces pliées (pièces 7 à 14)."
+
+#: app/templates/instructions.html:105 app/templates/instructions.html:112
+msgid "Step 7"
+msgstr "Étape 7"
+
+#: app/templates/instructions.html:107
+msgid ""
+"Repeat 7 times, be careful not to put the USA in the middle of Russia. "
+"World Wars have been declared for less."
+msgstr ""
+"Répétez pour les 7 autres faces, en faisant attention de ne pas insérer "
+"le centre de la Russie au milieu du Canada… Des guerres ont été déclarées"
+" pour moins que ça."
+
+#: app/templates/instructions.html:118 app/templates/instructions.html:132
+msgid "Step 8"
+msgstr "Étape 8"
+
+#: app/templates/instructions.html:121
+msgid "Voilà!"
+msgstr "Voilà&nbsp;!"
+
+#: app/templates/instructions.html:124
+#, python-format
+msgid ""
+"Don’t hesitate to post your pictures <a "
+"href=\"https://twitter.com/search/%%23paperGlobe\">on Twitter: "
+"#paperGlobe</a> or <a href=\"https://mastodon.social/tags/paperGlobe\">on"
+" the Fediverse: #paperGlobe</a>!"
+msgstr ""
+"N’hésitez pas à publier vos photos sur <a "
+"href=\"https://twitter.com/search/%%23paperGlobe\">Twitter&nbsp;: "
+"#paperGlobe</a> ou sur le <a "
+"href=\"https://mastodon.social/tags/paperGlobe\"> Fédiverse&nbsp;: "
+"#paperGlobe</a>!"
+
+#: app/templates/instructions.html:127
+msgid ""
+"The coffee has been waiting too long in the microwave, it’s turned bad. "
+"Brew another cup and drink it while admiring your paper globe, you earned"
+" that!"
+msgstr ""
+"Le café a trop attendu dans le micro-ondes, il est imbuvable. Préparez-en"
+" à nouveau et savourez-le en admirant votre globe, vous l’avez bien "
+"mérité&nbsp;!"
+
+#: app/templates/layout.html:6
+msgid "Generate your Paper Globe"
+msgstr "Générez votre Paper Globe&nbsp;!"
+
+#: app/templates/layout.html:18 app/templates/layout.html:28
+msgid ""
+"Generate a template for a DIY paper globe that you can cut, fold, "
+"assemble…"
+msgstr ""
+"Générez le gabarit d’un globe en papier à découper, plier et assembler "
+"par vous-mêmes…"
+
+#: app/templates/layout.html:66
+msgid ""
+"The website uses one cookie <span aria-hidden=\"true\">🍪</span> to keep a"
+" memory of your last template for a week and no more. It also uses a "
+"couple of <code>localStorage</code> keys to remember if you opened/close "
+"details cards. No data about visitors is transferred, stored, sold, "
+"exchanged, manipulated, acquired, stolen, bamboozled, auctioned, nudge-"
+"nudge-wink-wink-legally-shown-to-third-parties, or anything of the sort. "
+"Traffic analytics are for insecure chumps."
+msgstr ""
+"Ce site web utilise un cookie <span aria-hidden=\"true\">🍪</span> pour "
+"garder un souvenir de votre dernier gabarit généré, pour une durée d’une "
+"semaine, pas plus. Il utilise aussi quelques clés "
+"<code>localStorage</code> pour se rappeler de l’état ouvert/fermé des "
+"blocs de détails. Aucune donnée sur les visites n’est transférée, "
+"stockée, vendue, échangée, manipulée, acquise, volée, chapardée, mise aux"
+" enchères, clin-d’œil-clin-d’œil-légalement-montrée-à-des-tierces-"
+"parties-t’as-compris-j’te-cligne, ou rien de la sorte. Les compteurs de "
+"visites c’est pour les nullos."
+
+#: app/templates/layout.html:71
+msgid "Language selection"
+msgstr "Sélection de la langue"
+
+#: app/templates/layout.html:90
+msgid ""
+"a <a href=\"https://joachimesque.com\">Joachimesque</a> production <a "
+"rel=\"me\" href=\"https://boitam.eu/@joachim\" title=\"Fediverse\">🐘</a> "
+"<a rel=\"me\" href=\"https://twitter.com/joachimesque\" "
+"title=\"Twitter\">🐦</a>"
+msgstr ""
+"Une production <a href=\"https://joachimesque.com\">Joachimesque</a> <a "
+"rel=\"me\" href=\"https://boitam.eu/@joachim\" title=\"Fediverse\">🐘</a> "
+"<a rel=\"me\" href=\"https://twitter.com/joachimesque\" "
+"title=\"Twitter\">🐦</a>"
+
+#: app/templates/layout.html:92
+msgid ""
+"made with <span role=\"img\" aria-label=\"peach emoji symbolizing a heart"
+" or a butt\">🍑</span> in Montreuil"
+msgstr ""
+"fait avec <span role=\"img\" aria-label=\"emoji de pêche en forme de cul "
+"qui symbolise l’amour \">🍑</span> à Montreuil"
+
+#: app/templates/partials/about.html:3
+msgid "More info"
+msgstr "Plus d’infos"
+
+#: app/templates/partials/about.html:5
+msgid "The roots of the project"
+msgstr "Les racines du projet"
+
+#: app/templates/partials/about.html:15
+msgid ""
+"My name is Joachim. The Paper Globe project has started in 2012, with the"
+" publication of <a href=\"https://joachimesque.com/globe\">Le Paper "
+"Globe</a>, a template for a <abbr title=\"do it yourself\">DIY</abbr> "
+"globe inspired by the <em>Sectional Globe — earth’s axis, 23.4 "
+"degrees</em>, created by <a href=\"https://www.geo-"
+"grafia.jp/product/\">geografia</a>, a Japan-based design studio."
+msgstr ""
+"Je m’appelle Joachim. Le projet du Paper Globe a commencé en 2012, avec "
+"le site <a href=\"https://joachimesque.com/globe\">Le Paper Globe</a>, un"
+" gabarit pour un globe à faire soi-même,inspiré par le globe "
+"<em>Sectional Globe — earth’s axis, 23.4 degrees</em>, créé par le studio"
+" japonais de design <a href=\"https://www.geo-"
+"grafia.jp/product/\">geografia</a>."
+
+#: app/templates/partials/about.html:17
+msgid ""
+"Le Paper Globe used a simple political map, with only borders and country"
+" names, so anyone could customize their globe after printing and "
+"assembling it."
+msgstr ""
+"Le Paper Globe utilisait une simple carte politique, avec seulement les "
+"frontières et les noms des pays, pour que n’importe qui puisse le "
+"modifier après l’impression et l’assemblage."
+
+#: app/templates/partials/about.html:19
+msgid ""
+"In the spirit of the free movement of ideas and education, I released the"
+" files under a Creative Commons license which allowed people to share the"
+" templates as they see fit, as long as there’s not direct profit from "
+"that use. The hashtag <a "
+"href=\"https://twitter.com/hashtag/lePaperGlobe?f=live\">#lePaperGlobe</a>"
+" shows many of the uses around the world."
+msgstr ""
+"Dans l’esprit du mouvement libre et gratuit des idées et de l’éducation, "
+"ces fichiers ont été publiés sous une license Creative Commons, qui "
+"permet aux gens de partager les gabarits selon leurs envies, du moment "
+"qu’elles ne tiraient aucun profit de leur usage. Le motdièze <a "
+"href=\"https://twitter.com/hashtag/lePaperGlobe?f=live\">#lePaperGlobe</a>"
+" regorge d’exemples à travers le monde."
+
+#: app/templates/partials/about.html:27
+msgid ""
+"Ten years later in 2022, I’ve been contacted by a teacher who wants to "
+"study Mars with his pupils. How could he make a Paper Globe with Mars "
+"instead of the Earth? During these 10 years I’ve been fortunate to "
+"improve my coding skills, so I got to work."
+msgstr ""
+"Dix ans plus tard en 2022, j’ai été contacté par un professeur qui "
+"voulait parler de Mars à ses élèvees. Comment pouvait-il faire un Paper "
+"Globe présentant Mars et non la Terre&nbsp;? Pendant ces dix ans j’ai eu "
+"la chance d’améliorer mes talents de développeur, donc je me suis mis au "
+"travail."
+
+#: app/templates/partials/about.html:29
+msgid ""
+"It took me a couple of days to create the <strong>PaperGlobe</strong> "
+"utility, a Python module that can convert an image to a template file. "
+"Then I made this service, so that non-technical people can convert their "
+"maps to paper globe templates."
+msgstr ""
+"Quelques jours m’ont suffi pour créer l’utilitaire "
+"<strong>PaperGlobe</strong>, un module Python qui peut convertir une "
+"image vers un gabarit de globe. Puis j’ai mis en place ce service, pour "
+"que des personnes qui ne connaissent pas la technique puissent profiter "
+"de l’utilitaire, et générer leurs propres gabarits."
+
+#: app/templates/partials/about.html:31
+msgid "The code for both projects is available:"
+msgstr "Le code source de ces deux projets est disponible&nbsp;:"
+
+#: app/templates/partials/about.html:41
+msgid ""
+"As with the templates, the code is open source and free to use and modify"
+" under a non-commercial license."
+msgstr ""
+"De même que pour les gabarits, le code source est gratuit et libre d’être"
+" utilisé et modifié sous une licence non-commerciale."
+
+#: app/templates/partials/about.html:50
+msgid "Sources for the preset images"
+msgstr "Sources des images de presets"
+
+#: app/templates/partials/about.html:59
+msgid ""
+"The images used as presets come from various open source and public "
+"domain sources:"
+msgstr ""
+"Les images utilisées pour les presets proviennent de diverses sources "
+"ouvertes ou du domaine public&nbsp:"
+
+#: app/templates/partials/about.html:62
+msgid ""
+"The image of the Earth is in the public domain in the United States "
+"because it was solely created by <strong><abbr title=\"National "
+"Aeronautics and Space Administration\">NASA</abbr></strong>. <a "
+"href=\"https://en.wikipedia.org/wiki/File:Equirectangular-"
+"projection.jpg\">Source on Wikipedia</a>."
+msgstr ""
+"L’image de la Terre est dans le domaine public aux États-Unis parce "
+"qu’elle a été créée par la <strong><abbr title=\"National Aeronautics and"
+" Space Administration\">NASA</abbr></strong>. <a "
+"href=\"https://en.wikipedia.org/wiki/File:Equirectangular-"
+"projection.jpg\">Source sur Wikipedia</a>."
+
+#: app/templates/partials/about.html:65
+msgid ""
+"The vector image of the Political Earth is derived from an image that is "
+"in the public domain in the United States because it was created by the "
+"<abbr title=\"Central Intelligence Agency\">CIA</abbr>. <a "
+"href=\"https://en.wikipedia.org/wiki/File:Equirectangular-"
+"projection.jpg\">Source on Wikipedia</a>."
+msgstr ""
+"L’image vectorielle de la carte politique de la Terre est dérivée d’une "
+"image du domaine public aux États-Unis qui a été créée par la <abbr "
+"title=\"Central Intelligence Agency\">CIA</abbr>. <a "
+"href=\"https://en.wikipedia.org/wiki/File:Equirectangular-"
+"projection.jpg\">Source sur Wikipedia</a>."
+
+#: app/templates/partials/about.html:68
+msgid ""
+"The image of Mars is shared under a <a "
+"href=\"https://creativecommons.org/licenses/by/4.0/\">Creative Commons "
+"Attribution 4.0 International</a> by <strong>Solar System Scope</strong> "
+"based on NASA data. <a "
+"href=\"https://www.solarsystemscope.com/textures/\">Source on Solar "
+"System Scope</a>."
+msgstr ""
+"L’image de Mars est partagée sous une license <a "
+"href=\"https://creativecommons.org/licenses/by/4.0/\">Creative Commons "
+"Attribution 4.0 International</a> par <strong>Solar System Scope</strong>"
+" basée sur des données de la NASA. <a "
+"href=\"https://www.solarsystemscope.com/textures/\">Source sur Solar "
+"System Scope</a>."
+
+#: app/templates/partials/about.html:71
+msgid ""
+"The image of the Moon is in the public domain in the United States "
+"because it was created by <strong>NASA’s Scientific Visualization "
+"Studio</strong> . <a href=\"https://svs.gsfc.nasa.gov/cgi-"
+"bin/details.cgi?aid=4720\">Source on NASA’s Scientific Visualisation "
+"Studio’s website</a>."
+msgstr ""
+"L’image de la Lune est dans le domaine public aux États-Unis parce "
+"qu’elle a été créée par le <strong>Scientific Visualization "
+"Studio</strong> (Studio de Visualisation Scientifique) de la NASA. <a "
+"href=\"https://svs.gsfc.nasa.gov/cgi-bin/details.cgi?aid=4720\">Source "
+"sur le site du Scientific Visualisation Studio de la NASA</a>."
+
+#: app/templates/partials/failure.html:8
+msgid "Try again"
+msgstr "Essayer à nouveau"
+
+#: app/templates/partials/form.html:4
+msgid "Generate your Paper Globe template"
+msgstr "Générez votre Paper Globe&nbsp;!"
+
+#: app/templates/partials/form.html:15
+msgid "Image link/upload"
+msgstr "Lien ou chargement d’image"
+
+#: app/templates/partials/form.html:35
+msgid "All these presets have an equirectangular projection."
+msgstr "Tous ces presets ont une projection plate carrée."
+
+#: app/templates/partials/form.html:67
+msgid "Generate!"
+msgstr "Générer&nbsp;!"
+
+#: app/templates/partials/help.html:3
+msgid "Help!"
+msgstr "À l’aide&nbsp;!"
+
+#: app/templates/partials/help.html:5
+msgid "Help"
+msgstr "Assistance"
+
+#: app/templates/partials/help.html:8
+msgid "How do I generate a paper globe template?"
+msgstr "Générez votre Paper Globe&nbsp;!"
+
+#: app/templates/partials/help.html:10
+msgid ""
+"It should be straightforward. If not, it’s a failure on my part, and I "
+"hope you’ll contact me to tell me where it failed."
+msgstr ""
+"Ça devrait être facile. Si ça ne l’est pas, c’est de ma faute, et "
+"j’espère que vous me contacterez pour me dire où ça ne l’a pas été."
+
+#: app/templates/partials/help.html:12
+msgid ""
+"The tool needs an image as a source, as well as some information about "
+"that image."
+msgstr ""
+"L’outil a besoin d’une image comme source, et d’informations à propos de "
+"cette image."
+
+#: app/templates/partials/help.html:14
+msgid ""
+"You have three different ways of specifying your image. You have to chose"
+" one:"
+msgstr "Il y a trois manières de spécifier une image. Choisissez-en une&nbsp;:"
+
+#: app/templates/partials/help.html:18
+msgid ""
+"From a <strong>preset</strong>. The simplest. Choose the preset you wish "
+"to generate, and voilà."
+msgstr ""
+"À partir d’un <strong>preset</strong>. Le plus facile. Choissisez le "
+"preset que vous voulez générer, et voilà."
+
+#: app/templates/partials/help.html:21
+msgid ""
+"From an <strong>image file upload</strong>, if your image is on your "
+"computer. Click the “upload image” option, then click the “Browse…” "
+"button to select your image on your computer."
+msgstr ""
+"À partir d’<strong>une image chargée</strong>, si vous avez l’image sur "
+"votre ordinateur. Cliquez l’option «&nbsp;charger une image&nbsp;», puis "
+"cliquez sur le bouton «&nbsp;Parcourir&nbsp;» pour sélectionner une image"
+" sur votre ordinateur."
+
+#: app/templates/partials/help.html:24
+msgid ""
+"From an <strong>image web address (URL)</strong> if your image is on the "
+"web. Click the “paste url” option, then fill in the input with the image "
+"URL."
+msgstr ""
+"À partir d’une <strong>adresse (URL) d’une image</strong> si cette image "
+"est sur le web. Cliquez l’option «&nbsp;coller une url&nbsp;» puis "
+"remplissez le champ avec l’adresse de l’image."
+
+#: app/templates/partials/help.html:28
+msgid ""
+"Once your image is duly input, you can press the “Generate” button. The "
+"generation starts shortly after. After the generation is completed, the "
+"status should be “Success”, and a download button appears. Once you click"
+" it, your template is sent to your computer and you’re asked where to "
+"save it."
+msgstr ""
+"Une fois que votre image est renseignée, vous pouvez presser le bouton "
+"«&nbsp;Générer&nbsp;». La génération commence peu après. Une fois que "
+"celle-ci est terminée, le statut devrait être «&nbsp;Succès&nbsp;», et un"
+" bouton de téléchargement apparaît. Au clic de celui-ci, le gabarit est "
+"envoyé à votre ordinateur, qui vous demande où le sauvegarder."
+
+#: app/templates/partials/help.html:31
+#, python-format
+msgid "Then, check out the <a href=\"%(url)s\">instructions</a>"
+msgstr "Puis regardez les <a href=\"%(url)s\">instructions</a>"
+
+#: app/templates/partials/help.html:33
+msgid "What’s the deal with the projection types anyway?"
+msgstr "C’est quoi cette histoire de projections&nbsp;?"
+
+#: app/templates/partials/help.html:35
+msgid ""
+"One of the spiciest problems in map making is that we live on a globe. "
+"How to convert a sphere to a flat image? One of the simple ways to do it "
+"is to use a cylinder and to project the map of the sphere onto the shape "
+"of the cylinder. The problem is that the poles are not well rendered and "
+"some territories are completely misshapen. Over the centuries, various "
+"map makers and mathematicians have pored over the problem. Marinus of "
+"Tyre (100 <abbr title=\"before common era\">BCE</abbr>), Mercator (1569) "
+"or Gall (1855) each proposed ways to use a cylindrical projection with "
+"different takes on how to present the poles. The most “logical” is the "
+"Equirectangular projection (or <em>projection plate carrée)</em> where "
+"latitudes are evenly separated. Mercator extends the extreme latitudes to"
+" keep the shapes of the geographical features, but it makes Greenland "
+"bigger than Africa (which it definitely isn’t), and the Gall "
+"Stereographic projection is a compromise between the two."
+msgstr ""
+"L’un des problèmes les plus épineux quand on réalise des cartes, c’est "
+"que nous vivons sur un globe. Comment convertir une sphère en une image "
+"plate ? Une des manières simples de le faire est d’utiliser un cylindre "
+"et de projeter la carte de la sphère sur la forme du cylindre. Le souci, "
+"c’est que les pôles ne sont pas bien rendus et que certains territoires "
+"sont complètement déformés. Au fil des siècles, différents cartographes "
+"et mathématiciens se sont penchés sur le problème. Marinus de Tyr (100 "
+"<abbr title=\"avant Jésus-Christ\">av. J.-C.</abbr>), Mercator (1569) ou "
+"Gall (1855) ont chacun proposé des façons d’utiliser une projection "
+"cylindrique avec des façons différentes de présenter les pôles. La plus "
+"«&nbsp;logique&nbsp;» est la projection équirectangulaire (ou projection "
+"plate carrée) où les latitudes sont séparées par des intervalles "
+"réguliers. Mercator étend les latitudes extrêmes pour conserver les "
+"formes des entités géographiques, mais cela rend le Groenland plus grand "
+"que l’Afrique (ce qui n’est absolument pas le cas). La projection "
+"stéréographique de Gall est un compromis entre les deux."
+
+#: app/templates/partials/help.html:38
+msgid ""
+"When you source an image for your Paper Globe, please be careful as to "
+"the projection type that’s used. The tool will only work well with these "
+"three choices."
+msgstr ""
+"Lorsque vous recherchez une image pour votre Paper Globe, faites bien "
+"attention au type de projection utilisé. L’outil ne fonctionnera qu’avec "
+"ces trois choix."
+
+#: app/templates/partials/help.html:41
+msgid ""
+"<a href=\"https://en.wikipedia.org/wiki/Map_projection\">More info about "
+"map projections on Wikipedia.</a>"
+msgstr ""
+"<a href=\"https://fr.wikipedia.org/wiki/Projection_cartographique\">En "
+"savoir plus sur les projections cartographiques sur Wikipedia.</a>"
+
+#: app/templates/partials/help.html:43
+msgid "A4 vs. US Letter: what you need to know"
+msgstr "A4 contre Lettre US&nbsp; ce qu’il faut savoir"
+
+#: app/templates/partials/help.html:45
+msgid ""
+"It’s all about the standards. The A4 standard appeared in Europe and is "
+"based on the Metric system, while the US Letter format is based on the "
+"Imperial system used by the US. All of North America and some South-"
+"American countries use the US Letter format. Normally you know which "
+"format is sold in your area, and most printers are compatible with both "
+"formats."
+msgstr ""
+"C’est une histoire de standards. Le standard A4 vient d’Europe et se base"
+" sur le système métrique, tandis que le format Lettre US est basé sur le "
+"système impérial utilisé aux États-Unis.L’Amérique du Nord, et plusieurs "
+"pays d’Amérique du Sud utilisent le format Lettre US. Vous devez "
+"normalement savoir quels formats sont vendus dans votre région, et la "
+"majorité des imprimantes sont compatibles avec les deux formats."
+
+#: app/templates/partials/help.html:47
+msgid "How long do you keep the generated templates?"
+msgstr "Combien de temps est-ce que les gabarits sont gardés&nbsp;?"
+
+#: app/templates/partials/help.html:49
+msgid ""
+"Due to limited hosting space, generated templates will be kept for "
+"<strong>one week</strong>. Seven days after you generate a template, all "
+"files and data will be deleted from the server. Be sure to download your "
+"template during that time!"
+msgstr ""
+"Étant données les contraintes d’espace de stockage, les gabarits générés "
+"seront gardés <strong>une semaine</strong>. Sept jours après la "
+"génération du gabarit, les fichiers et les données associées seront "
+"supprimées du serveur. Assurez-vous de télécharger votre gabarit avant sa"
+" suppression&nbsp;!"
+
+#: app/templates/partials/help.html:59
+msgid "I want to show you my beautiful globe!"
+msgstr "Je voudrais te montrer mon super globe&nbsp;!"
+
+#: app/templates/partials/help.html:61
+msgid ""
+"Neat! You can post it on your social network of choice, and use the "
+"<code>#paperGlobe</code> hashtag."
+msgstr ""
+"Génial&nbsp;! Vous pouvez le publier sur votre réseau social préféré, en "
+"utilisant le motdièze <code>#paperGlobe</code>."
+
+#: app/templates/partials/help.html:65
+msgid "on Twitter: #paperGlobe"
+msgstr "sur Twitter&nbsp;: #paperGlobe"
+
+#: app/templates/partials/help.html:68
+msgid "on the Fediverse: #paperGlobe"
+msgstr "sur le Fédiverse&nbsp;: #paperGlobe"
+
+#: app/templates/partials/help.html:73
+msgid "Is the service free?"
+msgstr "Et ce service, il est gratuit&nbsp;?"
+
+#: app/templates/partials/help.html:75
+msgid "Yes! Generating a template with this tool will never cost you money."
+msgstr ""
+"Oui&nbsp;! La génération d’un gabarit avec cet outil ne coûtera jamais "
+"rien."
+
+#: app/templates/partials/help.html:77
+msgid ""
+"The templates that are generated on this website are not to be sold, it "
+"would go against the license under which I published them."
+msgstr ""
+"Les gabarits générés sur ce site ne doivent pas être revendus, ça irait à"
+" l’encontre de la license sous laquelle j’ai décidé de publier ceux-ci."
+
+#: app/templates/partials/help.html:79
+msgid "Do you sell anything?"
+msgstr "Tu as des trucs à vendre&nbsp;?"
+
+#: app/templates/partials/help.html:81
+msgid ""
+"No! I have nothing to sell, this project is meant to be used by anyone "
+"for any reason, except for commercial purposes."
+msgstr ""
+"Non&nbsp;! Je n’ai rien à vendre, ce projet est fait pour être utilisé "
+"par n’importe qui, pour n’importe quelle raison, à l’exception d’un but "
+"commercial."
+
+#: app/templates/partials/help.html:91
+msgid "Do you accept donations though?"
+msgstr "Mais sinon, tu acceptes des dons&nbsp;?"
+
+#: app/templates/partials/help.html:93
+msgid ""
+"If this tool has helped you in such a way that you want to donate to "
+"support its development and hosting costs, I really appreciate it."
+msgstr ""
+"Si cet outil vous a aidé à tel point que vous souhaitiez donner pour "
+"aider dans les coûts liés au développement et à l’hébergement, j’apprécie"
+" infiniment ce geste."
+
+#: app/templates/partials/help.html:96
+msgid ""
+"This project doesn’t cost me much (just the domain name and hosting "
+"fees), but I believe that paying Open Source & Free Software developers "
+"for their work is the cornerstone of <abbr title=\"Free & Open Source "
+"Software\">FOSS</abbr>. Paper Globe was built with many tools, like <a "
+"href=\"https://www.python.org/psf/donations/\">Python</a> (the main "
+"programming language), <a "
+"href=\"https://psfmember.org/civicrm/contribute/transact?reset=1&id=20\">Pallets</a>"
+" (Flask or Jinja help me make the website) or <a "
+"href=\"https://www.paypal.com/paypalme/jgog/10\">Jenil Gogari</a>’s Chota"
+" (the basic style for the website). Donating to any of these Open Source "
+"projects will help make Paper Globe better."
+msgstr ""
+"Ce projet ne me coûte pas beaucoup (seulement le nom de domaine et "
+"l’hébergement), mais je suis convaincu que rémunérer les développeurs de "
+"Logiciel Libre / Open Source à la hauteur de leur travail est la base sur"
+" laquelle ces projets peuvent exister. Paper Globe a été réalisé grâce à "
+"des outils comme <a "
+"href=\"https://www.python.org/psf/donations/\">Python</a> (le langage de "
+"programmation principal), <a "
+"href=\"https://psfmember.org/civicrm/contribute/transact?reset=1&id=20\">Pallets</a>"
+" (Flask et Jinja m’aident à faire le site) ou Chota, par <a "
+"href=\"https://www.paypal.com/paypalme/jgog/10\">Jenil Gogari</a> (la "
+"base de styles du site). Faire un don à ces projets Open Source aidera à "
+"améliorer Paper Globe."
+
+#: app/templates/partials/help.html:99
+msgid ""
+"Moreover, as I don’t have many expenses relating to this project, I "
+"thought you might consider making a donation to a charity like <a "
+"href=\"https://www.givedirectly.org/\">GiveDirectly</a>, which provides "
+"direct help to low income households in developing countries by giving "
+"them money, or to Evidence Action’s <a "
+"href=\"https://www.evidenceaction.org/dispensersforsafewater/\">Dispensers"
+" for Safe Waters</a> which provides more than 4 million people with safe "
+"drinking water. Both charities are very well rated on <a "
+"href=\"http://givewell.org/\">Givewell.org</a>, which rates charities and"
+" NGOs for their efficiency."
+msgstr ""
+"En plus de ça, comme mes dépenses pour ce projet ne sont pas "
+"conséquentes, je vous invite à considérer un don à <a "
+"href=\"https://www.givedirectly.org/\">GiveDirectly</a>ou à la campagne "
+"<a "
+"href=\"https://www.evidenceaction.org/dispensersforsafewater/\">Dispensers"
+" for Safe Waters</a> de Evidence Action ; ces projets permettent d’aider "
+"des familles pauvres de pays en voie de développement en leur donnant "
+"directement de l’argent pour la première, ou en leur facilitant l’accès à"
+" de l’eau potable pour la seconde. Ces deux ONG sont très bien notées par"
+" <a href=\"http://givewell.org/\">Givewell.org</a>, qui évalue "
+"l’efficacité des projets humanitaires."
+
+#: app/templates/partials/help.html:101
+msgid ""
+"I also support <a href=\"http://water.org/\">Water.org</a> and <a "
+"href=\"http://trees.org/\">Trees for the Future</a> which are well rated "
+"on Charity Navigator."
+msgstr ""
+"Je recommande aussi les ONG <a href=\"http://water.org/\">Water.org</a> "
+"et <a href=\"http://trees.org/\">Trees for the Future</a> pour favoriser "
+"l’accès à l’eau ou la plantation d’arbres dans des zones déboisées, "
+"toutes deux sont bien notées sur le site Charity Navigator."
+
+#: app/templates/partials/help.html:104
+msgid ""
+"If you insist and wish to help me with the hosting costs, here’s <a "
+"href=\"https://www.paypal.com/paypalme/joachimrobert/10\">my personal "
+"PayPal address</a>."
+msgstr ""
+"Si vous insistez et voulez m’aider à payer les frais d’hébergement, voilà"
+" un lien vers <a "
+"href=\"https://www.paypal.com/paypalme/joachimrobert/10\">ma page PayPal "
+"personnelle</a>."
+
+#: app/templates/partials/help.html:115
+msgid "How can I contact you?"
+msgstr "Comment puis-je te contacter&nbsp;?"
+
+#: app/templates/partials/help.html:118
+msgid "At this place around 9 most thursday mornings:"
+msgstr "À cet endroit vers 9 heures les jeudi matin&nbsp;:"
+
+#: app/templates/partials/help.html:118
+msgid "or by email:"
+msgstr "ou par email&nbsp;:"
+
+#: app/templates/partials/intro.html:3
+msgid "What is the Paper Globe?"
+msgstr "C’est quoi le Paper Globe&nbsp;?"
+
+#: app/templates/partials/intro.html:5
+msgid "print it, cut it, fold it…"
+msgstr "à imprimer, à découper, à plier…"
+
+#: app/templates/partials/intro.html:9
+msgid ""
+"Paper Globe is a tool that will generate the template of a do-it-yourself"
+" globe that you can print, cut and fold. Not only will it look neat in "
+"your living room, it is also a very good learning tool for geography, "
+"geometry, space…"
+msgstr ""
+"Paper Globe est un outil qui aide à générer le gabarit d’un globe à "
+"réaliser soi-même, qu’il faut imprimer, découper et plier. Non seulement "
+"ce globe décore bien mais c’est surtout un très bon outil d’enseignement "
+"de la géographie, de la géométrie, de l’espace…"
+
+#: app/templates/partials/intro.html:12
+msgid ""
+"This project has been directly inspired by the <em>Sectional Globe — "
+"earth’s axis, 23.4 degrees</em>, created by <a href=\"https://www.geo-"
+"grafia.jp/product/\">geografia</a>, a Japan-based design studio. Buy "
+"their products, it’s really well made!"
+msgstr ""
+"Ce projet est directement inspiré de <em>Sectional Globe — earth’s axis, "
+"23.4 degrees</em>, créé par <a href=\"https://www.geo-"
+"grafia.jp/product/\">geografia</a>, un studio de design au Japon.Achetez "
+"leurs produits, ils sont de très bonne qualité&nbsp;!"
+
+#: app/templates/partials/intro.html:14
+msgid ""
+"The tool is free to use, and the templates that are generated cannot be "
+"used for profit."
+msgstr ""
+"L’outil est gratuit, et les gabarits générés ne peuvent pas être utilisés"
+" commercialement."
+
+#: app/templates/partials/intro.html:20
+msgid "Photo of the Paper Globe"
+msgstr "Photo du Paper Globe"
+
+#: app/templates/partials/loading.html:6
+msgid "Please wait"
+msgstr "Veuillez patienter"
+
+#: app/templates/partials/nav.html:7
+msgid "Get your template"
+msgstr "Nouveau gabarit"
+
+#: app/templates/partials/nav.html:9
+msgid "Instructions"
+msgstr "Instructions"
+
+#: app/templates/partials/poll.html:14
+msgid "Please refresh this page until the result is displayed."
+msgstr "Veuillez rafraîchir cette page jusqu’à ce que le résultat soit affiché."
+
+#: app/templates/partials/success.html:1
+msgid "Your Paper Globe template"
+msgstr "Générez votre Paper Globe&nbsp;!"
+
+#: app/templates/partials/success.html:11
+msgid "Download your template"
+msgstr "Téléchargez votre gabarit"
+
+#: app/templates/partials/success.html:12
+msgid "then"
+msgstr "puis"
+
+#: app/templates/partials/success.html:12
+msgid "check out the instructions"
+msgstr "regardez les instructions"
+
+#: app/templates/partials/success.html:15
+#, python-format
+msgid "Or, create <a href=\"%(url)s\">a new template from another image</a>"
+msgstr ""
+"Ou bien créez <a href=\"%(url)s\">un nouveau gabarit à partir d’une autre"
+" image</a>"
+

@@ -50,16 +50,12 @@ source .env
 trap - EXIT
 
 function clean {
-    docker-compose stop
-    docker-compose rm -f
+    docker compose stop
+    docker compose rm -f
 }
 
 function runweb {
-    docker-compose run --rm web "$@"
-}
-
-function rundb {
-    docker-compose run --rm db $@
+    docker compose run --rm web "$@"
 }
 
 function initdb {
@@ -81,22 +77,10 @@ set -x
 
 case "$CMD" in
     up)
-        docker-compose up "$@"
+        docker compose up "$@"
         ;;
     initdb)
         initdb "$@"
-        ;;
-    resetdb)
-        clean
-        # Start just the DB so no one else is using it
-        docker-compose up --build -d db
-        rundb dropdb -U ${POSTGRES_USER} ${POSTGRES_DB}
-        rundb createdb -U ${POSTGRES_USER} ${POSTGRES_DB}
-        # Now start up web so we can run the migrations
-        docker-compose up --build -d web
-        migrate
-        initdb
-        clean
         ;;
     makemigrations)
         runweb flask db migrate "$@"
@@ -107,17 +91,14 @@ case "$CMD" in
     bash)
         runweb bash
         ;;
-    dbshell)
-        rundb psql -U ${POSTGRES_USER} ${POSTGRES_DB}
-        ;;
     restart_celery)
-        docker-compose restart worker
+        docker compose restart worker
         ;;
     pytest)
         runweb pytest --no-cov-on-fail "$@"
         ;;
     build)
-        docker-compose build
+        docker compose build
         ;;
     clean)
         clean
@@ -129,21 +110,31 @@ case "$CMD" in
     runweb)
         runweb "$@"
         ;;
+    translate:update)
+        runweb flask translate update
+        ;;
+    translate:compile)
+        runweb flask translate compile
+        ;;
+    translate:init)
+        runweb flask translate init "$@"
+        ;;
     *)
         set +x # No need to echo echo
         echo "Unrecognised command. Try:"
         echo "    up [container]"
         echo "    initdb"
-        echo "    resetdb"
         echo "    makemigrations [migration]"
         echo "    migrate [migration]"
         echo "    bash"
-        echo "    dbshell"
         echo "    restart_celery"
         echo "    pytest"
         echo "    build"
         echo "    clean"
         echo "    setup"
         echo "    runweb"
+        echo "    translate:update"
+        echo "    translate:compile"
+        echo "    translate:init [lang]"
         ;;
 esac

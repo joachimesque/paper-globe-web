@@ -13,6 +13,11 @@ class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY")
     ADMIN_KEY = os.environ.get("ADMIN_KEY")
 
+    LANGUAGES = {
+        "en": "English",
+        "fr": "français",
+    }
+
     MIMETYPES_ALLOWED = [
         "image/jpeg",
         "image/png",

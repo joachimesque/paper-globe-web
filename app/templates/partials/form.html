@@ -1,7 +1,7 @@
 <div class="flex-wrapper-large" id="payload">
     {% include "partials/intro.html" %}
     <div id="form">
-        <h2>Generate your Paper Globe template</h2>
+        <h2>{{ _('Generate your Paper Globe template')}}</h2>
         <form action="{{ url_for('new') }}"
               method="post"
               enctype="multipart/form-data"
@@ -12,7 +12,7 @@
             {{ form.csrf_token }}
             <fieldset>
                 <legend>
-                    Image link/upload
+                    {{ _('Image link/upload')}}
                 </legend>
                 {% for subfield in form.image_type %}
                     {{ subfield }}
@@ -32,7 +32,7 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <p class="is-marginless text-grey">All these presets have an equirectangular projection.</p>
+                    <p class="is-marginless text-grey">{{ _('All these presets have an equirectangular projection.')}}</p>
                 </div>
                 <div id="control-upload" class="control">
                     {{ form.image_file.label }}
@@ -48,23 +48,23 @@
             <div class="row">
                 <fieldset class="col-6">
                     <legend>
-                        Print format
+                        {{ _('Print format')}}
                     </legend>
                     <div>
-                        {% for subfield in form.print_format %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
+                        {% for subfield in form.print_format %}<div>{{ subfield }} {{ _(subfield.label) }}</div>{% endfor %}
                     </div>
                 </fieldset>
                 <fieldset class="col-6">
                     <legend>
-                        Projection
+                        {{ _('Projection')}}
                     </legend>
                     <div>
-                        {% for subfield in form.projection %}<div>{{ subfield }} {{ subfield.label }}</div>{% endfor %}
+                        {% for subfield in form.projection %}<div>{{ subfield }} {{ _(subfield.label) }}</div>{% endfor %}
                     </div>
                 </fieldset>
             </div>
             <div>
-                <button type="submit">Generate!</button>
+                <button type="submit">{{ _('Generate!')}}</button>
             </div>
         </form>
     </div>
@@ -74,36 +74,40 @@
 <script>
     (() => {
         const uploadForm = document.forms.upload;
-
+    
         if (typeof(uploadForm) === 'undefined') return;
-
+    
         const presetRadio = document.querySelector('input[type="radio"][value="preset"]');
         const typeRadios = uploadForm.elements['image_type'];
         const projectionRadios = uploadForm.elements['projection'];
-
+    
         const handlePresetChange = (event) => {
-          projectionRadios.forEach((projectionInput) => {
-            projectionInput.disabled = event.target.value === 'preset';
-          });
-          projectionRadios.value = event.target.value === 'preset' ? 'equirectangular' : projectionRadios.value;
+            projectionRadios.forEach((projectionInput) => {
+                projectionInput.disabled = event.target.value === 'preset';
+            });
+            projectionRadios.value = event.target.value === 'preset' ? 'equirectangular' : projectionRadios.value;
         }
-
+    
         typeRadios.forEach((item) => {
-          item.addEventListener('change', handlePresetChange);
+            item.addEventListener('change', handlePresetChange);
         });
-
+    
         projectionRadios.forEach((projectionInput) => {
-          projectionInput.disabled = typeRadios.value === 'preset';
+            projectionInput.disabled = typeRadios.value === 'preset';
         });
         if (typeRadios.value === 'preset') {
-          projectionRadios.value = 'equirectangular';
+            projectionRadios.value = 'equirectangular';
         }
     })()
-
+    
     window.document.addEventListener("submit", (event) => {
-        event.target.querySelectorAll("button").forEach(node => { node.disabled = true })
+        event.target.querySelectorAll("button").forEach(node => {
+            node.disabled = true
+        })
     })
     window.document.addEventListener("htmx:afterOnLoad", (event) => {
-        event.target.querySelectorAll("button").forEach(node => { node.disabled = false })
+        event.target.querySelectorAll("button").forEach(node => {
+            node.disabled = false
+        })
     })
 </script>

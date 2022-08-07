@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}
-    An error happened
+    {{ _('An error happened') }}
 {% endblock title %}
 {% block content %}
     <div class="row is-center">
@@ -8,7 +8,7 @@
             {% include "partials/nav.html" %}
             <p>{{ error }}</p>
             <p>
-                There was an error… <a href="/">Go back home!</a>
+                {{ _('There was an error… <a href="/">Go back home!</a>') }}
             </p>
         </div>
     </div>

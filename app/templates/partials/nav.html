@@ -4,8 +4,8 @@
     </h1>
     <nav class="col tabs is-full">
         <a href="/new"
-           class="no-underline{% if request.endpoint in ['new', 'result', 'index'] %} active{% endif %}">Get your template</a>
+           class="no-underline{% if request.endpoint in ['new', 'result', 'index'] %} active{% endif %}">{{ _('Get your template')}}</a>
         <a href="/instructions"
-           class="no-underline{% if request.endpoint == 'instructions' %} active{% endif %}">Instructions</a>
+           class="no-underline{% if request.endpoint == 'instructions' %} active{% endif %}">{{ _('Instructions')}}</a>
     </nav>
 </header>
