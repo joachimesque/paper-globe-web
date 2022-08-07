@@ -11,7 +11,7 @@ from flask import abort
 import requests
 
 from app.database import db, ConversionJob
-from app.utils import generate_export_dir_name, generate_secure_filename
+from app.utils import generate_export_dir_name, generate_secure_filename, is_svg
 
 
 def admin_delete_controller(job_id):
@@ -122,6 +122,14 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
         file_path = os.path.join(temp_dir, file_name)
         file_object.save(file_path)
 
+    if file_preset is not None:
+        static_dir = os.environ.get("STATIC_DIR")
+        preset_path = os.path.join(static_dir, "presets", file_preset)
+        file_name = generate_secure_filename(file_preset)
+        file_path = os.path.join(temp_dir, file_preset)
+
+        shutil.copy(preset_path, file_path)
+
     if file_url is not None:
         parsed_path = urlparse(unquote_plus(file_url)).path
         file_name = generate_secure_filename(os.path.basename(parsed_path))
@@ -131,24 +139,14 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
         with open(file_path, "wb") as file:
             file.write(response.content)
 
-    if file_preset is not None:
-        static_dir = os.environ.get("STATIC_DIR")
-        preset_path = os.path.join(static_dir, "presets", file_preset)
-        file_name = generate_secure_filename(file_preset)
-        file_path = os.path.join(temp_dir, file_preset)
-
-        shutil.copy(preset_path, file_path)
-
-    assert os.path.exists(file_path)
-
-    if not imghdr.what(file_path):
+    if imghdr.what(file_path) is not None or is_svg(file_path):
+        status = "started"
+        message = f"We’re transfering <strong>{file_name}</strong> to the transmogrificator 🧑‍🚀"
+    else:
         status = "error"
         message = (
             f"The file <strong>{file_name}</strong> is not an image. Please try again"
         )
-    else:
-        status = "started"
-        message = f"We’re transfering <strong>{file_name}</strong> to the transmogrificator 🧑‍🚀"
 
     conversion_job = ConversionJob(
         id=file_id,
