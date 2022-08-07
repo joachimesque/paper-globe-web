@@ -61,4 +61,4 @@ def cli(input_file, output_dir):
 
 
 if __name__ == "__main__":
-    cli() # pylint: disable=no-value-for-parameter
+    cli()  # pylint: disable=no-value-for-parameter
