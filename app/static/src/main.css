@@ -162,6 +162,10 @@ img.is-full {
   }
 }
 
+p.is-small {
+  font-size: .8em;
+}
+
 .loader {
   display: inline-block;
   position: relative;
