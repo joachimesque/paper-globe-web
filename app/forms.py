@@ -85,7 +85,7 @@ class UploadForm(FlaskForm):
         _l("Paste your image URL"),
         validators=[
             MimeTypeAllowed(
-                mimetypes_allowed, message="The linked file is not an image"
+                mimetypes_allowed, message=_l("The linked file is not an image")
             ),
             RequiredIf(image_type="url"),
         ],

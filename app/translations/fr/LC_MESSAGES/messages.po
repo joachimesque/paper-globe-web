@@ -19,59 +19,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/forms.py:12
+#: app/forms.py:22
 msgid "select preset"
 msgstr "sélectionner un preset"
 
-#: app/forms.py:13
+#: app/forms.py:23
 msgid "upload image"
 msgstr "charger une image"
 
-#: app/forms.py:14
+#: app/forms.py:24
 msgid "paste url"
 msgstr "coller une url"
 
-#: app/forms.py:17
+#: app/forms.py:27
 msgid "Earth, physical"
 msgstr "Terre, carte physique"
 
-#: app/forms.py:18
+#: app/forms.py:28
 msgid "Earth, political"
 msgstr "Terre, carte politique"
 
-#: app/forms.py:19
+#: app/forms.py:29
 msgid "Mars"
 msgstr "Mars"
 
-#: app/forms.py:20
+#: app/forms.py:30
 msgid "Moon"
 msgstr "Lune"
 
-#: app/forms.py:59
+#: app/forms.py:85
 msgid "Paste your image URL"
 msgstr "Coller une URL d’image"
 
-#: app/forms.py:62
+#: app/forms.py:88
+msgid "The linked file is not an image"
+msgstr "Le fichier lié n’est pas une image"
+
+#: app/forms.py:94
 msgid "Upload your image file"
 msgstr "Charger un fichier d’image"
 
-#: app/forms.py:64
+#: app/forms.py:96
 msgid "Images only!"
 msgstr "Seules les images sont acceptées&nbsp;!"
 
-#: app/forms.py:69
+#: app/forms.py:101
 msgid "Select a preset"
 msgstr "Choisir un preset"
 
-#: app/forms.py:75
+#: app/forms.py:107
 msgid "Image type"
 msgstr "Type d’image"
 
-#: app/forms.py:80 app/templates/partials/form.html:51
+#: app/forms.py:112 app/templates/partials/form.html:51
 msgid "Print format"
 msgstr "Format d’impression"
 
-#: app/forms.py:85 app/templates/partials/form.html:59
+#: app/forms.py:117 app/templates/partials/form.html:59
 msgid "Projection"
 msgstr "Projection"
 
