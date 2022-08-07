@@ -155,15 +155,16 @@ def new():
             projection = form.projection.data
 
             if image_type == "upload":
-                file_path, file_id = upload_controller(file_object=image_file)
+                file_path, file_id, status = upload_controller(file_object=image_file)
 
             elif image_type == "preset":
-                file_path, file_id = upload_controller(file_preset=image_preset)
+                file_path, file_id, status = upload_controller(file_preset=image_preset)
 
             elif image_url != "":
-                file_path, file_id = upload_controller(file_url=image_url)
+                file_path, file_id, status = upload_controller(file_url=image_url)
 
-            convert_to_template.delay(file_path, file_id, print_format, projection)
+            if status != "error":
+                convert_to_template.delay(file_path, file_id, print_format, projection)
 
             session["file_id"] = file_id
 
