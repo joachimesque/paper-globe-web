@@ -10,7 +10,7 @@ from urllib.parse import urlparse, unquote_plus
 from flask import abort
 import requests
 
-from app.database import db, ConversionJob
+from app.database import db, ConversionJob, FormatsEnum, ProjectionsEnum
 from app.utils import generate_export_dir_name, generate_secure_filename, is_svg
 
 
@@ -84,7 +84,13 @@ def admin_revert_controller(job_id):
     db.session.commit()
 
 
-def upload_controller(file_url=None, file_object=None, file_preset=None):
+def upload_controller(
+    file_url=None,
+    file_object=None,
+    file_preset=None,
+    print_format=FormatsEnum.A4,
+    projection=ProjectionsEnum.EQUIRECTANGULAR,
+):
     """Controller for the upload route
 
     Depending on the argument received, this will
@@ -104,6 +110,16 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
 
     file_preset : string
         Filename of a preset file
+
+    print_format : str
+        printing size of the template. one of:
+            - "a4" (default)
+            - "us-letter"
+    projection : str
+        type of projection. one of:
+            - "equirectangular" (default)
+            - "mercator"
+            - "gall-stereo"
 
     Returns
     -------
@@ -153,6 +169,8 @@ def upload_controller(file_url=None, file_object=None, file_preset=None):
         origin_file_path=file_path,
         message=message,
         status=status,
+        print_format=FormatsEnum(print_format),
+        projection=ProjectionsEnum(projection),
     )
     db.session.add(conversion_job)
     db.session.commit()

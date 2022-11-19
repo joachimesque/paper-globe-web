@@ -23,7 +23,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy import desc
 
-from app.database import db, ConversionJob
+from app.database import db, ConversionJob, FormatsEnum, ProjectionsEnum
 from app.controllers import (
     upload_controller,
     admin_delete_controller,
@@ -193,13 +193,25 @@ def new():
             projection = form.projection.data
 
             if image_type == "upload":
-                file_path, file_id, status = upload_controller(file_object=image_file)
+                file_path, file_id, status = upload_controller(
+                    file_object=image_file,
+                    print_format=print_format,
+                    projection=projection,
+                )
 
             elif image_type == "preset":
-                file_path, file_id, status = upload_controller(file_preset=image_preset)
+                file_path, file_id, status = upload_controller(
+                    file_preset=image_preset,
+                    print_format=print_format,
+                    projection=projection,
+                )
 
             elif image_url != "":
-                file_path, file_id, status = upload_controller(file_url=image_url)
+                file_path, file_id, status = upload_controller(
+                    file_url=image_url,
+                    print_format=print_format,
+                    projection=projection,
+                )
 
             if status != "error":
                 convert_to_template.delay(file_path, file_id, print_format, projection)
