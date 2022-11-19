@@ -61,7 +61,9 @@ def convert_to_template(self, file_path, file_id, image_format, image_projection
 
     dir_name = generate_export_dir_name(file_id)
     export_path = os.path.join(export_dir, dir_name, "")
-    os.mkdir(export_path)
+
+    if os.path.exists(export_path) is False:
+        os.mkdir(export_path)
 
     conversion_job = ConversionJob.query.get(file_id)
     conversion_job.job_id = task_id

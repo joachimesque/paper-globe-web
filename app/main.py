@@ -213,10 +213,10 @@ def new():
                     projection=projection,
                 )
 
+            session["file_id"] = file_id
+
             if status != "error":
                 convert_to_template.delay(file_path, file_id, print_format, projection)
-
-            session["file_id"] = file_id
 
             if htmx:
                 job = ConversionJob.query.filter_by(id=file_id).first_or_404()
