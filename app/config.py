@@ -50,9 +50,11 @@ class ProductionConfig(Config):
 
     SQLALCHEMY_DATABASE_URI = "sqlite:////usr/paperglobe_web/db/sqlite.db"
 
-    CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
-    CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
-    REDIS_BROKER_URL = os.environ.get("REDIS_BROKER_URL")
+    CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "redis://redis:6379")
+    CELERY_RESULT_BACKEND = os.environ.get(
+        "CELERY_RESULT_BACKEND", "redis://redis:6379"
+    )
+    REDIS_BROKER_URL = os.environ.get("REDIS_BROKER_URL", "redis://redis:6379")
 
 
 # pylint: disable=R0903
@@ -64,9 +66,9 @@ class DevelopmentConfig(Config):
 
     SQLALCHEMY_DATABASE_URI = "sqlite:////usr/paperglobe_web/db/sqlite.db"
 
-    CELERY_BROKER_URL = "redis://localhost:6379"
-    CELERY_RESULT_BACKEND = "redis://localhost:6379"
-    REDIS_BROKER_URL = "redis://localhost:6379"
+    CELERY_BROKER_URL = "redis://redis:6379"
+    CELERY_RESULT_BACKEND = "redis://redis:6379"
+    REDIS_BROKER_URL = "redis://redis:6379"
 
 
 # pylint: disable=R0903
@@ -80,6 +82,6 @@ class TestingConfig(Config):
     SQLALCHEMY_POOL_SIZE = None
     SQLALCHEMY_POOL_TIMEOUT = None
 
-    CELERY_BROKER_URL = "redis://localhost:6379"
-    CELERY_RESULT_BACKEND = "redis://localhost:6379"
-    REDIS_BROKER_URL = "redis://localhost:6379"
+    CELERY_BROKER_URL = "redis://redis:6379"
+    CELERY_RESULT_BACKEND = "redis://redis:6379"
+    REDIS_BROKER_URL = "redis://redis:6379"

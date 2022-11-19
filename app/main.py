@@ -58,7 +58,11 @@ assets.load_path = "."
 
 # Rate limiter config
 limiter = Limiter(
-    app, key_func=get_remote_address, default_limits=["200 per day", "50 per hour"]
+    app,
+    key_func=get_remote_address,
+    default_limits=["200 per day", "50 per hour"],
+    storage_uri=app.config["REDIS_BROKER_URL"],
+    strategy="fixed-window",  # or "moving-window"
 )
 
 # Logger config
