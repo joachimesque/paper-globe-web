@@ -1,13 +1,19 @@
 """Database init and models"""
 
+import enum
 import os
 import uuid
 
-from sqlalchemy import Column, String, DateTime, Text, Boolean, event
+from paperglobe import PRINT_SIZES, PROJECTIONS
+from sqlalchemy import Column, String, DateTime, Text, Boolean, event, Enum
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
+
+FormatsEnum = enum.Enum("FormatsEnum", [(k, v) for k, v in PRINT_SIZES.items()])
+
+ProjectionsEnum = enum.Enum("ProjectionsEnum", [(k, v) for k, v in PROJECTIONS.items()])
 
 
 class ConversionJob(db.Model):
@@ -23,6 +29,8 @@ class ConversionJob(db.Model):
     message = Column(Text())
     status = Column(String(16))
     deleted = Column(Boolean(), default=False)
+    print_format = Column(Enum(FormatsEnum), default=FormatsEnum.A4)
+    projection = Column(Enum(ProjectionsEnum), default=ProjectionsEnum.EQUIRECTANGULAR)
 
     def as_dict(self):
         """Dictionary representation of the Class"""
