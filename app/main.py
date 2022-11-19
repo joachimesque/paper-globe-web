@@ -339,6 +339,35 @@ def poll(file_id):
 
 
 @app.cli.group()
+def admin():
+    """Administration commands."""
+    pass
+
+
+@admin.command()
+def retry_started():
+    """Retry tasks that have been started but have no job_id."""
+    jobs = ConversionJob.query.filter(ConversionJob.job_id.is_(None))
+
+    if jobs.count() == 0:
+        print("No jobs to retry")
+        pass
+
+    for job in jobs:
+        file_path = job.origin_file_path
+        file_id = job.id
+        print_format = job.print_format if job.print_format else FormatsEnum.A4
+        projection = (
+            job.projection if job.projection else ProjectionsEnum.EQUIRECTANGULAR
+        )
+        print(f"{file_id} started")
+
+        convert_to_template.delay(
+            file_path, file_id, print_format.value, projection.value
+        )
+
+
+@app.cli.group()
 def translate():
     """Translation and localization commands."""
     pass

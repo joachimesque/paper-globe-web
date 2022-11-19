@@ -110,6 +110,9 @@ case "$CMD" in
     runweb)
         runweb "$@"
         ;;
+    admin:retry-started)
+        runweb flask admin retry-started "$@"
+        ;;
     translate:update)
         runweb flask translate update
         ;;
@@ -133,6 +136,7 @@ case "$CMD" in
         echo "    clean"
         echo "    setup"
         echo "    runweb"
+        echo "    admin:retry-started"
         echo "    translate:update"
         echo "    translate:compile"
         echo "    translate:init [lang]"
