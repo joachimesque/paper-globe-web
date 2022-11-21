@@ -60,7 +60,7 @@ assets.load_path = "."
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=["200 per day", "50 per hour"],
+    default_limits=["2000 per day", "500 per hour"],
     storage_uri=app.config["REDIS_BROKER_URL"],
     strategy="fixed-window",  # or "moving-window"
 )
@@ -141,6 +141,7 @@ def page_error(error):
 
 
 @app.route("/")
+@limiter.exempt
 def index():
     """Application index
 
