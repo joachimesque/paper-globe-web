@@ -16,7 +16,7 @@ gunicorn
 importlib_resources
 inotify
 jsmin
-paperglobe @ https://github.com/joachimesque/paper-globe/archive/refs/tags/v0.1.2.tar.gz
+paperglobe @ https://github.com/joachimesque/paper-globe/archive/refs/tags/v0.1.3.tar.gz
 pipdeptree
 python-dotenv
 redis
