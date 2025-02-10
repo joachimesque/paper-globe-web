@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PaperGlobe Web VERSION\n"
 "Report-Msgid-Bugs-To: joachim@paperglo.be\n"
-"POT-Creation-Date: 2022-08-07 09:30+0000\n"
+"POT-Creation-Date: 2025-02-10 14:47+0000\n"
 "PO-Revision-Date: 2022-08-06 10:31+0000\n"
 "Last-Translator: Joachim Robert <joachim@paperglo.be>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.15.0\n"
 
 #: app/forms.py:22
 msgid "select preset"
@@ -258,12 +258,11 @@ msgid "Voilà!"
 msgstr "Voilà&nbsp;!"
 
 #: app/templates/instructions.html:124
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Don’t hesitate to post your pictures <a "
-"href=\"https://twitter.com/search/%%23paperGlobe\">on Twitter: "
-"#paperGlobe</a> or <a href=\"https://mastodon.social/tags/paperGlobe\">on"
-" the Fediverse: #paperGlobe</a>!"
+"href=\"https://mastodon.social/tags/paperGlobe\">on the Fediverse: "
+"#paperGlobe</a>!"
 msgstr ""
 "N’hésitez pas à publier vos photos sur <a "
 "href=\"https://twitter.com/search/%%23paperGlobe\">Twitter&nbsp;: "
@@ -285,7 +284,7 @@ msgstr ""
 msgid "Generate your Paper Globe"
 msgstr "Générez votre Paper Globe&nbsp;!"
 
-#: app/templates/layout.html:18 app/templates/layout.html:28
+#: app/templates/layout.html:18
 msgid ""
 "Generate a template for a DIY paper globe that you can cut, fold, "
 "assemble…"
@@ -293,7 +292,7 @@ msgstr ""
 "Générez le gabarit d’un globe en papier à découper, plier et assembler "
 "par vous-mêmes…"
 
-#: app/templates/layout.html:66
+#: app/templates/layout.html:60
 msgid ""
 "The website uses one cookie <span aria-hidden=\"true\">🍪</span> to keep a"
 " memory of your last template for a week and no more. It also uses a "
@@ -313,23 +312,25 @@ msgstr ""
 "parties-t’as-compris-j’te-cligne, ou rien de la sorte. Les compteurs de "
 "visites c’est pour les nullos."
 
-#: app/templates/layout.html:71
+#: app/templates/layout.html:65
 msgid "Language selection"
 msgstr "Sélection de la langue"
 
-#: app/templates/layout.html:90
+#: app/templates/layout.html:84
+#, fuzzy
 msgid ""
-"a <a href=\"https://joachimesque.com\">Joachimesque</a> production <a "
-"rel=\"me\" href=\"https://boitam.eu/@joachim\" title=\"Fediverse\">🐘</a> "
-"<a rel=\"me\" href=\"https://twitter.com/joachimesque\" "
-"title=\"Twitter\">🐦</a>"
+"a <a href=\"https://professeurjoachim.com\" "
+"hreflang=\"fr\">Joachimesque</a> production <a rel=\"me\" "
+"href=\"https://boitam.eu/@joachim\" title=\"Fediverse\">⁂</a> <a "
+"rel=\"me\" href=\"https://blog.professeurjoachim.com\" "
+"hreflang=\"fr\">blog</a>"
 msgstr ""
-"Une production <a href=\"https://joachimesque.com\">Joachimesque</a> <a "
-"rel=\"me\" href=\"https://boitam.eu/@joachim\" title=\"Fediverse\">🐘</a> "
-"<a rel=\"me\" href=\"https://twitter.com/joachimesque\" "
-"title=\"Twitter\">🐦</a>"
+"Une production <a href=\"https://professeurjoachim.com\">Joachimesque</a>"
+" <a rel=\"me\" href=\"https://boitam.eu/@joachim\" "
+"title=\"Fediverse\">⁂</a> <a rel=\"me\" "
+"href=\"https://blog.professeurjoachim.com\">blog</a>"
 
-#: app/templates/layout.html:92
+#: app/templates/layout.html:86
 msgid ""
 "made with <span role=\"img\" aria-label=\"peach emoji symbolizing a heart"
 " or a butt\">🍑</span> in Montreuil"
@@ -702,25 +703,25 @@ msgstr ""
 "Génial&nbsp;! Vous pouvez le publier sur votre réseau social préféré, en "
 "utilisant le motdièze <code>#paperGlobe</code>."
 
+#: app/templates/partials/help.html:62
+msgid ""
+"For example, <a href=\"https://mastodon.social/tags/paperGlobe\">on the "
+"Fediverse: #paperGlobe</a>"
+msgstr ""
+"Par exemple, <a href=\"https://mastodon.social/tags/paperGlobe\">sur le "
+"Fédiverse : #paperGlobe</a>"
+
 #: app/templates/partials/help.html:65
-msgid "on Twitter: #paperGlobe"
-msgstr "sur Twitter&nbsp;: #paperGlobe"
-
-#: app/templates/partials/help.html:68
-msgid "on the Fediverse: #paperGlobe"
-msgstr "sur le Fédiverse&nbsp;: #paperGlobe"
-
-#: app/templates/partials/help.html:73
 msgid "Is the service free?"
 msgstr "Et ce service, il est gratuit&nbsp;?"
 
-#: app/templates/partials/help.html:75
+#: app/templates/partials/help.html:67
 msgid "Yes! Generating a template with this tool will never cost you money."
 msgstr ""
 "Oui&nbsp;! La génération d’un gabarit avec cet outil ne coûtera jamais "
 "rien."
 
-#: app/templates/partials/help.html:77
+#: app/templates/partials/help.html:69
 msgid ""
 "The templates that are generated on this website are not to be sold, it "
 "would go against the license under which I published them."
@@ -728,11 +729,11 @@ msgstr ""
 "Les gabarits générés sur ce site ne doivent pas être revendus, ça irait à"
 " l’encontre de la license sous laquelle j’ai décidé de publier ceux-ci."
 
-#: app/templates/partials/help.html:79
+#: app/templates/partials/help.html:71
 msgid "Do you sell anything?"
 msgstr "Tu as des trucs à vendre&nbsp;?"
 
-#: app/templates/partials/help.html:81
+#: app/templates/partials/help.html:73
 msgid ""
 "No! I have nothing to sell, this project is meant to be used by anyone "
 "for any reason, except for commercial purposes."
@@ -741,11 +742,11 @@ msgstr ""
 "par n’importe qui, pour n’importe quelle raison, à l’exception d’un but "
 "commercial."
 
-#: app/templates/partials/help.html:91
+#: app/templates/partials/help.html:83
 msgid "Do you accept donations though?"
 msgstr "Mais sinon, tu acceptes des dons&nbsp;?"
 
-#: app/templates/partials/help.html:93
+#: app/templates/partials/help.html:85
 msgid ""
 "If this tool has helped you in such a way that you want to donate to "
 "support its development and hosting costs, I really appreciate it."
@@ -754,7 +755,7 @@ msgstr ""
 "aider dans les coûts liés au développement et à l’hébergement, j’apprécie"
 " infiniment ce geste."
 
-#: app/templates/partials/help.html:96
+#: app/templates/partials/help.html:88
 msgid ""
 "This project doesn’t cost me much (just the domain name and hosting "
 "fees), but I believe that paying Open Source & Free Software developers "
@@ -781,7 +782,7 @@ msgstr ""
 "base de styles du site). Faire un don à ces projets Open Source aidera à "
 "améliorer Paper Globe."
 
-#: app/templates/partials/help.html:99
+#: app/templates/partials/help.html:91
 msgid ""
 "Moreover, as I don’t have many expenses relating to this project, I "
 "thought you might consider making a donation to a charity like <a "
@@ -806,7 +807,7 @@ msgstr ""
 " <a href=\"http://givewell.org/\">Givewell.org</a>, qui évalue "
 "l’efficacité des projets humanitaires."
 
-#: app/templates/partials/help.html:101
+#: app/templates/partials/help.html:93
 msgid ""
 "I also support <a href=\"http://water.org/\">Water.org</a> and <a "
 "href=\"http://trees.org/\">Trees for the Future</a> which are well rated "
@@ -817,7 +818,7 @@ msgstr ""
 "l’accès à l’eau ou la plantation d’arbres dans des zones déboisées, "
 "toutes deux sont bien notées sur le site Charity Navigator."
 
-#: app/templates/partials/help.html:104
+#: app/templates/partials/help.html:96
 msgid ""
 "If you insist and wish to help me with the hosting costs, here’s <a "
 "href=\"https://www.paypal.com/paypalme/joachimrobert/10\">my personal "
@@ -828,15 +829,15 @@ msgstr ""
 "href=\"https://www.paypal.com/paypalme/joachimrobert/10\">ma page PayPal "
 "personnelle</a>."
 
-#: app/templates/partials/help.html:115
+#: app/templates/partials/help.html:107
 msgid "How can I contact you?"
 msgstr "Comment puis-je te contacter&nbsp;?"
 
-#: app/templates/partials/help.html:118
+#: app/templates/partials/help.html:110
 msgid "At this place around 9 most thursday mornings:"
 msgstr "À cet endroit vers 9 heures les jeudi matin&nbsp;:"
 
-#: app/templates/partials/help.html:118
+#: app/templates/partials/help.html:110
 msgid "or by email:"
 msgstr "ou par email&nbsp;:"
 
@@ -922,4 +923,3 @@ msgid "Or, create <a href=\"%(url)s\">a new template from another image</a>"
 msgstr ""
 "Ou bien créez <a href=\"%(url)s\">un nouveau gabarit à partir d’une autre"
 " image</a>"
-
